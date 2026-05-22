@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>חיות - משחק לקטנטנים</title>
+  <meta name="description" content="50 חיות מהעולם עם תמונות, צלילים ומשחק חידון">
+  <meta name="theme-color" content="#10B981">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: "Rubik", "Assistant", "Segoe UI", Arial, sans-serif;
+      direction: rtl;
+      background: #FFF8F0;
+      color: #1a1a2e;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      overscroll-behavior: none;
+    }
+
+    /* ===== Screens ===== */
+    .screen {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ===== Top Bar ===== */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .btn-back, .btn-home {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: none;
+      background: var(--cat-color, #888);
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.1s;
+    }
+
+    .btn-back:active, .btn-home:active { transform: scale(0.9); }
+
+    .screen-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--cat-color, #333);
+      flex: 1;
+      text-align: center;
+    }
+
+    /* ===== Home Screen ===== */
+    #screen-home {
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .app-title {
+      font-size: 36px;
+      font-weight: 800;
+      color: #1a1a2e;
+      text-align: center;
+    }
+
+    .app-title span {
+      display: inline-block;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    #home-categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .category-btn {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 8px;
+      border: 4px solid var(--cat-color);
+      border-radius: 24px;
+      background: var(--cat-color-light);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      min-height: 140px;
+      overflow: hidden;
+    }
+
+    .category-btn:active { transform: scale(0.95); }
+    .category-btn:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+    .category-icon {
+      width: 80px; height: 80px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .category-icon img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+
+    .category-label {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--cat-color);
+    }
+
+    .btn-quiz-home {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px 40px;
+      border: 4px solid #10B981;
+      border-radius: 50px;
+      background: #D1FAE5;
+      color: #065F46;
+      font-size: 24px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s;
+      width: 100%;
+      max-width: 600px;
+      font-family: inherit;
+    }
+
+    .btn-quiz-home:active { transform: scale(0.95); }
+    .btn-quiz-home .quiz-icon { font-size: 32px; }
+
+    .btn-about {
+      background: none;
+      border: none;
+      color: #9ca3af;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 8px 16px;
+      font-family: inherit;
+    }
+
+    .btn-about:active { color: #6b7280; }
+
+    /* ===== Category Screen ===== */
+    #category-animals {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding: 8px 16px 24px;
+      flex: 1;
+    }
+
+    .animal-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 8px;
+      border: 3px solid #e5e7eb;
+      border-radius: 16px;
+      background: white;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+
+    .animal-card:active {
+      transform: scale(0.93);
+      border-color: var(--cat-color);
+    }
+
+    .animal-thumb {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #f9fafb;
+    }
+
+    .animal-thumb img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+    }
+
+    .animal-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #374151;
+      text-align: center;
+    }
+
+    /* ===== Animal Detail Screen ===== */
+    #screen-animal.active {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .animal-image-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    .animal-image-container .img-wrapper {
+      width: 100%;
+      height: 100%;
+      max-height: 60vh;
+      border-radius: 20px;
+      overflow: hidden;
+      background: white;
+      border: 3px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .animal-image-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .animal-name-display {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--cat-color, #333);
+      padding: 8px 16px;
+      flex-shrink: 0;
+    }
+
+    .animal-actions {
+      display: flex;
+      gap: 12px;
+      padding: 10px 16px;
+      padding-bottom: max(10px, env(safe-area-inset-bottom));
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0;
+      background: #FFF8F0;
+      border-top: 2px solid #e5e7eb;
+    }
+
+    .btn-nav-animal {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      border: 3px solid #d1d5db;
+      background: white;
+      font-size: 32px;
+      font-weight: 700;
+      color: #6b7280;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s, border-color 0.15s;
+      font-family: inherit;
+    }
+
+    .btn-nav-animal:active {
+      transform: scale(0.9);
+      border-color: var(--cat-color, #888);
+      color: var(--cat-color, #888);
+    }
+
+    .btn-action {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      border: 4px solid var(--cat-color, #888);
+      background: white;
+      font-size: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s, background 0.15s;
+      font-family: inherit;
+    }
+
+    .btn-action:active { transform: scale(0.9); }
+
+    .btn-action.playing {
+      background: var(--cat-color-light, #f3f4f6);
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    /* ===== Quiz Menu ===== */
+    #screen-quiz-menu {
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      padding: 20px;
+    }
+
+    .quiz-menu-title {
+      font-size: 32px;
+      font-weight: 800;
+      color: #065F46;
+    }
+
+    .difficulty-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .btn-difficulty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px;
+      border: 4px solid #10B981;
+      border-radius: 20px;
+      background: #D1FAE5;
+      font-size: 26px;
+      font-weight: 700;
+      color: #065F46;
+      cursor: pointer;
+      transition: transform 0.15s;
+      font-family: inherit;
+    }
+
+    .btn-difficulty:active { transform: scale(0.95); }
+
+    .btn-difficulty.hard {
+      border-color: #F59E0B;
+      background: #FEF3C7;
+      color: #92400E;
+    }
+
+    /* ===== Quiz Screen ===== */
+    #screen-quiz {
+      padding: 16px;
+      gap: 12px;
+    }
+
+    #quiz-prompt {
+      font-size: 30px;
+      font-weight: 800;
+      text-align: center;
+      padding: 12px;
+      color: #065F46;
+      flex-shrink: 0;
+    }
+
+    #quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      flex: 1;
+      padding: 0 10px 10px;
+      min-height: 0;
+    }
+
+    .quiz-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 6px;
+      border: 4px solid #e5e7eb;
+      border-radius: 20px;
+      background: white;
+      cursor: pointer;
+      transition: transform 0.15s, border-color 0.15s;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .quiz-option img {
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      object-fit: contain;
+      border-radius: 12px;
+      padding: 4px;
+    }
+
+    .quiz-option span {
+      font-size: 20px;
+      font-weight: 700;
+      color: #374151;
+      flex-shrink: 0;
+      padding-bottom: 4px;
+    }
+
+    .quiz-option:active { transform: scale(0.95); }
+
+    .quiz-option.correct {
+      border-color: #10B981;
+      background: #D1FAE5;
+      animation: correctPop 0.5s ease;
+    }
+
+    @keyframes correctPop {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    .quiz-option.wrong {
+      border-color: #EF4444;
+      background: #FEE2E2;
+      animation: shake 0.4s ease;
+    }
+
+    .quiz-option.hint {
+      border-color: #10B981;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
+      animation: hintPulse 0.6s ease 2;
+    }
+
+    @keyframes hintPulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3); }
+      50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.15); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    /* ===== Quiz Score ===== */
+    .quiz-score {
+      font-size: 22px;
+      font-weight: 800;
+      color: #F59E0B;
+      background: #FEF3C7;
+      padding: 6px 14px;
+      border-radius: 50px;
+      border: 3px solid #F59E0B;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    /* ===== Confetti ===== */
+    .confetti {
+      position: fixed;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: confettiFly 1s ease forwards;
+    }
+
+    @keyframes confettiFly {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* ===== About Screen ===== */
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px 40px;
+      text-align: center;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .about-content h2 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #F59E0B;
+    }
+
+    .about-subtitle {
+      font-size: 20px;
+      color: #6b7280;
+      font-weight: 600;
+    }
+
+    .about-section {
+      background: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      width: 100%;
+      max-width: 500px;
+      border: 2px solid #e5e7eb;
+    }
+
+    .about-section p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #374151;
+    }
+
+    /* ===== Portrait Adjustments ===== */
+    @media (orientation: portrait) {
+      #category-animals { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ===== Landscape Adjustments ===== */
+    @media (orientation: landscape) {
+      #home-categories { max-width: 700px; }
+      .category-btn { flex-direction: row; min-height: 100px; padding: 12px 16px; }
+      .animal-image-container .img-wrapper { max-height: 65vh; }
+      #quiz-options { max-height: calc(100vh - 140px); }
+      .quiz-option img { max-height: 30vh; }
+    }
+
+    /* ===== Large tablets ===== */
+    @media (min-width: 900px) {
+      #category-animals { grid-template-columns: repeat(4, 1fr); }
+      .app-title { font-size: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Home Screen ===== -->
+  <div id="screen-home" class="screen active">
+    <h1 class="app-title">🦁 <span>חיות</span> 🐻</h1>
+    <div id="home-categories"></div>
+    <button class="btn-quiz-home" onclick="App.openQuizMenu()">
+      <span class="quiz-icon">🎮</span>
+      <span>בוא נשחק!</span>
+    </button>
+    <button class="btn-about" onclick="App.openAbout()">אודות</button>
+  </div>
+
+  <!-- ===== Category Screen ===== -->
+  <div id="screen-category" class="screen">
+    <div class="top-bar">
+      <button class="btn-back" onclick="App.goBack()">→</button>
+      <h2 id="category-title" class="screen-title"></h2>
+      <button class="btn-home" onclick="App.goHome()">🏠</button>
+    </div>
+    <div id="category-animals"></div>
+  </div>
+
+  <!-- ===== Animal Detail Screen ===== -->
+  <div id="screen-animal" class="screen">
+    <div class="top-bar">
+      <button class="btn-back" onclick="App.goBack()">→</button>
+      <h2 id="animal-title" class="screen-title"></h2>
+      <button class="btn-home" onclick="App.goHome()">🏠</button>
+    </div>
+    <div class="animal-image-container">
+      <div class="img-wrapper">
+        <img id="animal-img" src="" alt="">
+      </div>
+    </div>
+    <div id="animal-name-display" class="animal-name-display"></div>
+    <div class="animal-actions">
+      <button class="btn-nav-animal" onclick="App.prevAnimal()">›</button>
+      <button id="btn-play-sound" class="btn-action" onclick="App.playAnimalSound()">🔊</button>
+      <button class="btn-nav-animal" onclick="App.nextAnimal()">‹</button>
+    </div>
+  </div>
+
+  <!-- ===== Quiz Menu ===== -->
+  <div id="screen-quiz-menu" class="screen">
+    <h2 class="quiz-menu-title">🎮 בחר משחק</h2>
+    <div class="difficulty-buttons">
+      <button class="btn-difficulty" onclick="App.startQuiz('easy')">
+        <span>🔍</span>
+        <span>איפה החיה? (קל)</span>
+      </button>
+      <button class="btn-difficulty hard" onclick="App.startQuiz('hard')">
+        <span>🧠</span>
+        <span>איפה החיה? (מתקדם)</span>
+      </button>
+    </div>
+    <button class="btn-about" onclick="App.goBack()">חזור</button>
+  </div>
+
+  <!-- ===== Quiz Screen ===== -->
+  <div id="screen-quiz" class="screen">
+    <div class="top-bar">
+      <button class="btn-back" onclick="App.quitQuiz()">→</button>
+      <div id="quiz-score" class="quiz-score">⭐ 0</div>
+      <button class="btn-home" onclick="App.goHome()">🏠</button>
+    </div>
+    <div id="quiz-prompt"></div>
+    <div id="quiz-options"></div>
+  </div>
+
+  <!-- ===== About Screen ===== -->
+  <div id="screen-about" class="screen">
+    <div class="top-bar">
+      <button class="btn-back" onclick="App.goBack()">→</button>
+      <h2 class="screen-title" style="color:#F59E0B">אודות</h2>
+      <button class="btn-home" onclick="App.goHome()">🏠</button>
+    </div>
+    <div class="about-content">
+      <h2>🦁 חיות 🐻</h2>
+      <p class="about-subtitle">אפליקציה לגילוי חיות לקטנטנים</p>
+      <div class="about-section">
+        <p>💛 נבנה באהבה עבור הקטנטנים<br><br>
+        50 חיות מהעולם עם תמונות וצלילים אמיתיים!</p>
+      </div>
+      <div class="about-section">
+        <p>נוצר בעזרת:</p>
+        <p>🎨 תמונות: Wikimedia Commons<br>
+        🎵 צלילים: YouTube + מקורות שונות<br>
+        💻 קוד ופיתוח: Claude + Hermes</p>
+      </div>
+      <div class="about-section">
+        <p>פותח על ידי עומר דביר</p>
+        <p style="color:#3B82F6; direction:ltr; unicode-bidi:embed;">omerdvir@gmail.com</p>
+        <p style="color:#9ca3af; font-size:14px;">2026 ©</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== Data =====
+    const CATEGORIES = [
+      { id: "home", name: "חיות בית", color: "#F59E0B", colorLight: "#FEF3C7", emoji: "🏠" },
+      { id: "wild", name: "חיות בר", color: "#EF4444", colorLight: "#FEE2E2", emoji: "🌳" },
+      { id: "birds", name: "עופות", color: "#3B82F6", colorLight: "#DBEAFE", emoji: "🦂" },
+      { id: "sea", name: "ים ודגים", color: "#06B6D4", colorLight: "#CFFAFE", emoji: "🌊" },
+      { id: "reptiles", name: "זוחלים ודוחיים", color: "#8B5CF6", colorLight: "#EDE9FE", emoji: "🦎" },
+      { id: "special", name: "יונקים מיוחדים", color: "#10B981", colorLight: "#D1FAE5", emoji: "🦁" }
+    ];
+
+    let ANIMAL_DATA = null;
+    let currentCategory = null;
+    let currentAnimalIndex = 0;
+    let currentAudio = null;
+    let quizScore = 0;
+    let currentQuizQuestion = null;
+    let quizHistory = [];
+
+    // ===== Audio =====
+    function stopAudio() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+      }
+      document.querySelectorAll('.btn-action.playing').forEach(b => b.classList.remove('playing'));
+    }
+
+    function playSound(url, btnId) {
+      stopAudio();
+      const btn = document.getElementById(btnId);
+      if (btn) btn.classList.add('playing');
+      currentAudio = new Audio(url);
+      currentAudio.play().catch(() => {});
+      currentAudio.onended = () => {
+        if (btn) btn.classList.remove('playing');
+        currentAudio = null;
+      };
+    }
+
+    // ===== App Controller =====
+    const App = {
+      history: [],
+
+      init() {
+        this.loadData().then(() => {
+          this.renderHome();
+        });
+
+        document.addEventListener("dblclick", e => e.preventDefault());
+
+        window.addEventListener("popstate", () => {
+          if (this.history.length > 0) {
+            const prev = this.history.pop();
+            this.showScreen(prev.screen, false);
+          } else {
+            this.showScreen("home", false);
+          }
+        });
+
+        document.addEventListener("error", (e) => {
+          if (e.target.tagName === "IMG" && !e.target.dataset.fallback) {
+            e.target.dataset.fallback = "1";
+            e.target.style.opacity = "0.3";
+            e.target.alt = "🐾";
+          }
+        }, true);
+      },
+
+      async loadData() {
+        try {
+          const res = await fetch('data.json');
+          ANIMAL_DATA = await res.json();
+        } catch (e) {
+          console.error('Error loading data:', e);
+          ANIMAL_DATA = { categories: [] };
+        }
+      },
+
+      showScreen(screenId, pushHistory = true) {
+        document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+        const target = document.getElementById(`screen-${screenId}`);
+        if (target) {
+          target.classList.add("active");
+          target.scrollTop = 0;
+        }
+        if (pushHistory && this.currentScreen && this.currentScreen !== screenId) {
+          this.history.push({ screen: this.currentScreen });
+          window.history.pushState({ screen: screenId }, "");
+        }
+        this.currentScreen = screenId;
+        stopAudio();
+      },
+
+      goBack() {
+        if (this.history.length > 0) {
+          const prev = this.history.pop();
+          this.showScreen(prev.screen, false);
+          window.history.back();
+        } else {
+          this.goHome();
+        }
+      },
+
+      goHome() {
+        this.history = [];
+        this.showScreen("home", false);
+        window.history.pushState({ screen: "home" }, "");
+      },
+
+      // ===== Home =====
+      renderHome() {
+        const grid = document.getElementById("home-categories");
+        grid.innerHTML = "";
+
+        if (!ANIMAL_DATA) return;
+
+        ANIMAL_DATA.categories.forEach((cat, idx) => {
+          const catMeta = CATEGORIES[idx] || CATEGORIES[0];
+          const btn = document.createElement("button");
+          btn.className = "category-btn";
+          btn.style.setProperty("--cat-color", catMeta.color);
+          btn.style.setProperty("--cat-color-light", catMeta.colorLight);
+
+          // Use first animal image as category thumbnail
+          const firstImg = cat.items[0]?.image || "";
+
+          btn.innerHTML = `
+            <div class="category-icon">
+              <img src="${firstImg}" alt="${cat.name}" loading="lazy" onerror="this.parentElement.innerHTML='<span style=font-size:48px>${catMeta.emoji}</span>'">
+            </div>
+            <span class="category-label">${cat.name}</span>
+          `;
+
+          btn.addEventListener("click", () => {
+            this.openCategory(idx);
+          });
+
+          grid.appendChild(btn);
+        });
+      },
+
+      // ===== Category =====
+      openCategory(catIdx) {
+        if (!ANIMAL_DATA) return;
+        const cat = ANIMAL_DATA.categories[catIdx];
+        const catMeta = CATEGORIES[catIdx] || CATEGORIES[0];
+        currentCategory = catIdx;
+
+        document.getElementById("category-title").textContent = cat.name;
+        document.getElementById("screen-category").style.setProperty("--cat-color", catMeta.color);
+
+        const grid = document.getElementById("category-animals");
+        grid.innerHTML = "";
+
+        cat.items.forEach((animal, idx) => {
+          const card = document.createElement("button");
+          card.className = "animal-card";
+          card.innerHTML = `
+            <div class="animal-thumb">
+              <img src="${animal.image}" alt="${animal.name}" loading="lazy">
+            </div>
+            <span class="animal-label">${animal.name}</span>
+          `;
+          card.addEventListener("click", () => {
+            this.openAnimal(idx);
+          });
+          grid.appendChild(card);
+        });
+
+        this.showScreen("category");
+      },
+
+      // ===== Animal Detail =====
+      openAnimal(idx) {
+        if (!ANIMAL_DATA || currentCategory === null) return;
+        currentAnimalIndex = idx;
+        this.updateAnimalScreen();
+        this.showScreen("animal");
+      },
+
+      updateAnimalScreen() {
+        if (!ANIMAL_DATA || currentCategory === null) return;
+        const cat = ANIMAL_DATA.categories[currentCategory];
+        const animal = cat.items[currentAnimalIndex];
+        const catMeta = CATEGORIES[currentCategory] || CATEGORIES[0];
+
+        document.getElementById("animal-title").textContent = animal.name;
+        document.getElementById("screen-animal").style.setProperty("--cat-color", catMeta.color);
+        document.getElementById("screen-animal").style.setProperty("--cat-color-light", catMeta.colorLight);
+        document.getElementById("animal-img").src = animal.image;
+        document.getElementById("animal-img").alt = animal.name;
+        document.getElementById("animal-name-display").textContent = animal.name;
+      },
+
+      nextAnimal() {
+        if (!ANIMAL_DATA || currentCategory === null) return;
+        const cat = ANIMAL_DATA.categories[currentCategory];
+        currentAnimalIndex = (currentAnimalIndex + 1) % cat.items.length;
+        this.updateAnimalScreen();
+        this.playAnimalSound();
+      },
+
+      prevAnimal() {
+        if (!ANIMAL_DATA || currentCategory === null) return;
+        const cat = ANIMAL_DATA.categories[currentCategory];
+        currentAnimalIndex = (currentAnimalIndex - 1 + cat.items.length) % cat.items.length;
+        this.updateAnimalScreen();
+        this.playAnimalSound();
+      },
+
+      playAnimalSound() {
+        if (!ANIMAL_DATA || currentCategory === null) return;
+        const animal = ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
+        playSound(animal.sound, "btn-play-sound");
+      },
+
+      // ===== Quiz Menu =====
+      openQuizMenu() {
+        this.showScreen("quiz-menu");
+      },
+
+      // ===== Quiz =====
+      startQuiz(difficulty) {
+        quizScore = 0;
+        this.updateQuizScore();
+        this.nextQuizQuestion(difficulty);
+        this.showScreen("quiz");
+      },
+
+      nextQuizQuestion(difficulty) {
+        if (!ANIMAL_DATA) return;
+
+        // Pick random animal
+        const allAnimals = [];
+        ANIMAL_DATA.categories.forEach((cat, ci) => {
+          cat.items.forEach((item, ai) => {
+            allAnimals.push({ ...item, catIdx: ci, itemIdx: ai });
+          });
+        });
+
+        const target = allAnimals[Math.floor(Math.random() * allAnimals.length)];
+
+        // Pick 3 distractors from different category if possible
+        let distractors = allAnimals.filter(a => a.catIdx !== target.catIdx);
+        if (distractors.length < 3) {
+          distractors = allAnimals.filter(a => a.name !== target.name);
+        }
+
+        // Shuffle and pick 3
+        distractors = distractors.sort(() => Math.random() - 0.5).slice(0, 3);
+
+        // Combine and shuffle
+        const options = [target, ...distractors].sort(() => Math.random() - 0.5);
+
+        currentQuizQuestion = { target, options, difficulty };
+
+        document.getElementById("quiz-prompt").textContent = `איפה ה${target.name}?`;
+
+        const grid = document.getElementById("quiz-options");
+        grid.innerHTML = "";
+
+        options.forEach((opt, idx) => {
+          const btn = document.createElement("button");
+          btn.className = "quiz-option";
+          btn.innerHTML = `
+            <img src="${opt.image}" alt="${opt.name}" loading="lazy">
+            <span>${opt.name}</span>
+          `;
+          btn.addEventListener("click", () => this.handleQuizAnswer(idx, btn));
+          grid.appendChild(btn);
+        });
+      },
+
+      handleQuizAnswer(idx, btnElement) {
+        if (!currentQuizQuestion) return;
+        const { target, options, difficulty } = currentQuizQuestion;
+        const chosen = options[idx];
+
+        // Disable all options
+        document.querySelectorAll(".quiz-option").forEach(b => b.style.pointerEvents = "none");
+
+        if (chosen.name === target.name) {
+          // Correct!
+          btnElement.classList.add("correct");
+          quizScore++;
+          this.updateQuizScore();
+          this.spawnConfetti(btnElement);
+
+          setTimeout(() => {
+            this.nextQuizQuestion(difficulty);
+          }, 1500);
+        } else {
+          // Wrong
+          btnElement.classList.add("wrong");
+
+          // Highlight correct answer
+          document.querySelectorAll(".quiz-option").forEach((b, i) => {
+            if (options[i].name === target.name) {
+              setTimeout(() => b.classList.add("hint"), 400);
+            }
+          });
+
+          setTimeout(() => {
+            this.nextQuizQuestion(difficulty);
+          }, 2000);
+        }
+      },
+
+      updateQuizScore() {
+        document.getElementById("quiz-score").textContent = `⭐ ${quizScore}`;
+      },
+
+      spawnConfetti(element) {
+        const rect = element.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const colors = ["#F59E0B", "#EF4444", "#3B82F6", "#10B981", "#8B5CF6", "#06B6D4"];
+
+        for (let i = 0; i < 20; i++) {
+          const conf = document.createElement("div");
+          conf.className = "confetti";
+          conf.style.left = cx + "px";
+          conf.style.top = cy + "px";
+          conf.style.background = colors[Math.floor(Math.random() * colors.length)];
+          const angle = Math.random() * Math.PI * 2;
+          const dist = 80 + Math.random() * 120;
+          conf.style.setProperty("--tx", Math.cos(angle) * dist + "px");
+          conf.style.setProperty("--ty", Math.sin(angle) * dist + "px");
+          document.body.appendChild(conf);
+          setTimeout(() => conf.remove(), 1000);
+        }
+      },
+
+      quitQuiz() {
+        this.goBack();
+      },
+
+      // ===== About =====
+      openAbout() {
+        this.showScreen("about");
+      }
+    };
+
+    // Init
+    App.init();
+  </script>
+</body>
+</html>

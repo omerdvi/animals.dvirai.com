@@ -1,0 +1,90 @@
+{
+  "categories": {
+    "home": {
+      "hebrew": "\u05d7\u05d9\u05d5\u05ea \u05d1\u05d9\u05ea",
+      "emoji": "\ud83c\udfe0",
+      "animals": [
+        {"hebrew": "\u05db\u05dc\u05d1", "english": "dog", "search": "dog animal photo"},
+        {"hebrew": "\u05d7\u05ea\u05d5\u05dc", "english": "cat", "search": "cat animal photo"},
+        {"hebrew": "\u05e4\u05e8\u05d4", "english": "cow", "search": "cow animal photo"},
+        {"hebrew": "\u05e1\u05d5\u05e1", "english": "horse", "search": "horse animal photo"},
+        {"hebrew": "\u05db\u05d1\u05e9\u05d4", "english": "sheep", "search": "sheep animal photo"},
+        {"hebrew": "\u05e2\u05d6", "english": "goat", "search": "goat animal photo"},
+        {"hebrew": "\u05ea\u05e8\u05e0\u05d2\u05d5\u05dc", "english": "rooster", "search": "rooster animal photo"},
+        {"hebrew": "\u05d0\u05d5\u05d6", "english": "goose", "search": "goose animal photo"},
+        {"hebrew": "\u05d1\u05e8\u05d5\u05d5\u05d6", "english": "duck", "search": "duck animal photo"},
+        {"hebrew": "\u05d7\u05de\u05d5\u05e8", "english": "donkey", "search": "donkey animal photo"}
+      ]
+    },
+    "safari": {
+      "hebrew": "\u05d7\u05d9\u05d5\u05ea \u05e1\u05e4\u05d0\u05e8\u05d9",
+      "emoji": "\ud83c\udf93",
+      "animals": [
+        {"hebrew": "\u05d0\u05e8\u05d9\u05d4", "english": "lion", "search": "lion animal photo"},
+        {"hebrew": "\u05e4\u05d9\u05dc", "english": "elephant", "search": "elephant animal photo"},
+        {"hebrew": "\u05d6\u05d1\u05e8\u05d4", "english": "zebra", "search": "zebra animal photo"},
+        {"hebrew": "\u05e7\u05d5\u05e3", "english": "monkey", "search": "monkey animal photo"},
+        {"hebrew": "\u05d2'\u05d9\u05e8\u05e4\u05d4", "english": "giraffe", "search": "giraffe animal photo"},
+        {"hebrew": "\u05e0\u05de\u05e8", "english": "leopard", "search": "leopard animal photo"},
+        {"hebrew": "\u05d4\u05d9\u05e4\u05d5\u05e4\u05d5\u05d8\u05dd", "english": "hippopotamus", "search": "hippopotamus animal photo"},
+        {"hebrew": "\u05e7\u05e8\u05e0\u05d9\u05e3", "english": "rhinoceros", "search": "rhinoceros animal photo"},
+        {"hebrew": "\u05d8\u05d9\u05d2\u05e8\u05d9\u05e1", "english": "tiger", "search": "tiger animal photo"},
+        {"hebrew": "\u05e7\u05e0\u05d2\u05d5\u05e8\u05d5", "english": "kangaroo", "search": "kangaroo animal photo"}
+      ]
+    },
+    "sea": {
+      "hebrew": "\u05d7\u05d9\u05d5\u05ea \u05d9\u05dd",
+      "emoji": "\ud83c\udf0a",
+      "animals": [
+        {"hebrew": "\u05d3\u05d5\u05dc\u05e4\u05d9\u05df", "english": "dolphin", "search": "dolphin animal photo"},
+        {"hebrew": "\u05dc\u05d5\u05d5\u05d9\u05ea\u05df", "english": "whale", "search": "whale animal photo"},
+        {"hebrew": "\u05db\u05e8\u05d9\u05e9", "english": "shark", "search": "shark animal photo"},
+        {"hebrew": "\u05ea\u05de\u05e0\u05d5\u05df", "english": "octopus", "search": "octopus animal photo"},
+        {"hebrew": "\u05e1\u05d5\u05e1 \u05d9\u05dd", "english": "seahorse", "search": "seahorse animal photo"},
+        {"hebrew": "\u05de\u05d3\u05d5\u05d6\u05d4", "english": "jellyfish", "search": "jellyfish animal photo"},
+        {"hebrew": "\u05e6\u05d1 \u05d9\u05dd", "english": "sea turtle", "search": "sea turtle animal photo"},
+        {"hebrew": "\u05d3\u05d2 \u05e9\u05d5\u05e0\u05d9\u05ea", "english": "clownfish", "search": "clownfish animal photo"}
+      ]
+    },
+    "birds": {
+      "hebrew": "\u05e2\u05d5\u05e4\u05d5\u05ea",
+      "emoji": "\ud83e\udd54",
+      "animals": [
+        {"hebrew": "\u05ea\u05d5\u05db\u05d9", "english": "parrot", "search": "parrot animal photo"},
+        {"hebrew": "\u05d9\u05d5\u05e0\u05d4", "english": "dove", "search": "dove animal photo"},
+        {"hebrew": "\u05e0\u05e9\u05e8", "english": "eagle", "search": "eagle animal photo"},
+        {"hebrew": "\u05e4\u05dc\u05de\u05d9\u05e0\u05d2\u05d5", "english": "flamingo", "search": "flamingo animal photo"},
+        {"hebrew": "\u05d9\u05e0\u05e9\u05d5\u05e3", "english": "owl", "search": "owl animal photo"},
+        {"hebrew": "\u05e4\u05d9\u05e0\u05d2\u05d5\u05d5\u05d9\u05df", "english": "penguin", "search": "penguin animal photo"},
+        {"hebrew": "\u05d7\u05e1\u05d9\u05d3\u05d4", "english": "stork", "search": "stork animal photo"}
+      ]
+    },
+    "forest": {
+      "hebrew": "\u05d7\u05d9\u05d5\u05ea \u05d9\u05e2\u05e8",
+      "emoji": "\ud83c\udf32",
+      "animals": [
+        {"hebrew": "\u05d3\u05d5\u05d1", "english": "bear", "search": "bear animal photo"},
+        {"hebrew": "\u05e9\u05d5\u05e2\u05dc", "english": "fox", "search": "fox animal photo"},
+        {"hebrew": "\u05e6\u05d1\u05d9", "english": "deer", "search": "deer animal photo"},
+        {"hebrew": "\u05e1\u05e0\u05d0\u05d9", "english": "squirrel", "search": "squirrel animal photo"},
+        {"hebrew": "\u05d0\u05e8\u05e0\u05d1", "english": "rabbit", "search": "rabbit animal photo"},
+        {"hebrew": "\u05e7\u05d9\u05e4\u05d5\u05d3", "english": "hedgehog", "search": "hedgehog animal photo"},
+        {"hebrew": "\u05d6\u05d0\u05d1", "english": "wolf", "search": "wolf animal photo"},
+        {"hebrew": "\u05d7\u05d6\u05d9\u05e8 \u05d1\u05e8", "english": "boar", "search": "wild boar animal photo"}
+      ]
+    },
+    "reptiles": {
+      "hebrew": "\u05d6\u05d5\u05d7\u05dc\u05d9\u05dd \u05d5\u05d3\u05d5-\u05d7\u05d9\u05d5\u05ea",
+      "emoji": "\ud83e\udd8e",
+      "animals": [
+        {"hebrew": "\u05e0\u05d7\u05e9", "english": "snake", "search": "snake animal photo"},
+        {"hebrew": "\u05ea\u05e0\u05d9\u05df", "english": "crocodile", "search": "crocodile animal photo"},
+        {"hebrew": "\u05e6\u05e4\u05e8\u05d3\u05e2", "english": "frog", "search": "frog animal photo"},
+        {"hebrew": "\u05dc\u05d8\u05d0\u05d4", "english": "lizard", "search": "lizard animal photo"},
+        {"hebrew": "\u05e6\u05d1", "english": "turtle", "search": "turtle animal photo"},
+        {"hebrew": "\u05ea\u05dc\u05d5\u05dc\u05d9\u05ea", "english": "salamander", "search": "salamander animal photo"},
+        {"hebrew": "\u05d0\u05d9\u05d2\u05d5\u05d0\u05e0\u05d4", "english": "iguana", "search": "iguana animal photo"}
+      ]
+    }
+  }
+}

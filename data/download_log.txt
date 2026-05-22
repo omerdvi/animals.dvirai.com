@@ -1,0 +1,1081 @@
+Starting download of 50 animals...
+==================================================
+
+Category: חיות בית
+[כלב / dog]
+  Searching image: dog animal photo
+  Image OK: C:\Projects\animal-game\images\כלב.jpg
+  Searching sound: dog sound
+  No temp MP3 found for dog
+[חתול / cat]
+  Searching image: cat animal photo
+  Image OK: C:\Projects\animal-game\images\חתול.jpg
+  Searching sound: cat sound
+  Sound OK: C:\Projects\animal-game\sounds\חתול.mp3
+[פרה / cow]
+  Searching image: cow animal photo
+  Image OK: C:\Projects\animal-game\images\פרה.jpg
+  Searching sound: cow sound
+  Sound OK: C:\Projects\animal-game\sounds\פרה.mp3
+[סוס / horse]
+  Searching image: horse animal photo
+  Image OK: C:\Projects\animal-game\images\סוס.jpg
+  Searching sound: horse sound
+  Sound OK: C:\Projects\animal-game\sounds\סוס.mp3
+[כבשה / sheep]
+  Searching image: sheep animal photo
+  Image OK: C:\Projects\animal-game\images\כבשה.jpg
+  Searching sound: sheep sound
+  Sound OK: C:\Projects\animal-game\sounds\כבשה.mp3
+[עז / goat]
+  Searching image: goat animal photo
+  Image OK: C:\Projects\animal-game\images\עז.jpg
+  Searching sound: goat sound
+  No temp MP3 found for goat
+[תרנגול / rooster]
+  Searching image: rooster animal photo
+  Image download error: HTTP Error 429: Too many requests (f061ab2)
+  Searching sound: rooster sound
+  No temp MP3 found for rooster
+[אוז / goose]
+  Searching image: goose animal photo
+  Image OK: C:\Projects\animal-game\images\אוז.jpg
+  Searching sound: goose sound
+  Sound OK: C:\Projects\animal-game\sounds\אוז.mp3
+[ברווז / duck]
+  Searching image: duck animal photo
+  Image OK: C:\Projects\animal-game\images\ברווז.jpg
+  Searching sound: duck sound
+  No temp MP3 found for duck
+[חמור / donkey]
+  Searching image: donkey animal photo
+  Image download error: HTTP Error 429: Too many requests (f061ab2)
+  Searching sound: donkey sound
+  yt-dlp initial search failed, trying broader search for donkey
+  yt-dlp failed for donkey: ERROR: [youtube] NdCxHJIYz8I: This video is not available
+
+
+Category: חיות ספארי
+[אריה / lion]
+  Searching image: lion animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: lion sound
+  Sound OK: C:\Projects\animal-game\sounds\אריה.mp3
+[פיל / elephant]
+  Searching image: elephant animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: elephant sound
+  Sound OK: C:\Projects\animal-game\sounds\פיל.mp3
+[זברה / zebra]
+  Searching image: zebra animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: zebra sound
+  Sound OK: C:\Projects\animal-game\sounds\זברה.mp3
+[קוף / monkey]
+  Searching image: monkey animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: monkey sound
+  Sound OK: C:\Projects\animal-game\sounds\קוף.mp3
+[ג'ירפה / giraffe]
+  Searching image: giraffe animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: giraffe sound
+  Sound OK: C:\Projects\animal-game\sounds\ג_ירפה.mp3
+[נמר / leopard]
+  Searching image: leopard animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: leopard sound
+  No temp MP3 found for leopard
+[היפופוטם / hippopotamus]
+  Searching image: hippopotamus animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: hippopotamus sound
+  Sound OK: C:\Projects\animal-game\sounds\היפופוטם.mp3
+[קרניף / rhinoceros]
+  Searching image: rhinoceros animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: rhinoceros sound
+  No temp MP3 found for rhinoceros
+[טיגריס / tiger]
+  Searching image: tiger animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: tiger sound
+  No temp MP3 found for tiger
+[קנגורו / kangaroo]
+  Searching image: kangaroo animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: kangaroo sound
+  Sound OK: C:\Projects\animal-game\sounds\קנגורו.mp3
+
+Category: חיות ים
+[דולפין / dolphin]
+  Searching image: dolphin animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: dolphin sound
+  Sound OK: C:\Projects\animal-game\sounds\דולפין.mp3
+[לוויתן / whale]
+  Searching image: whale animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: whale sound
+  No temp MP3 found for whale
+[כריש / shark]
+  Searching image: shark animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: shark sound
+  Sound OK: C:\Projects\animal-game\sounds\כריש.mp3
+[תמנון / octopus]
+  Searching image: octopus animal photo
+  Wikimedia API error for 'octopus animal photo': HTTP Error 429: Too Many Requests
+  Searching sound: octopus sound
+  Sound OK: C:\Projects\animal-game\sounds\תמנון.mp3
+[סוס ים / seahorse]
+  Searching image: seahorse animal photo
+  Wikimedia API error for 'seahorse animal photo': HTTP Error 429: Too Many Requests
+  Searching sound: seahorse sound
+  Sound OK: C:\Projects\animal-game\sounds\סוס_ים.mp3
+[מדוזה / jellyfish]
+  Searching image: jellyfish animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: jellyfish sound
+  Sound OK: C:\Projects\animal-game\sounds\מדוזה.mp3
+[צב ים / sea turtle]
+  Searching image: sea turtle animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: sea turtle sound
+  Sound OK: C:\Projects\animal-game\sounds\צב_ים.mp3
+[דג שונית / clownfish]
+  Searching image: clownfish animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: clownfish sound
+  No temp MP3 found for clownfish
+
+Category: עופות
+[תוכי / parrot]
+  Searching image: parrot animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: parrot sound
+  Sound OK: C:\Projects\animal-game\sounds\תוכי.mp3
+[יונה / dove]
+  Searching image: dove animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: dove sound
+  Sound OK: C:\Projects\animal-game\sounds\יונה.mp3
+[נשר / eagle]
+  Searching image: eagle animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: eagle sound
+  Sound OK: C:\Projects\animal-game\sounds\נשר.mp3
+[פלמינגו / flamingo]
+  Searching image: flamingo animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: flamingo sound
+  Sound OK: C:\Projects\animal-game\sounds\פלמינגו.mp3
+[ינשוף / owl]
+  Searching image: owl animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: owl sound
+  Sound OK: C:\Projects\animal-game\sounds\ינשוף.mp3
+[פינגווין / penguin]
+  Searching image: penguin animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: penguin sound
+  Sound OK: C:\Projects\animal-game\sounds\פינגווין.mp3
+[חסידה / stork]
+  Searching image: stork animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: stork sound
+  Sound OK: C:\Projects\animal-game\sounds\חסידה.mp3
+
+Category: חיות יער
+[דוב / bear]
+  Searching image: bear animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: bear sound
+  Sound OK: C:\Projects\animal-game\sounds\דוב.mp3
+[שועל / fox]
+  Searching image: fox animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: fox sound
+  Sound OK: C:\Projects\animal-game\sounds\שועל.mp3
+[צבי / deer]
+  Searching image: deer animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: deer sound
+  Sound OK: C:\Projects\animal-game\sounds\צבי.mp3
+[סנאי / squirrel]
+  Searching image: squirrel animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: squirrel sound
+  Sound OK: C:\Projects\animal-game\sounds\סנאי.mp3
+[ארנב / rabbit]
+  Searching image: rabbit animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: rabbit sound
+  Sound OK: C:\Projects\animal-game\sounds\ארנב.mp3
+[קיפוד / hedgehog]
+  Searching image: hedgehog animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: hedgehog sound
+  Sound OK: C:\Projects\animal-game\sounds\קיפוד.mp3
+[זאב / wolf]
+  Searching image: wolf animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: wolf sound
+  No temp MP3 found for wolf
+[חזיר בר / boar]
+  Searching image: wild boar animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: boar sound
+  No temp MP3 found for boar
+
+Category: זוחלים ודו-חיות
+[נחש / snake]
+  Searching image: snake animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: snake sound
+  Sound OK: C:\Projects\animal-game\sounds\נחש.mp3
+[תנין / crocodile]
+  Searching image: crocodile animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: crocodile sound
+  No temp MP3 found for crocodile
+[צפרדע / frog]
+  Searching image: frog animal photo
+  Wikimedia API error for 'frog animal photo': HTTP Error 429: Too Many Requests
+  Searching sound: frog sound
+  Sound OK: C:\Projects\animal-game\sounds\צפרדע.mp3
+[לטאה / lizard]
+  Searching image: lizard animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: lizard sound
+  No temp MP3 found for lizard
+[צב / turtle]
+  Searching image: turtle animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: turtle sound
+  Sound OK: C:\Projects\animal-game\sounds\צב.mp3
+[תלולית / salamander]
+  Searching image: salamander animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: salamander sound
+  Sound OK: C:\Projects\animal-game\sounds\תלולית.mp3
+[איגואנה / iguana]
+  Searching image: iguana animal photo
+  Image download error: HTTP Error 429: Too many requests - please contact noc@wikimedia.org to discuss a less disruptive approach or instead use thumbnail images in sizes listed on https://w.wiki/GHai. (0c640b1)
+  Searching sound: iguana sound
+  No temp MP3 found for iguana
+
+==================================================
+Done! Images: 8/50, Sounds: 35/50
+Failed images (42): תרנגול, חמור, אריה, פיל, זברה, קוף, ג'ירפה, נמר, היפופוטם, קרניף, טיגריס, קנגורו, דולפין, לוויתן, כריש, תמנון, סוס ים, מדוזה, צב ים, דג שונית, תוכי, יונה, נשר, פלמינגו, ינשוף, פינגווין, חסידה, דוב, שועל, צבי, סנאי, ארנב, קיפוד, זאב, חזיר בר, נחש, תנין, צפרדע, לטאה, צב, תלולית, איגואנה
+Failed sounds (15): כלב, עז, תרנגול, ברווז, חמור, נמר, קרניף, טיגריס, לוויתן, דג שונית, זאב, חזיר בר, תנין, לטאה, איגואנה
+Starting download of 50 animals...
+==================================================
+
+Category: חיות בית
+[כלב / dog]
+  Image already exists, skipping.
+  Searching sound: dog sound
+  Sound OK: C:\Projects\animal-game\sounds\כלב.mp3
+[חתול / cat]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[פרה / cow]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[סוס / horse]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[כבשה / sheep]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[עז / goat]
+  Image already exists, skipping.
+  Searching sound: goat sound
+  Sound OK: C:\Projects\animal-game\sounds\עז.mp3
+[תרנגול / rooster]
+  Searching image: rooster animal photo
+  Image OK: C:\Projects\animal-game\images\תרנגול.jpg
+  Searching sound: rooster sound
+  Sound OK: C:\Projects\animal-game\sounds\תרנגול.mp3
+[אוז / goose]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[ברווז / duck]
+  Image already exists, skipping.
+  Searching sound: duck sound
+  yt-dlp failed for duck: ERROR: [youtube] 3flILVgNIi0: This video is not available
+
+[חמור / donkey]
+  Searching image: donkey animal photo
+  Image OK: C:\Projects\animal-game\images\חמור.jpg
+  Searching sound: donkey sound
+  yt-dlp failed for donkey: ERROR: [youtube] NdCxHJIYz8I: This video is not available
+
+
+Category: חיות ספארי
+[אריה / lion]
+  Searching image: lion animal photo
+  Image OK: C:\Projects\animal-game\images\אריה.jpg
+  Sound already exists, skipping.
+[פיל / elephant]
+  Searching image: elephant animal photo
+  Image OK: C:\Projects\animal-game\images\פיל.jpg
+  Sound already exists, skipping.
+[זברה / zebra]
+  Searching image: zebra animal photo
+  Image OK: C:\Projects\animal-game\images\זברה.jpg
+  Sound already exists, skipping.
+[קוף / monkey]
+  Searching image: monkey animal photo
+  Image OK: C:\Projects\animal-game\images\קוף.jpg
+  Sound already exists, skipping.
+[ג'ירפה / giraffe]
+  Searching image: giraffe animal photo
+  Image OK: C:\Projects\animal-game\images\ג_ירפה.jpg
+  Sound already exists, skipping.
+[נמר / leopard]
+  Searching image: leopard animal photo
+  Rate limited (429), sleeping 10s before retry 1...
+  Image OK: C:\Projects\animal-game\images\נמר.jpg
+  Searching sound: leopard sound
+  Sound OK: C:\Projects\animal-game\sounds\נמר.mp3
+[היפופוטם / hippopotamus]
+  Searching image: hippopotamus animal photo
+  Image OK: C:\Projects\animal-game\images\היפופוטם.jpg
+  Sound already exists, skipping.
+[קרניף / rhinoceros]
+  Searching image: rhinoceros animal photo
+  Image OK: C:\Projects\animal-game\images\קרניף.jpg
+  Searching sound: rhinoceros sound
+  yt-dlp failed for rhinoceros: ERROR: [youtube] mV4bSEPYuPM: This video is not available
+
+[טיגריס / tiger]
+  Searching image: tiger animal photo
+  Image OK: C:\Projects\animal-game\images\טיגריס.jpg
+  Searching sound: tiger sound
+  Sound OK: C:\Projects\animal-game\sounds\טיגריס.mp3
+[קנגורו / kangaroo]
+  Searching image: kangaroo animal photo
+  Image OK: C:\Projects\animal-game\images\קנגורו.jpg
+  Sound already exists, skipping.
+
+Category: חיות ים
+[דולפין / dolphin]
+  Searching image: dolphin animal photo
+  Image OK: C:\Projects\animal-game\images\דולפין.jpg
+  Sound already exists, skipping.
+[לוויתן / whale]
+  Searching image: whale animal photo
+  Rate limited (429), sleeping 10s before retry 1...
+  Image OK: C:\Projects\animal-game\images\לוויתן.jpg
+  Searching sound: whale sound
+  yt-dlp timeout for whale
+[כריש / shark]
+  Searching image: shark animal photo
+  Image OK: C:\Projects\animal-game\images\כריש.jpg
+  Sound already exists, skipping.
+[תמנון / octopus]
+  Searching image: octopus animal photo
+  Image OK: C:\Projects\animal-game\images\תמנון.jpg
+  Sound already exists, skipping.
+[סוס ים / seahorse]
+  Searching image: seahorse animal photo
+  Image OK: C:\Projects\animal-game\images\סוס_ים.jpg
+  Sound already exists, skipping.
+[מדוזה / jellyfish]
+  Searching image: jellyfish animal photo
+  Image OK: C:\Projects\animal-game\images\מדוזה.jpg
+  Sound already exists, skipping.
+[צב ים / sea turtle]
+  Searching image: sea turtle animal photo
+  Rate limited (429), sleeping 10s before retry 1...
+Starting v2 download of 50 animals...
+==================================================
+
+Category: חיות בית
+[כלב / dog]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[חתול / cat]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[פרה / cow]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\צב_ים.jpg
+  Sound already exists, skipping.
+[סוס / horse]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[כבשה / sheep]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[דג שונית / clownfish]
+  Searching image: clownfish animal photo
+  Image OK: C:\Projects\animal-game\images\דג_שונית.jpg
+  Searching sound: clownfish sound
+[עז / goat]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[תרנגול / rooster]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[אוז / goose]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Sound OK: C:\Projects\animal-game\sounds\דג_שונית.mp3
+[ברווז / duck]
+  Image already exists, skipping.
+  Searching sound: duck sound
+
+Category: עופות
+[תוכי / parrot]
+  Searching image: parrot animal photo
+  yt-dlp failed for duck: ERROR: [youtube] 3flILVgNIi0: This video is not available
+
+  Image OK: C:\Projects\animal-game\images\תוכי.jpg
+  Sound already exists, skipping.
+[חמור / donkey]
+  Image already exists, skipping.
+  Searching sound: donkey sound
+[יונה / dove]
+  Searching image: dove animal photo
+  Image OK: C:\Projects\animal-game\images\יונה.jpg
+  Sound already exists, skipping.
+  yt-dlp failed for donkey: ERROR: [youtube] NdCxHJIYz8I: This video is not available
+
+
+Category: חיות ספארי
+[אריה / lion]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[נשר / eagle]
+  Searching image: eagle animal photo
+[פיל / elephant]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\נשר.jpg
+  Sound already exists, skipping.
+[זברה / zebra]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[פלמינגו / flamingo]
+  Searching image: flamingo animal photo
+  Rate limited (429), sleeping 10s before retry 1...
+[קוף / monkey]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[ג'ירפה / giraffe]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[נמר / leopard]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[היפופוטם / hippopotamus]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[קרניף / rhinoceros]
+  Image already exists, skipping.
+  Searching sound: rhinoceros sound
+  yt-dlp failed for rhinoceros: ERROR: [youtube] mV4bSEPYuPM: This video is not available
+
+[טיגריס / tiger]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\פלמינגו.jpg
+  Sound already exists, skipping.
+[קנגורו / kangaroo]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[ינשוף / owl]
+  Searching image: owl animal photo
+
+Category: חיות ים
+[דולפין / dolphin]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\ינשוף.jpg
+  Sound already exists, skipping.
+[לוויתן / whale]
+  Image already exists, skipping.
+  Searching sound: whale sound
+[פינגווין / penguin]
+  Searching image: penguin animal photo
+  Rate limited (429), sleeping 10s before retry 1...
+  Sound OK: C:\Projects\animal-game\sounds\לוויתן.mp3
+[כריש / shark]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[תמנון / octopus]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[סוס ים / seahorse]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[מדוזה / jellyfish]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[צב ים / sea turtle]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\פינגווין.jpg
+  Sound already exists, skipping.
+[דג שונית / clownfish]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[חסידה / stork]
+  Searching image: stork animal photo
+
+Category: עופות
+[תוכי / parrot]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Rate limited (429), sleeping 10s before retry 1...
+[יונה / dove]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[נשר / eagle]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[פלמינגו / flamingo]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[ינשוף / owl]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[פינגווין / penguin]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\חסידה.jpg
+  Sound already exists, skipping.
+[חסידה / stork]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+
+Category: חיות יער
+[דוב / bear]
+  Searching image: bear animal photo
+
+Category: חיות יער
+[דוב / bear]
+  Searching image: bear animal photo
+  Rate limited (429), sleeping 10s before retry 1...
+  Image OK: C:\Projects\animal-game\images\דוב.jpg
+  Sound already exists, skipping.
+[שועל / fox]
+  Searching image: fox animal photo
+  Image OK: C:\Projects\animal-game\images\שועל.jpg
+  Sound already exists, skipping.
+[צבי / deer]
+  Searching image: deer animal photo
+  Image OK: C:\Projects\animal-game\images\צבי.jpg
+  Sound already exists, skipping.
+[סנאי / squirrel]
+  Searching image: squirrel animal photo
+  Image OK: C:\Projects\animal-game\images\סנאי.jpg
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\דוב.jpg
+  Sound already exists, skipping.
+[ארנב / rabbit]
+  Searching image: rabbit animal photo
+  Image OK: C:\Projects\animal-game\images\ארנב.jpg
+  Sound already exists, skipping.
+[שועל / fox]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[קיפוד / hedgehog]
+  Searching image: hedgehog animal photo
+  Image OK: C:\Projects\animal-game\images\קיפוד.jpg
+  Sound already exists, skipping.
+[צבי / deer]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[זאב / wolf]
+  Searching image: wolf animal photo
+[סנאי / squirrel]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\זאב.jpg
+  Searching sound: wolf sound
+[ארנב / rabbit]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Sound OK: C:\Projects\animal-game\sounds\זאב.mp3
+[קיפוד / hedgehog]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+[חזיר בר / boar]
+  Searching image: wild boar animal photo
+  Image download error: 'ascii' codec can't encode characters in position 37-41: ordinal not in range(128)
+  Searching sound: boar sound
+[זאב / wolf]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Sound OK: C:\Projects\animal-game\sounds\חזיר_בר.mp3
+[חזיר בר / boar]
+  Searching image: wild boar animal photo
+  Image OK: C:\Projects\animal-game\images\חזיר_בר.jpg
+  Sound already exists, skipping.
+
+Category: זוחלים ודו-חיות
+[נחש / snake]
+  Searching image: snake animal photo
+  Image OK: C:\Projects\animal-game\images\נחש.jpg
+  Sound already exists, skipping.
+[תנין / crocodile]
+  Searching image: crocodile animal photo
+
+Category: זוחלים ודו-חיות
+[נחש / snake]
+  Image already exists, skipping.
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\תנין.jpg
+  Searching sound: crocodile sound
+[תנין / crocodile]
+  Image already exists, skipping.
+  Searching sound: crocodile sound
+  Sound OK: C:\Projects\animal-game\sounds\תנין.mp3
+  Sound OK: C:\Projects\animal-game\sounds\תנין.mp3
+[צפרדע / frog]
+  Searching image: frog animal photo
+[צפרדע / frog]
+  Searching image: frog animal photo
+  Image OK: C:\Projects\animal-game\images\צפרדע.jpg
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\צפרדע.jpg
+  Sound already exists, skipping.
+[לטאה / lizard]
+  Searching image: lizard animal photo
+  Image OK: C:\Projects\animal-game\images\לטאה.jpg
+  Searching sound: lizard sound
+[לטאה / lizard]
+  Image already exists, skipping.
+  Searching sound: lizard sound
+  Sound OK: C:\Projects\animal-game\sounds\לטאה.mp3
+  Sound OK: C:\Projects\animal-game\sounds\לטאה.mp3
+[צב / turtle]
+  Searching image: turtle animal photo
+[צב / turtle]
+  Searching image: turtle animal photo
+  Image OK: C:\Projects\animal-game\images\צב.jpg
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\צב.jpg
+  Sound already exists, skipping.
+[תלולית / salamander]
+  Searching image: salamander animal photo
+[תלולית / salamander]
+  Searching image: salamander animal photo
+  Image OK: C:\Projects\animal-game\images\תלולית.jpg
+  Sound already exists, skipping.
+  Image OK: C:\Projects\animal-game\images\תלולית.jpg
+  Sound already exists, skipping.
+[איגואנה / iguana]
+  Searching image: iguana animal photo
+[איגואנה / iguana]
+  Searching image: iguana animal photo
+  Image OK: C:\Projects\animal-game\images\איגואנה.jpg
+  Searching sound: iguana sound
+  Rate limited (429), sleeping 10s before retry 1...
+  Sound OK: C:\Projects\animal-game\sounds\איגואנה.mp3
+
+==================================================
+Done! Images: 49/50, Sounds: 47/50
+Failed images (1): חזיר בר
+Failed sounds (3): ברווז, חמור, קרניף
+  Image OK: C:\Projects\animal-game\images\איגואנה.jpg
+  Sound already exists, skipping.
+
+==================================================
+Done! Images: 50/50, Sounds: 46/50
+Failed sounds (4): ברווז, חמור, קרניף, לוויתן
+Starting v3 download of 50 animals...
+Strategy: padding (scale-to-fit) instead of cropping
+==================================================
+
+Category: חיות בית
+[כלב / dog]
+  Searching images: dog animal photo
+  Image download error: HTTP Error 403: Forbidden
+  Candidate 0: download failed
+  Image download error: HTTP Error 404: Not Found
+  Candidate 1: download failed
+  Candidate 2: 1200x900, aspect_dist=0.33 (BEST)
+  Candidate 3: 1280x853, aspect_dist=0.50
+  Image download error: HTTP Error 403: Forbidden
+  Candidate 4: download failed
+  Image OK (padded): C:\Projects\animal-game\images\כלב.jpg
+[חתול / cat]
+  Searching images: cat animal photo
+  Candidate 0: invalid or too small
+  Candidate 1: invalid or too small
+  Candidate 2: 736x736, aspect_dist=0.00 (BEST)
+  Image download error: HTTP Error 403: Forbidden
+  Candidate 3: download failed
+  Candidate 4: invalid or too small
+  Image OK (padded): C:\Projects\animal-game\images\חתול.jpg
+[פרה / cow]
+  Searching images: cow animal photo
+  Candidate 0: 3264x2448, aspect_dist=0.33 (BEST)
+  Candidate 1: 1600x1064, aspect_dist=0.50
+  Image download error: URL can't contain control characters. '/3/e/5/6/3e56785d2a08c27be3ca72082c20fd0a4545586d/VIER PFOTEN_2015-04-27_010-1927x1333-1920x1328.jpg' (found at least ' ')
+  Candidate 2: download failed
+  Candidate 3: 1250x1250, aspect_dist=0.00 (BEST)
+  Candidate 4: 1250x1250, aspect_dist=0.00
+  Image OK (padded): C:\Projects\animal-game\images\פרה.jpg
+[סוס / horse]
+  Searching images: horse animal photo
+  Candidate 0: 1200x800, aspect_dist=0.50 (BEST)
+  Image download error: The read operation timed out
+  Candidate 1: download failed
+  Candidate 2: 840x560, aspect_dist=0.50
+  Candidate 3: 826x413, aspect_dist=1.00
+  Candidate 4: 1200x675, aspect_dist=0.78
+  Image OK (padded): C:\Projects\animal-game\images\סוס.jpg
+[כבשה / sheep]
+  Searching images: sheep animal photo
+  Candidate 0: 1016x1050, aspect_dist=0.03 (BEST)
+  Candidate 1: 1754x1248, aspect_dist=0.41
+  Candidate 2: 950x851, aspect_dist=0.12
+  Candidate 3: 1024x768, aspect_dist=0.33
+  Candidate 4: 1200x900, aspect_dist=0.33
+  Image OK (padded): C:\Projects\animal-game\images\כבשה.jpg
+[עז / goat]
+  Searching images: goat animal photo
+  Candidate 0: 5184x3456, aspect_dist=0.50 (BEST)
+  Candidate 1: 1600x1200, aspect_dist=0.33 (BEST)
+  Image download error: URL can't contain control characters. '/dr0zfbman/images/w_1920,h_1130,c_scale/f_auto,q_auto:good/v1683169840/WordPress Content/Domestic-Goat-minka2507/Domestic-Goat-minka2507.jpg?_i=AA' (found at least ' ')
+  Candidate 2: download failed
+  Candidate 3: 1600x1049, aspect_dist=0.53
+  Candidate 4: 2046x2232, aspect_dist=0.08 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\עז.jpg
+[תרנגול / rooster]
+  Searching images: rooster animal photo
+  Candidate 0: 1300x957, aspect_dist=0.36 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\תרנגול.jpg
+[אוז / goose]
+  Searching images: goose animal photo
+  Image download error: HTTP Error 403: Forbidden
+  Candidate 0: download failed
+  Candidate 1: 800x800, aspect_dist=0.00 (BEST)
+  Candidate 2: 2306x1537, aspect_dist=0.50
+  Candidate 3: 670x398, aspect_dist=0.68
+  Candidate 4: 1300x956, aspect_dist=0.36
+  Image OK (padded): C:\Projects\animal-game\images\אוז.jpg
+[ברווז / duck]
+  Searching images: duck animal photo
+  Candidate 0: invalid or too small
+  Candidate 1: 602x338, aspect_dist=0.78 (BEST)
+  Candidate 2: 512x512, aspect_dist=0.00 (BEST)
+  Candidate 3: invalid or too small
+  Candidate 4: 626x626, aspect_dist=0.00
+  Image OK (padded): C:\Projects\animal-game\images\ברווז.jpg
+[חמור / donkey]
+  Searching images: donkey animal photo
+  Candidate 0: 988x525, aspect_dist=0.88 (BEST)
+  Image download error: HTTP Error 403: Forbidden
+  Candidate 1: download failed
+  Candidate 2: invalid or too small
+  Image OK (padded): C:\Projects\animal-game\images\חמור.jpg
+
+Category: חיות ספארי
+[אריה / lion]
+  Searching images: lion animal photo
+  Candidate 0: 800x729, aspect_dist=0.10 (BEST)
+  Candidate 1: 800x600, aspect_dist=0.33
+  Candidate 2: 600x800, aspect_dist=0.25
+  Candidate 3: 800x600, aspect_dist=0.33
+  Candidate 4: 800x600, aspect_dist=0.33
+  Image OK (padded): C:\Projects\animal-game\images\אריה.jpg
+[פיל / elephant]
+  Searching images: elephant animal photo
+  Candidate 0: 2816x2112, aspect_dist=0.33 (BEST)
+  Candidate 1: 1600x1070, aspect_dist=0.50
+  Candidate 2: 1920x1200, aspect_dist=0.60
+  Candidate 3: 1600x1022, aspect_dist=0.57
+  Candidate 4: 2000x1200, aspect_dist=0.67
+  Image OK (padded): C:\Projects\animal-game\images\פיל.jpg
+[זברה / zebra]
+  Searching images: zebra animal photo
+  Candidate 0: 1000x736, aspect_dist=0.36 (BEST)
+  Candidate 1: 900x749, aspect_dist=0.20 (BEST)
+  Image download error: The read operation timed out
+  Candidate 2: download failed
+  Candidate 3: 1536x864, aspect_dist=0.78
+  Candidate 4: 2048x1365, aspect_dist=0.50
+  Image OK (padded): C:\Projects\animal-game\images\זברה.jpg
+[קוף / monkey]
+  Searching images: monkey animal photo
+  Candidate 0: 1024x1024, aspect_dist=0.00 (BEST)
+  Candidate 1: 626x626, aspect_dist=0.00
+  Candidate 2: 996x996, aspect_dist=0.00
+  Candidate 3: 626x351, aspect_dist=0.78
+  Candidate 4: 1545x2000, aspect_dist=0.23
+  Image OK (padded): C:\Projects\animal-game\images\קוף.jpg
+[ג'ירפה / giraffe]
+  Searching images: giraffe animal photo
+  Image download error: 'ascii' codec can't encode character '\u2019' in position 55: ordinal not in range(128)
+  Candidate 0: download failed
+  No valid candidate image found
+[נמר / leopard]
+  Searching images: leopard animal photo
+  Candidate 0: 1920x1280, aspect_dist=0.50 (BEST)
+  Candidate 1: 1920x1327, aspect_dist=0.45 (BEST)
+  Candidate 2: 1200x1200, aspect_dist=0.00 (BEST)
+  Candidate 3: 3072x1726, aspect_dist=0.78
+  Candidate 4: 853x1280, aspect_dist=0.33
+  Image OK (padded): C:\Projects\animal-game\images\נמר.jpg
+[היפופוטם / hippopotamus]
+  Searching images: hippopotamus animal photo
+  Candidate 0: 988x525, aspect_dist=0.88 (BEST)
+  Candidate 1: invalid or too small
+  Image OK (padded): C:\Projects\animal-game\images\היפופוטם.jpg
+[קרניף / rhinoceros]
+  Searching images: rhinoceros animal photo
+  Candidate 0: 736x1104, aspect_dist=0.33 (BEST)
+  Candidate 1: 1000x667, aspect_dist=0.50
+  Candidate 2: 2000x3000, aspect_dist=0.33
+  Candidate 3: 660x575, aspect_dist=0.15 (BEST)
+  Candidate 4: 660x575, aspect_dist=0.15
+  Image OK (padded): C:\Projects\animal-game\images\קרניף.jpg
+[טיגריס / tiger]
+  Searching images: tiger animal photo
+  Candidate 0: 750x1334, aspect_dist=0.44 (BEST)
+  Candidate 1: 640x1136, aspect_dist=0.44 (BEST)
+  Candidate 2: 696x1000, aspect_dist=0.30 (BEST)
+  Candidate 3: 391x626, aspect_dist=0.38
+  Candidate 4: 736x1103, aspect_dist=0.33
+  Image OK (padded): C:\Projects\animal-game\images\טיגריס.jpg
+[קנגורו / kangaroo]
+  Searching images: kangaroo animal photo
+  Candidate 0: 3872x2592, aspect_dist=0.49 (BEST)
+  Candidate 1: 1920x1080, aspect_dist=0.78
+  Candidate 2: 1000x664, aspect_dist=0.51
+  Candidate 3: 800x1168, aspect_dist=0.32 (BEST)
+  Candidate 4: 3072x2305, aspect_dist=0.33
+  Image OK (padded): C:\Projects\animal-game\images\קנגורו.jpg
+
+Category: חיות ים
+[דולפין / dolphin]
+  Searching images: dolphin animal photo
+  Candidate 0: 1179x651, aspect_dist=0.81 (BEST)
+  Candidate 1: 1200x800, aspect_dist=0.50 (BEST)
+  Candidate 2: 885x850, aspect_dist=0.04 (BEST)
+  Candidate 3: 1000x1000, aspect_dist=0.00 (BEST)
+  Image download error: HTTP Error 525: <none>
+  Candidate 4: download failed
+  Image OK (padded): C:\Projects\animal-game\images\דולפין.jpg
+[לוויתן / whale]
+  Searching images: whale animal photo
+  Candidate 0: 873x590, aspect_dist=0.48 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\לוויתן.jpg
+[כריש / shark]
+  Searching images: shark animal photo
+  Candidate 0: 1280x720, aspect_dist=0.78 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\כריש.jpg
+[תמנון / octopus]
+  Searching images: octopus animal photo
+  Candidate 0: 2250x1500, aspect_dist=0.50 (BEST)
+  Candidate 1: 3072x3072, aspect_dist=0.00 (BEST)
+  Image download error: HTTP Error 403: Forbidden
+  Candidate 2: download failed
+  Candidate 3: 2048x1536, aspect_dist=0.33
+  Candidate 4: 1470x980, aspect_dist=0.50
+  Image OK (padded): C:\Projects\animal-game\images\תמנון.jpg
+[סוס ים / seahorse]
+  Searching images: seahorse animal photo
+  Candidate 0: 1920x1440, aspect_dist=0.33 (BEST)
+  Candidate 1: 626x373, aspect_dist=0.68
+  Candidate 2: 1024x683, aspect_dist=0.50
+  Candidate 3: 300x200, aspect_dist=0.50
+  Candidate 4: 1920x1080, aspect_dist=0.78
+  Image OK (padded): C:\Projects\animal-game\images\סוס_ים.jpg
+[מדוזה / jellyfish]
+  Searching images: jellyfish animal photo
+  Candidate 0: 1000x1350, aspect_dist=0.26 (BEST)
+  Candidate 1: 1067x1700, aspect_dist=0.37
+  Candidate 2: 2000x2500, aspect_dist=0.20 (BEST)
+  Candidate 3: 1067x1700, aspect_dist=0.37
+  Candidate 4: 1000x1330, aspect_dist=0.25
+  Image OK (padded): C:\Projects\animal-game\images\מדוזה.jpg
+[צב ים / sea turtle]
+  Searching images: sea turtle animal photo
+  Candidate 0: 3200x2133, aspect_dist=0.50 (BEST)
+  Candidate 1: 5738x3825, aspect_dist=0.50 (BEST)
+  Candidate 2: 2940x1960, aspect_dist=0.50 (BEST)
+  Candidate 3: 2560x1600, aspect_dist=0.60
+  Candidate 4: 2560x1702, aspect_dist=0.50
+  Image OK (padded): C:\Projects\animal-game\images\צב_ים.jpg
+[דג שונית / clownfish]
+  Searching images: clownfish animal photo
+  Candidate 0: 600x400, aspect_dist=0.50 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\דג_שונית.jpg
+
+Category: עופות
+[תוכי / parrot]
+  Searching images: parrot animal photo
+  Candidate 0: 4736x3157, aspect_dist=0.50 (BEST)
+  Candidate 1: 3826x2679, aspect_dist=0.43 (BEST)
+  Candidate 2: 3865x2576, aspect_dist=0.50
+  Candidate 3: 2587x2068, aspect_dist=0.25 (BEST)
+  Candidate 4: 1178x1600, aspect_dist=0.26
+  Image OK (padded): C:\Projects\animal-game\images\תוכי.jpg
+[יונה / dove]
+  Searching images: dove animal photo
+  Candidate 0: 787x548, aspect_dist=0.44 (BEST)
+  Candidate 1: 1600x900, aspect_dist=0.78
+  Candidate 2: 1000x1000, aspect_dist=0.00 (BEST)
+  Candidate 3: 1200x1200, aspect_dist=0.00
+  Candidate 4: 300x600, aspect_dist=0.50
+  Image OK (padded): C:\Projects\animal-game\images\יונה.jpg
+[נשר / eagle]
+  Searching images: eagle animal photo
+  Candidate 0: 3072x2048, aspect_dist=0.50 (BEST)
+  Candidate 1: 3072x2048, aspect_dist=0.50
+  Candidate 2: 768x512, aspect_dist=0.50
+  Candidate 3: 1800x1200, aspect_dist=0.50
+  Candidate 4: 1152x1440, aspect_dist=0.20 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\נשר.jpg
+[פלמינגו / flamingo]
+  Searching images: flamingo animal photo
+  Candidate 0: 2048x1365, aspect_dist=0.50 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\פלמינגו.jpg
+[ינשוף / owl]
+  Searching images: owl animal photo
+  Image download error: URL can't contain control characters. '/sites/default/files/media/images/Glynn 2017 Three talk model of shared decision making.jpg' (found at least ' ')
+  Candidate 0: download failed
+  Candidate 1: 834x1000, aspect_dist=0.17 (BEST)
+  Image download error: URL can't contain control characters. '/sites/callmepower.be/files/images/huurcontract voorbeeld.png' (found at least ' ')
+  Candidate 2: download failed
+  Candidate 3: 1027x612, aspect_dist=0.68
+  Candidate 4: 1000x673, aspect_dist=0.49
+  Image OK (padded): C:\Projects\animal-game\images\ינשוף.jpg
+[פינגווין / penguin]
+  Searching images: penguin animal photo
+  Candidate 0: 988x525, aspect_dist=0.88 (BEST)
+  Image download error: HTTP Error 404: Not Found
+  Candidate 1: download failed
+  Candidate 2: invalid or too small
+  Image OK (padded): C:\Projects\animal-game\images\פינגווין.jpg
+[חסידה / stork]
+  Searching images: stork animal photo
+  Candidate 0: 1800x1200, aspect_dist=0.50 (BEST)
+  Candidate 1: 2400x1600, aspect_dist=0.50
+  Candidate 2: 2000x1125, aspect_dist=0.78
+  Candidate 3: 2560x1707, aspect_dist=0.50 (BEST)
+  Candidate 4: 1272x1800, aspect_dist=0.29 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\חסידה.jpg
+
+Category: חיות יער
+[דוב / bear]
+  Searching images: bear animal photo
+  Candidate 0: 498x407, aspect_dist=0.22 (BEST)
+  Candidate 1: 640x958, aspect_dist=0.33
+  Candidate 2: invalid or too small
+  Candidate 3: 331x240, aspect_dist=0.38
+  Candidate 4: 416x239, aspect_dist=0.74
+  Image OK (padded): C:\Projects\animal-game\images\דוב.jpg
+[שועל / fox]
+  Searching images: fox animal photo
+  Candidate 0: 1920x1278, aspect_dist=0.50 (BEST)
+  Candidate 1: 1920x1080, aspect_dist=0.78
+  Candidate 2: 2560x1600, aspect_dist=0.60
+  Candidate 3: 1280x836, aspect_dist=0.53
+  Candidate 4: 2000x1335, aspect_dist=0.50 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\שועל.jpg
+[צבי / deer]
+  Searching images: deer animal photo
+  Candidate 0: 1600x1153, aspect_dist=0.39 (BEST)
+  Candidate 1: 1214x810, aspect_dist=0.50
+  Candidate 2: 1920x1280, aspect_dist=0.50
+  Candidate 3: 1600x1198, aspect_dist=0.34 (BEST)
+  Candidate 4: 2560x1707, aspect_dist=0.50
+  Image OK (padded): C:\Projects\animal-game\images\צבי.jpg
+[סנאי / squirrel]
+  Searching images: squirrel animal photo
+  Candidate 0: 1280x853, aspect_dist=0.50 (BEST)
+  Candidate 1: 2560x1681, aspect_dist=0.52
+  Candidate 2: 1897x1919, aspect_dist=0.01 (BEST)
+  Candidate 3: 938x619, aspect_dist=0.52
+  Candidate 4: 800x524, aspect_dist=0.53
+  Image OK (padded): C:\Projects\animal-game\images\סנאי.jpg
+[ארנב / rabbit]
+  Searching images: rabbit animal photo
+  Candidate 0: 1440x960, aspect_dist=0.50 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\ארנב.jpg
+[קיפוד / hedgehog]
+  Searching images: hedgehog animal photo
+  Candidate 0: 2000x2000, aspect_dist=0.00 (BEST)
+  Candidate 1: 600x400, aspect_dist=0.50
+  Candidate 2: 1600x1030, aspect_dist=0.55
+  Candidate 3: 1600x900, aspect_dist=0.78
+  Image download error: HTTP Error 403: Forbidden
+  Candidate 4: download failed
+  Image OK (padded): C:\Projects\animal-game\images\קיפוד.jpg
+[זאב / wolf]
+  Searching images: wolf animal photo
+  Candidate 0: 750x542, aspect_dist=0.38 (BEST)
+  Candidate 1: 736x736, aspect_dist=0.00 (BEST)
+  Candidate 2: 1080x691, aspect_dist=0.56
+  Candidate 3: 530x441, aspect_dist=0.20
+  Candidate 4: 558x1022, aspect_dist=0.45
+  Image OK (padded): C:\Projects\animal-game\images\זאב.jpg
+[חזיר בר / boar]
+  Searching images: wild boar animal photo
+  Candidate 0: 1200x900, aspect_dist=0.33 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\חזיר_בר.jpg
+
+Category: זוחלים ודו-חיות
+[נחש / snake]
+  Searching images: snake animal photo
+  Candidate 0: 512x512, aspect_dist=0.00 (BEST)
+  Candidate 1: 512x384, aspect_dist=0.33
+  Candidate 2: 1360x850, aspect_dist=0.60
+  Candidate 3: 526x309, aspect_dist=0.70
+  Candidate 4: 1500x1000, aspect_dist=0.50
+  Image OK (padded): C:\Projects\animal-game\images\נחש.jpg
+[תנין / crocodile]
+  Searching images: crocodile animal photo
+  Candidate 0: 1920x1154, aspect_dist=0.66 (BEST)
+  Candidate 1: 780x438, aspect_dist=0.78
+  Candidate 2: 736x491, aspect_dist=0.50 (BEST)
+  Candidate 3: 1150x695, aspect_dist=0.65
+  Candidate 4: 600x400, aspect_dist=0.50
+  Image OK (padded): C:\Projects\animal-game\images\תנין.jpg
+[צפרדע / frog]
+  Searching images: frog animal photo
+  Candidate 0: 2250x3000, aspect_dist=0.25 (BEST)
+  Candidate 1: 1600x2400, aspect_dist=0.33
+  Candidate 2: 768x768, aspect_dist=0.00 (BEST)
+  Candidate 3: 736x736, aspect_dist=0.00
+  Candidate 4: 2448x3264, aspect_dist=0.25
+  Image OK (padded): C:\Projects\animal-game\images\צפרדע.jpg
+[לטאה / lizard]
+  Searching images: lizard animal photo
+  Candidate 0: 498x278, aspect_dist=0.79 (BEST)
+  Candidate 1: 757x500, aspect_dist=0.51 (BEST)
+  Candidate 2: 889x500, aspect_dist=0.78
+  Candidate 3: invalid or too small
+  Candidate 4: invalid or too small
+  Image OK (padded): C:\Projects\animal-game\images\לטאה.jpg
+[צב / turtle]
+  Searching images: turtle animal photo
+  Candidate 0: 563x390, aspect_dist=0.44 (BEST)
+  Candidate 1: 1300x957, aspect_dist=0.36 (BEST)
+  Candidate 2: 1600x865, aspect_dist=0.85
+  Candidate 3: 1600x1067, aspect_dist=0.50
+  Candidate 4: 880x648, aspect_dist=0.36 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\צב.jpg
+[תלולית / salamander]
+  Searching images: salamander animal photo
+  Image download error: HTTP Error 403: Forbidden
+  Candidate 0: download failed
+  No valid candidate image found
+[איגואנה / iguana]
+  Searching images: iguana animal photo
+  Candidate 0: 690x465, aspect_dist=0.48 (BEST)
+  Image OK (padded): C:\Projects\animal-game\images\איגואנה.jpg
+
+==================================================
+Done! Images: 48/50
+Failed images (2): ג'ירפה, תלולית

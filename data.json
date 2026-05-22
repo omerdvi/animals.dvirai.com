@@ -1,0 +1,285 @@
+{
+  "title": "חיות - משחק לידידים",
+  "categories": [
+    {
+      "name": "חיות בית",
+      "items": [
+        {
+          "name": "כלב",
+          "image": "images/כלב.jpg",
+          "sound": "sounds/כלב.mp3"
+        },
+        {
+          "name": "חתול",
+          "image": "images/חתול.jpg",
+          "sound": "sounds/חתול.mp3"
+        },
+        {
+          "name": "פרה",
+          "image": "images/פרה.jpg",
+          "sound": "sounds/פרה.mp3"
+        },
+        {
+          "name": "כבשה",
+          "image": "images/כבשה.jpg",
+          "sound": "sounds/כבשה.mp3"
+        },
+        {
+          "name": "סוס",
+          "image": "images/סוס.jpg",
+          "sound": "sounds/סוס.mp3"
+        },
+        {
+          "name": "תרנגול",
+          "image": "images/תרנגול.jpg",
+          "sound": "sounds/תרנגול.mp3"
+        },
+        {
+          "name": "ברווז",
+          "image": "images/ברווז.jpg",
+          "sound": "sounds/ברווז.mp3"
+        },
+        {
+          "name": "אוז",
+          "image": "images/אוז.jpg",
+          "sound": "sounds/אוז.mp3"
+        },
+        {
+          "name": "עז",
+          "image": "images/עז.jpg",
+          "sound": "sounds/עז.mp3"
+        },
+        {
+          "name": "חמור",
+          "image": "images/חמור.jpg",
+          "sound": "sounds/חמור.mp3"
+        }
+      ]
+    },
+    {
+      "name": "חיות בר",
+      "items": [
+        {
+          "name": "אריה",
+          "image": "images/אריה.jpg",
+          "sound": "sounds/אריה.mp3"
+        },
+        {
+          "name": "זאב",
+          "image": "images/זאב.jpg",
+          "sound": "sounds/זאב.mp3"
+        },
+        {
+          "name": "נמר",
+          "image": "images/נמר.jpg",
+          "sound": "sounds/נמר.mp3"
+        },
+        {
+          "name": "דוב",
+          "image": "images/דוב.jpg",
+          "sound": "sounds/דוב.mp3"
+        },
+        {
+          "name": "טיגריס",
+          "image": "images/טיגריס.jpg",
+          "sound": "sounds/טיגריס.mp3"
+        },
+        {
+          "name": "שועל",
+          "image": "images/שועל.jpg",
+          "sound": "sounds/שועל.mp3"
+        },
+        {
+          "name": "חזיר בר",
+          "image": "images/חזיר_בר.jpg",
+          "sound": "sounds/חזיר_בר.mp3"
+        },
+        {
+          "name": "קרניף",
+          "image": "images/קרניף.jpg",
+          "sound": "sounds/קרניף.mp3"
+        },
+        {
+          "name": "פיל",
+          "image": "images/פיל.jpg",
+          "sound": "sounds/פיל.mp3"
+        },
+        {
+          "name": "זברה",
+          "image": "images/זברה.jpg",
+          "sound": "sounds/זברה.mp3"
+        }
+      ]
+    },
+    {
+      "name": "עופות",
+      "items": [
+        {
+          "name": "נשר",
+          "image": "images/נשר.jpg",
+          "sound": "sounds/נשר.mp3"
+        },
+        {
+          "name": "ינשוף",
+          "image": "images/ינשוף.jpg",
+          "sound": "sounds/ינשוף.mp3"
+        },
+        {
+          "name": "חסידה",
+          "image": "images/חסידה.jpg",
+          "sound": "sounds/חסידה.mp3"
+        },
+        {
+          "name": "יונה",
+          "image": "images/יונה.jpg",
+          "sound": "sounds/יונה.mp3"
+        },
+        {
+          "name": "תוכי",
+          "image": "images/תוכי.jpg",
+          "sound": "sounds/תוכי.mp3"
+        },
+        {
+          "name": "פלמינגו",
+          "image": "images/פלמינגו.jpg",
+          "sound": "sounds/פלמינגו.mp3"
+        },
+        {
+          "name": "פינגווין",
+          "image": "images/פינגווין.jpg",
+          "sound": "sounds/פינגווין.mp3"
+        }
+      ]
+    },
+    {
+      "name": "ים ודגים",
+      "items": [
+        {
+          "name": "דולפין",
+          "image": "images/דולפין.jpg",
+          "sound": "sounds/דולפין.mp3"
+        },
+        {
+          "name": "לוויתן",
+          "image": "images/לוויתן.jpg",
+          "sound": "sounds/לוויתן.mp3"
+        },
+        {
+          "name": "כריש",
+          "image": "images/כריש.jpg",
+          "sound": "sounds/כריש.mp3"
+        },
+        {
+          "name": "דג שונית",
+          "image": "images/דג_שונית.jpg",
+          "sound": "sounds/דג_שונית.mp3"
+        },
+        {
+          "name": "סוס ים",
+          "image": "images/סוס_ים.jpg",
+          "sound": "sounds/סוס_ים.mp3"
+        },
+        {
+          "name": "צב ים",
+          "image": "images/צב_ים.jpg",
+          "sound": "sounds/צב_ים.mp3"
+        },
+        {
+          "name": "מדוזה",
+          "image": "images/מדוזה.jpg",
+          "sound": "sounds/מדוזה.mp3"
+        },
+        {
+          "name": "תמנון",
+          "image": "images/תמנון.jpg",
+          "sound": "sounds/תמנון.mp3"
+        },
+        {
+          "name": "תלולית",
+          "image": "images/תלולית.jpg",
+          "sound": "sounds/תלולית.mp3"
+        }
+      ]
+    },
+    {
+      "name": "זוחלים ודוחיים",
+      "items": [
+        {
+          "name": "תנין",
+          "image": "images/תנין.jpg",
+          "sound": "sounds/תנין.mp3"
+        },
+        {
+          "name": "נחש",
+          "image": "images/נחש.jpg",
+          "sound": "sounds/נחש.mp3"
+        },
+        {
+          "name": "צב",
+          "image": "images/צב.jpg",
+          "sound": "sounds/צב.mp3"
+        },
+        {
+          "name": "לטאה",
+          "image": "images/לטאה.jpg",
+          "sound": "sounds/לטאה.mp3"
+        },
+        {
+          "name": "איגואנה",
+          "image": "images/איגואנה.jpg",
+          "sound": "sounds/איגואנה.mp3"
+        },
+        {
+          "name": "צפרדע",
+          "image": "images/צפרדע.jpg",
+          "sound": "sounds/צפרדע.mp3"
+        }
+      ]
+    },
+    {
+      "name": "יונקים מיוחדים",
+      "items": [
+        {
+          "name": "ג'ירפה",
+          "image": "images/ג'ירפה.jpg",
+          "sound": "sounds/ג_ירפה.mp3"
+        },
+        {
+          "name": "היפופוטם",
+          "image": "images/היפופוטם.jpg",
+          "sound": "sounds/היפופוטם.mp3"
+        },
+        {
+          "name": "קנגורו",
+          "image": "images/קנגורו.jpg",
+          "sound": "sounds/קנגורו.mp3"
+        },
+        {
+          "name": "קוף",
+          "image": "images/קוף.jpg",
+          "sound": "sounds/קוף.mp3"
+        },
+        {
+          "name": "ארנב",
+          "image": "images/ארנב.jpg",
+          "sound": "sounds/ארנב.mp3"
+        },
+        {
+          "name": "סנאי",
+          "image": "images/סנאי.jpg",
+          "sound": "sounds/סנאי.mp3"
+        },
+        {
+          "name": "קיפוד",
+          "image": "images/קיפוד.jpg",
+          "sound": "sounds/קיפוד.mp3"
+        },
+        {
+          "name": "צבי",
+          "image": "images/צבי.jpg",
+          "sound": "sounds/צבי.mp3"
+        }
+      ]
+    }
+  ]
+}
