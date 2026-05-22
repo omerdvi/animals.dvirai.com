@@ -91,17 +91,20 @@
 
     /* ===== Home Screen ===== */
     #screen-home {
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      padding: 20px;
+      padding: max(24px, env(safe-area-inset-top)) 20px 20px;
       gap: 20px;
+      overflow-y: auto;
     }
 
     .app-title {
-      font-size: 36px;
+      font-size: clamp(28px, 8vw, 44px);
       font-weight: 800;
       color: #1a1a2e;
       text-align: center;
+      margin-top: 10px;
+      line-height: 1.2;
     }
 
 
