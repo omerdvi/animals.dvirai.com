@@ -13,472 +13,240 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
 
   <style>
-    /* ========== Reset & Base ========== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #F8FAFC;
-      --surface: #FFFFFF;
-      --text: #0F172A;
-      --text-muted: #64748B;
-      --radius: 20px;
-      --shadow: 0 2px 12px rgba(0,0,0,0.06);
-      --shadow-lg: 0 8px 30px rgba(0,0,0,0.10);
-      --cat-home: #F59E0B;
-      --cat-wild: #EF4444;
-      --cat-birds: #3B82F6;
-      --cat-sea: #06B6D4;
-      --cat-reptiles: #8B5CF6;
-      --cat-special: #10B981;
-      --quiz: #10B981;
-      --quiz-light: #D1FAE5;
-      --quiz-dark: #065F46;
+      --bg: #F8FAFC; --surface: #FFFFFF; --text: #0F172A; --text-muted: #64748B;
+      --radius: 20px; --shadow: 0 2px 12px rgba(0,0,0,0.06); --shadow-lg: 0 8px 30px rgba(0,0,0,0.10);
+      --quiz: #10B981; --quiz-light: #D1FAE5; --quiz-dark: #065F46;
     }
-
     html, body {
-      width: 100%; height: 100%;
-      overflow: hidden;
-      font-family: "Rubik", "Assistant", "Segoe UI", Arial, sans-serif;
-      direction: rtl;
-      background: var(--bg);
-      color: var(--text);
-      user-select: none;
-      -webkit-user-select: none;
+      width: 100%; height: 100%; overflow: hidden;
+      font-family: "Rubik","Assistant","Segoe UI",Arial,sans-serif;
+      direction: rtl; background: var(--bg); color: var(--text);
+      user-select: none; -webkit-user-select: none;
       -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      overscroll-behavior: none;
+      touch-action: manipulation; overscroll-behavior: none;
     }
-
-    /* ========== Screens ========== */
     .screen {
-      display: none;
-      position: fixed;
-      inset: 0;
-      overflow-y: auto;
-      overflow-x: hidden;
+      display: none; position: fixed; inset: 0;
+      overflow-y: auto; overflow-x: hidden;
     }
     .screen.active {
-      display: flex;
-      flex-direction: column;
-      animation: fadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex; flex-direction: column;
+      animation: fadeSlideIn 0.35s cubic-bezier(0.16,1,0.3,1);
     }
     @keyframes fadeSlideIn {
       from { opacity: 0; transform: translateX(-24px); }
-      to   { opacity: 1; transform: translateX(0); }
+      to { opacity: 1; transform: translateX(0); }
     }
-
-    /* ========== Top Bar ========== */
     .top-bar {
       display: flex; align-items: center;
       padding: 12px 16px; gap: 12px; flex-shrink: 0;
       background: var(--surface);
     }
     .btn-icon {
-      width: 48px; height: 48px;
-      border-radius: 50%; border: none;
-      font-size: 24px; cursor: pointer;
+      width: 44px; height: 44px; border-radius: 50%; border: none;
+      font-size: 22px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: transform 0.15s, background 0.15s;
-      background: var(--surface);
-      color: var(--cat-color, #64748B);
+      flex-shrink: 0; transition: transform 0.15s,background 0.15s;
+      background: var(--surface); color: var(--cat-color,#64748B);
       box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
     .btn-icon:active { transform: scale(0.9); background: #f1f5f9; }
-    .btn-icon.home-icon { background: var(--cat-color-light, #f1f5f9); color: var(--cat-color, #64748B); }
+    .btn-icon.home-icon { background: var(--cat-color-light,#f1f5f9); color: var(--cat-color,#64748B); }
     .screen-title {
-      flex: 1; text-align: center;
-      font-size: clamp(20px, 5vw, 26px);
-      font-weight: 800; color: var(--cat-color, var(--text));
+      flex:1; text-align:center; font-size: clamp(20px,5vw,24px);
+      font-weight:800; color: var(--cat-color,var(--text));
     }
 
-    /* ========== Home Screen ========== */
+    /* ===== Home ===== */
     #screen-home {
       justify-content: center; align-items: center;
-      padding: max(16px, env(safe-area-inset-top)) 20px 20px;
-      gap: 18px;
-      background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
+      padding: 16px 20px 20px; gap: 16px;
+      background: linear-gradient(180deg,#F8FAFC 0%,#F1F5F9 100%);
     }
-    .home-title {
-      font-size: clamp(32px, 9vw, 48px);
-      font-weight: 900; color: var(--text);
-      text-align: center; line-height: 1.2;
-      margin-top: 8px;
-    }
-    .home-title .emoji { display: inline-block; animation: wiggle 2s infinite; }
-    .home-title .emoji:nth-child(2) { animation-delay: 0.3s; }
-    @keyframes wiggle {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-8deg); }
-      75% { transform: rotate(8deg); }
-    }
-
-    #home-categories {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px; width: 100%; max-width: 600px;
-    }
-    .category-btn {
-      position: relative;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 10px; padding: 18px 12px;
-      border: none;
-      border-radius: var(--radius);
-      background: var(--cat-bg, var(--surface));
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      min-height: 130px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .category-btn::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, var(--cat-color)15, var(--cat-color)05);
-      opacity: 0; transition: opacity 0.2s;
-    }
-    .category-btn:hover::before { opacity: 1; }
-    .category-btn:active { transform: scale(0.95); }
-    .category-icon {
-      font-size: 52px;
-      line-height: 1;
-      position: relative; z-index: 1;
-    }
-    .category-label {
-      font-size: 18px; font-weight: 700;
-      color: var(--cat-color);
-      position: relative; z-index: 1;
-    }
-    .category-count {
-      font-size: 13px; font-weight: 600;
-      color: var(--text-muted);
-      position: relative; z-index: 1;
-    }
-
-    .btn-quiz-home {
-      display: flex; align-items: center; justify-content: center;
-      gap: 10px; padding: 16px 36px;
-      border: none;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #10B981, #059669);
-      color: white; font-size: 22px; font-weight: 800;
-      cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
-      width: 100%; max-width: 600px;
-      font-family: inherit;
-      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
-    }
-    .btn-quiz-home:active { transform: scale(0.95); }
-    .btn-quiz-home .quiz-icon { font-size: 28px; }
-
-    .btn-about {
-      background: none; border: none;
-      color: var(--text-muted); font-size: 15px;
-      font-weight: 600; cursor: pointer;
-      padding: 8px 16px; font-family: inherit;
-      transition: color 0.15s;
-    }
-    .btn-about:hover { color: var(--text); }
-
-    /* ========== Category Screen ========== */
-    #screen-category.active { background: var(--cat-bg, var(--bg)); }
-    #category-animals {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px; padding: 10px 14px 20px; flex: 1;
-    }
-    .animal-card {
-      display: flex; flex-direction: column;
-      align-items: center; gap: 4px;
-      padding: 8px 6px;
-      border: 2px solid #e2e8f0;
-      border-radius: 16px;
-      background: var(--surface);
-      cursor: pointer;
-      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
-      box-shadow: var(--shadow);
-    }
-    .animal-card:hover {
-      border-color: var(--cat-color);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    }
-    .animal-card:active { transform: scale(0.93); border-color: var(--cat-color); }
-    .animal-thumb {
-      width: 100%; aspect-ratio: 1;
-      border-radius: 12px; overflow: hidden;
-      background: #f8fafc;
-    }
-    .animal-thumb img {
-      width: 100%; height: 100%; object-fit: contain;
-    }
-    .animal-label {
-      font-size: 14px; font-weight: 700;
-      color: var(--text); text-align: center;
-      line-height: 1.2;
-    }
-
-    /* ========== Animal Detail ========== */
-    #screen-animal.active {
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      height: 100%; overflow: hidden;
-      background: var(--cat-bg, var(--bg));
-    }
-    .animal-image-container {
-      flex: 1; display: flex;
-      align-items: center; justify-content: center;
-      padding: 8px 12px; min-height: 0; overflow: hidden;
-    }
-    .animal-image-container .img-wrapper {
-      width: 100%; height: 100%;
-      max-height: 60vh;
-      border-radius: 20px; overflow: hidden;
-      background: var(--surface);
-      box-shadow: var(--shadow-lg);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .animal-image-container img {
-      max-width: 100%; max-height: 100%; object-fit: contain;
-    }
-    .animal-name-display {
-      text-align: center;
-      font-size: 28px; font-weight: 900;
-      color: var(--cat-color);
-      padding: 6px 16px; flex-shrink: 0;
-    }
-    .animal-actions {
-      display: flex; gap: 12px;
-      padding: 10px 16px;
-      padding-bottom: max(10px, env(safe-area-inset-bottom));
-      justify-content: center; align-items: center;
-      flex-shrink: 0;
-      background: var(--surface);
-      border-top: 1px solid #e2e8f0;
-    }
-    .btn-nav {
-      width: 56px; height: 56px; border-radius: 50%;
-      border: 2px solid #e2e8f0; background: var(--surface);
-      font-size: 28px; font-weight: 700; color: var(--text-muted);
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: transform 0.15s, border-color 0.15s; font-family: inherit;
-    }
-    .btn-nav:active { transform: scale(0.9); border-color: var(--cat-color); color: var(--cat-color); }
-    .btn-action {
-      width: 72px; height: 72px; border-radius: 50%;
-      border: 3px solid var(--cat-color);
-      background: var(--surface); font-size: 32px;
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: transform 0.15s, background 0.15s; font-family: inherit;
-    }
-    .btn-action:active { transform: scale(0.9); }
-    .btn-action.playing {
-      background: var(--cat-color-light);
-      animation: pulse 0.8s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
-    /* ========== Quiz Menu ========== */
-    #screen-quiz-menu { justify-content: center; align-items: center; gap: 20px; padding: 20px; background: linear-gradient(180deg, #D1FAE5 0%, var(--bg) 100%); }
-    .quiz-menu-title { font-size: 30px; font-weight: 900; color: var(--quiz-dark); }
-    .quiz-subtitle { font-size: 17px; color: var(--text-muted); margin-top: -8px; }
-    .difficulty-buttons { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 420px; }
-    .btn-difficulty {
-      display: flex; align-items: center; justify-content: flex-start;
-      gap: 16px; padding: 18px 24px;
-      border: none; border-radius: 18px;
-      background: var(--surface);
-      font-size: 24px; font-weight: 700;
-      cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
-      font-family: inherit;
-      box-shadow: var(--shadow);
-    }
-    .btn-difficulty:active { transform: scale(0.96); }
-    .btn-difficulty .diff-icon {
-      font-size: 36px; width: 48px; text-align: center; flex-shrink: 0;
-    }
-    .btn-difficulty .diff-info { text-align: right; }
-    .btn-difficulty .diff-label { font-size: 22px; color: var(--text); }
-    .btn-difficulty .diff-desc { font-size: 13px; color: var(--text-muted); font-weight: 500; }
-    .btn-difficulty.easy { border-left: 4px solid #10B981; }
-    .btn-difficulty.hard { border-left: 4px solid #F59E0B; }
-    .btn-difficulty.odd  { border-left: 4px solid #8B5CF6; }
-
-    /* ========== Quiz / Odd-One-Out ========== */
-    #screen-quiz, #screen-odd { background: #F0FDF4; }
-    .quiz-header {
-      display: flex; align-items: center; padding: 10px 14px;
-      gap: 10px; flex-shrink: 0;
-    }
-    .quiz-score {
-      font-size: 20px; font-weight: 800; color: #F59E0B;
-      background: #FEF3C7; padding: 6px 14px;
-      border-radius: 50px; border: 2px solid #F59E0B;
-      flex-shrink: 0;
-    }
-    .quiz-prompt {
-      font-size: 26px; font-weight: 800;
-      text-align: center; padding: 8px 16px;
-      color: var(--quiz-dark); flex-shrink: 0;
-    }
-    .quiz-options {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 8px;
-      flex: 1; padding: 4px 10px 10px; min-height: 0;
-    }
-    .quiz-option {
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 4px; padding: 6px;
-      border: 3px solid #e2e8f0; border-radius: 18px;
-      background: var(--surface); cursor: pointer;
-      transition: transform 0.15s, border-color 0.15s;
-      overflow: hidden; min-height: 0;
-      box-shadow: var(--shadow);
-    }
-    .quiz-option img {
-      width: 100%; flex: 1; min-height: 0;
-      object-fit: contain; border-radius: 12px; padding: 2px;
-    }
-    .quiz-option span {
-      font-size: 18px; font-weight: 700;
-      color: var(--text); flex-shrink: 0; padding-bottom: 2px;
-    }
-    .quiz-option:active { transform: scale(0.95); }
-    .quiz-option.correct {
-      border-color: #10B981; background: #D1FAE5;
-      animation: correctPop 0.5s ease;
-    }
-    @keyframes correctPop {
-      0% { transform: scale(1); }
-      40% { transform: scale(1.06); }
-      100% { transform: scale(1); }
-    }
-    .quiz-option.wrong {
-      border-color: #EF4444; background: #FEE2E2;
-      animation: shake 0.4s ease;
-    }
-    .quiz-option.hint {
-      border-color: #10B981;
-      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
-      animation: hintPulse 0.5s ease 2;
-    }
-    @keyframes hintPulse {
-      0%, 100% { box-shadow: 0 0 0 4px rgba(16,185,129,0.3); }
-      50% { box-shadow: 0 0 0 10px rgba(16,185,129,0.1); }
-    }
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-6px); }
-      40% { transform: translateX(6px); }
-      60% { transform: translateX(-4px); }
-      80% { transform: translateX(4px); }
-    }
-
-    /* ========== Confetti ========== */
-    .confetti {
-      position: fixed; width: 8px; height: 8px; border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      animation: confettiFly 0.8s ease forwards;
-    }
-    @keyframes confettiFly {
-      0% { transform: translate(0, 0) scale(1); opacity: 1; }
-      100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
-    }
-
-    /* ========== About ========== */
-    .about-content {
+    .home-wrapper {
       display: flex; flex-direction: column;
       align-items: center; gap: 16px;
-      padding: 16px 20px 40px; text-align: center;
-      overflow-y: auto; flex: 1;
+      width: 100%; max-width: 440px;
     }
-    .about-content h2 { font-size: 30px; font-weight: 900; color: #F59E0B; }
-    .about-subtitle { font-size: 18px; color: var(--text-muted); font-weight: 600; }
-    .about-card {
-      background: var(--surface); border-radius: 16px;
-      padding: 16px 20px; width: 100%; max-width: 520px;
-      box-shadow: var(--shadow); text-align: center;
+    .home-title {
+      font-size: clamp(32px,8vw,42px); font-weight:900;
+      color: var(--text); text-align:center; line-height:1.2;
     }
-    .about-card p { font-size: 16px; line-height: 1.7; color: var(--text); }
+    .home-title .emoji { display:inline-block; animation:wiggle 2s infinite; }
+    .home-title .emoji:nth-child(2) { animation-delay:0.3s; }
+    @keyframes wiggle {
+      0%,100%{transform:rotate(0deg)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)}
+    }
+    #home-categories {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:12px; width:100%;
+    }
+    .category-btn {
+      position:relative; display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      gap:8px; padding:16px 8px; border:none; border-radius:var(--radius);
+      background:var(--cat-bg,var(--surface)); cursor:pointer;
+      transition:transform 0.2s,box-shadow 0.2s;
+      min-height:120px; box-shadow:var(--shadow); overflow:hidden;
+    }
+    .category-btn::before {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(135deg,var(--cat-color)15,var(--cat-color)05);
+      opacity:0; transition:opacity 0.2s;
+    }
+    .category-btn:hover::before{opacity:1}
+    .category-btn:active{transform:scale(0.95)}
+    .category-icon{font-size:46px;line-height:1;position:relative;z-index:1}
+    .category-label{font-size:16px;font-weight:700;color:var(--cat-color);position:relative;z-index:1;text-align:center}
+    .category-count{font-size:12px;font-weight:600;color:var(--text-muted);position:relative;z-index:1}
+    .btn-quiz-home {
+      display:flex; align-items:center; justify-content:center;
+      gap:10px; padding:14px 32px; border:none; border-radius:50px;
+      background:linear-gradient(135deg,#10B981,#059669);
+      color:#fff; font-size:20px; font-weight:800;
+      cursor:pointer; transition:transform 0.2s,box-shadow 0.2s;
+      width:100%; font-family:inherit;
+      box-shadow:0 4px 16px rgba(16,185,129,0.3);
+    }
+    .btn-quiz-home:active{transform:scale(0.95)}
+    .btn-quiz-home .quiz-icon{font-size:26px}
+    .btn-about{background:none;border:none;color:var(--text-muted);font-size:14px;font-weight:600;cursor:pointer;padding:6px 14px;font-family:inherit;transition:color 0.15s}
+    .btn-about:hover{color:var(--text)}
 
-    /* ========== Responsive ========== */
-    @media (max-width: 360px) {
-      #home-categories { gap: 8px; }
-      .category-btn { min-height: 110px; padding: 12px 4px; }
-      .category-icon { font-size: 40px; }
-      .category-label { font-size: 15px; }
-      .btn-quiz-home { padding: 14px 24px; font-size: 18px; }
-    }
-    @media (min-width: 600px) {
-      #home-categories { gap: 16px; }
-      .category-btn { min-height: 150px; }
-      .category-icon { font-size: 64px; }
-    }
-    @media (orientation: landscape) {
-      .animal-image-container .img-wrapper { max-height: 65vh; }
-      .quiz-options { max-height: calc(100vh - 120px); }
-      .quiz-option img { max-height: 25vh; }
-    }
-    @media (min-width: 900px) {
-      #category-animals { grid-template-columns: repeat(4, 1fr); }
-      #home-categories { max-width: 720px; }
-    }
+    /* ===== Category ===== */
+    #screen-category.active{background:var(--cat-bg,var(--bg))}
+    #category-animals{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px 12px 16px;flex:1}
+    .animal-card{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 4px;border:2px solid #e2e8f0;border-radius:14px;background:var(--surface);cursor:pointer;transition:transform 0.15s,border-color 0.15s,box-shadow 0.15s;box-shadow:var(--shadow)}
+    .animal-card:hover,.animal-card:active{border-color:var(--cat-color);box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+    .animal-card:active{transform:scale(0.93)}
+    .animal-thumb{width:100%;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#f8fafc}
+    .animal-thumb img{width:100%;height:100%;object-fit:contain}
+    .animal-label{font-size:13px;font-weight:700;color:var(--text);text-align:center;line-height:1.2}
 
-    /* ========== Scrollbar ========== */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
+    /* ===== Animal Detail ===== */
+    #screen-animal.active{display:grid;grid-template-rows:auto 1fr auto;height:100%;overflow:hidden;background:var(--cat-bg,var(--bg))}
+    .animal-image-container{flex:1;display:flex;align-items:center;justify-content:center;padding:6px 10px;min-height:0;overflow:hidden}
+    .animal-image-container .img-wrapper{width:100%;height:100%;max-height:55vh;border-radius:18px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center}
+    .animal-image-container img{max-width:100%;max-height:100%;object-fit:contain}
+    .animal-name-display{text-align:center;font-size:26px;font-weight:900;color:var(--cat-color);padding:4px 12px;flex-shrink:0}
+    .animal-actions{display:flex;gap:10px;padding:8px 14px;padding-bottom:max(8px,env(safe-area-inset-bottom));justify-content:center;align-items:center;flex-shrink:0;background:var(--surface);border-top:1px solid #e2e8f0}
+    .btn-nav{width:52px;height:52px;border-radius:50%;border:2px solid #e2e8f0;background:var(--surface);font-size:26px;font-weight:700;color:var(--text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.15s,border-color 0.15s;font-family:inherit}
+    .btn-nav:active{transform:scale(0.9);border-color:var(--cat-color);color:var(--cat-color)}
+    .btn-action{width:66px;height:66px;border-radius:50%;border:3px solid var(--cat-color);background:var(--surface);font-size:30px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform 0.15s,background 0.15s;font-family:inherit}
+    .btn-action:active{transform:scale(0.9)}
+    .btn-action.playing{background:var(--cat-color-light);animation:pulse 0.8s infinite}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+
+    /* ===== Quiz Menu ===== */
+    #screen-quiz-menu{justify-content:center;align-items:center;gap:20px;padding:20px;background:linear-gradient(180deg,#D1FAE5 0%,var(--bg) 100%)}
+    .quiz-menu-title{font-size:28px;font-weight:900;color:var(--quiz-dark)}
+    .quiz-subtitle{font-size:16px;color:var(--text-muted);margin-top:-8px}
+    .difficulty-buttons{display:flex;flex-direction:column;gap:12px;width:100%;max-width:400px}
+    .btn-difficulty{display:flex;align-items:center;justify-content:flex-start;gap:14px;padding:16px 22px;border:none;border-radius:16px;background:var(--surface);font-size:22px;font-weight:700;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;font-family:inherit;box-shadow:var(--shadow)}
+    .btn-difficulty:active{transform:scale(0.96)}
+    .btn-difficulty .diff-icon{font-size:34px;width:44px;text-align:center;flex-shrink:0}
+    .btn-difficulty .diff-info{text-align:right}
+    .btn-difficulty .diff-label{font-size:20px;color:var(--text)}
+    .btn-difficulty .diff-desc{font-size:12px;color:var(--text-muted);font-weight:500}
+    .btn-difficulty.easy{border-left:4px solid #10B981}
+    .btn-difficulty.hard{border-left:4px solid #F59E0B}
+    .btn-difficulty.odd{border-left:4px solid #8B5CF6}
+
+    /* ===== Quiz / Odd ===== */
+    #screen-quiz,#screen-odd{background:#F0FDF4}
+    .quiz-header{display:flex;align-items:center;padding:8px 12px;gap:8px;flex-shrink:0}
+    .quiz-score{font-size:18px;font-weight:800;color:#F59E0B;background:#FEF3C7;padding:5px 12px;border-radius:50px;border:2px solid #F59E0B;flex-shrink:0}
+    .quiz-prompt{font-size:24px;font-weight:800;text-align:center;padding:6px 14px;color:var(--quiz-dark);flex-shrink:0}
+    .quiz-options{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:6px;flex:1;padding:4px 8px 8px;min-height:0}
+    .quiz-option{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:4px;border:3px solid #e2e8f0;border-radius:16px;background:var(--surface);cursor:pointer;transition:transform 0.15s,border-color 0.15s;overflow:hidden;min-height:0;box-shadow:var(--shadow)}
+    .quiz-option img{width:100%;flex:1;min-height:0;object-fit:contain;border-radius:10px;padding:2px}
+    .quiz-option span{font-size:16px;font-weight:700;color:var(--text);flex-shrink:0;padding-bottom:1px}
+    .quiz-option:active{transform:scale(0.95)}
+    .quiz-option.correct{border-color:#10B981;background:#D1FAE5;animation:correctPop 0.5s ease}
+    @keyframes correctPop{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+    .quiz-option.wrong{border-color:#EF4444;background:#FEE2E2;animation:shake 0.4s ease}
+    .quiz-option.hint{border-color:#10B981;box-shadow:0 0 0 4px rgba(16,185,129,0.3);animation:hintPulse 0.5s ease 2}
+    @keyframes hintPulse{0%,100%{box-shadow:0 0 0 4px rgba(16,185,129,0.3)}50%{box-shadow:0 0 0 10px rgba(16,185,129,0.1)}}
+    @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+
+    /* ===== Confetti ===== */
+    .confetti{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:9999;animation:confettiFly 0.8s ease forwards}
+    @keyframes confettiFly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0}}
+
+    /* ===== About ===== */
+    .about-content{display:flex;flex-direction:column;align-items:center;gap:14px;padding:14px 18px 36px;text-align:center;overflow-y:auto;flex:1}
+    .about-content h2{font-size:28px;font-weight:900;color:#F59E0B}
+    .about-subtitle{font-size:16px;color:var(--text-muted);font-weight:600}
+    .about-card{background:var(--surface);border-radius:14px;padding:14px 18px;width:100%;max-width:480px;box-shadow:var(--shadow);text-align:center}
+    .about-card p{font-size:15px;line-height:1.7;color:var(--text)}
+
+    /* ===== Responsive ===== */
+    @media(max-width:360px){
+      #home-categories{gap:8px}.category-btn{min-height:100px;padding:12px 4px}.category-icon{font-size:38px}.category-label{font-size:14px}
+    }
+    @media(min-width:600px){
+      .home-wrapper{max-width:460px}#home-categories{gap:14px}.category-btn{min-height:130px}.category-icon{font-size:54px}.category-label{font-size:18px}
+    }
+    @media(min-width:900px){
+      .home-wrapper{max-width:480px}#category-animals{grid-template-columns:repeat(4,1fr)}
+    }
+    @media(orientation:landscape){
+      .animal-image-container .img-wrapper{max-height:60vh}
+      .quiz-options{max-height:calc(100vh - 110px)}.quiz-option img{max-height:22vh}
+    }
+    @media(min-width:1200px){
+      .home-wrapper{max-width:500px}
+      #category-animals{grid-template-columns:repeat(4,1fr);max-width:800px;margin:0 auto}
+    }
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:transparent}
+    ::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
   </style>
 </head>
 <body>
 
-  <!-- ===== Home Screen ===== -->
+  <!-- ===== Home ===== -->
   <div id="screen-home" class="screen active">
-    <h1 class="home-title">
-      <span class="emoji">🦁</span> חיות <span class="emoji">🐻</span>
-    </h1>
-    <div id="home-categories"></div>
-    <button class="btn-quiz-home" onclick="App.openQuizMenu()">
-      <span class="quiz-icon">🎮</span>
-      <span>בוא נשחק!</span>
-    </button>
-    <button class="btn-about" onclick="App.openAbout()">📖 אודות</button>
+    <div class="home-wrapper">
+      <h1 class="home-title"><span class="emoji">🦁</span> חיות <span class="emoji">🐻</span></h1>
+      <div id="home-categories"></div>
+      <button class="btn-quiz-home" onclick="App.openQuizMenu()">
+        <span class="quiz-icon">🎮</span><span>בוא נשחק!</span>
+      </button>
+      <button class="btn-about" onclick="App.openAbout()">📖 אודות</button>
+    </div>
   </div>
 
-  <!-- ===== Category Screen ===== -->
+  <!-- ===== Category ===== -->
   <div id="screen-category" class="screen">
     <div class="top-bar">
-      <button class="btn-icon" onclick="App.goBack()" style="--cat-color: var(--cat-color)">←</button>
+      <button class="btn-icon" onclick="App.goBack()" style="--cat-color:var(--cat-color)">←</button>
       <h2 id="category-title" class="screen-title"></h2>
-      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color: var(--cat-color); --cat-color-light:#f1f5f9">🏠</button>
+      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color:var(--cat-color);--cat-color-light:#f1f5f9">🏠</button>
     </div>
     <div id="category-animals"></div>
   </div>
 
-  <!-- ===== Animal Detail Screen ===== -->
+  <!-- ===== Animal Detail ===== -->
   <div id="screen-animal" class="screen">
     <div class="top-bar">
-      <button class="btn-icon" onclick="App.goBack()" style="--cat-color: var(--cat-color)">←</button>
+      <button class="btn-icon" onclick="App.goBack()" style="--cat-color:var(--cat-color)">←</button>
       <h2 id="animal-title" class="screen-title"></h2>
-      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color: var(--cat-color); --cat-color-light:#f1f5f9">🏠</button>
+      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color:var(--cat-color);--cat-color-light:#f1f5f9">🏠</button>
     </div>
     <div class="animal-image-container">
-      <div class="img-wrapper">
-        <img id="animal-img" src="" alt="">
-      </div>
+      <div class="img-wrapper"><img id="animal-img" src="" alt=""></div>
     </div>
     <div id="animal-name-display" class="animal-name-display"></div>
     <div class="animal-actions">
       <button class="btn-nav" onclick="App.prevAnimal()">‹</button>
       <button id="btn-play-sound" class="btn-action" onclick="App.playAnimalSound()">🔊</button>
-      <button id="btn-tts" class="btn-action" style="border-color:#3B82F6;" onclick="App.speakAnimalName()">🗣️</button>
+      <button id="btn-tts" class="btn-action" style="border-color:#3B82F6" onclick="App.speakAnimalName()">🗣️</button>
       <button class="btn-nav" onclick="App.nextAnimal()">›</button>
     </div>
   </div>
@@ -490,30 +258,21 @@
     <div class="difficulty-buttons">
       <button class="btn-difficulty easy" onclick="App.startQuiz('easy')">
         <span class="diff-icon">🔍</span>
-        <span class="diff-info">
-          <span class="diff-label">איפה החיה? (קל)</span><br>
-          <span class="diff-desc">4 תמונות עם שמות</span>
-        </span>
+        <span class="diff-info"><span class="diff-label">איפה החיה? (קל)</span><br><span class="diff-desc">4 תמונות עם שמות</span></span>
       </button>
       <button class="btn-difficulty hard" onclick="App.startQuiz('hard')">
         <span class="diff-icon">🧠</span>
-        <span class="diff-info">
-          <span class="diff-label">איפה החיה? (מתקדם)</span><br>
-          <span class="diff-desc">תמונות בלבד, לפי צליל!</span>
-        </span>
+        <span class="diff-info"><span class="diff-label">איפה החיה? (מתקדם)</span><br><span class="diff-desc">תמונות בלבד, לפי צליל!</span></span>
       </button>
       <button class="btn-difficulty odd" onclick="App.startOddOne()">
         <span class="diff-icon">🧐</span>
-        <span class="diff-info">
-          <span class="diff-label">מה לא שייך?</span><br>
-          <span class="diff-desc">מצא את החיה ממשפחה אחרת</span>
-        </span>
+        <span class="diff-info"><span class="diff-label">מה לא שייך?</span><br><span class="diff-desc">מצא את החיה ממשפחה אחרת</span></span>
       </button>
     </div>
     <button class="btn-about" onclick="App.goBack()">◀ חזור</button>
   </div>
 
-  <!-- ===== Quiz Screen ===== -->
+  <!-- ===== Quiz ===== -->
   <div id="screen-quiz" class="screen">
     <div class="quiz-header">
       <button class="btn-icon" onclick="App.quitQuiz()">←</button>
@@ -525,7 +284,7 @@
     <div id="quiz-options" class="quiz-options"></div>
   </div>
 
-  <!-- ===== Odd One Out Screen ===== -->
+  <!-- ===== Odd One Out ===== -->
   <div id="screen-odd" class="screen">
     <div class="quiz-header">
       <button class="btn-icon" onclick="App.quitOddOne()">←</button>
@@ -537,7 +296,7 @@
     <div id="odd-options" class="quiz-options"></div>
   </div>
 
-  <!-- ===== About Screen ===== -->
+  <!-- ===== About ===== -->
   <div id="screen-about" class="screen">
     <div class="top-bar">
       <button class="btn-icon" onclick="App.goBack()">←</button>
@@ -547,370 +306,368 @@
     <div class="about-content">
       <h2>🦁 חיות 🐻</h2>
       <p class="about-subtitle">אפליקציה לגילוי חיות לקטנטנים</p>
+      <div class="about-card"><p>💛 נבנה באהבה למשפחת דביר<br>50 חיות עם תמונות, צלילים ומשחקי חידון!</p></div>
       <div class="about-card">
-        <p>💛 נבנה באהבה עבור הקטנטנים<br><br>
-        50 חיות מהעולם עם תמונות, צלילים ומשחקי חידון!</p>
-      </div>
-      <div class="about-card">
-        <p>✔️ 6 קטגוריות: חיות בית, חיות בר, עופות, ים, זוחלים, יונקים</p>
+        <p>✔️ 6 קטגוריות: בית, בר, עופות, ים, זוחלים, יונקים</p>
         <p>🎮 3 משחקים: קל, מתקדם, מה לא שייך</p>
-        <p>🔊 צלילים אמיתיים 🗣️ הקראת שמות</p>
+        <p>🔊 צלילים אמיתיים 🗣️ הקראת שמות אוטומטית</p>
       </div>
       <div class="about-card">
         <p style="font-weight:600">פותח על ידי עומר דביר</p>
-        <p style="color:#3B82F6; direction:ltr; unicode-bidi:embed;">omerdvir@gmail.com</p>
-        <p style="color:#94a3b8; font-size:13px;">2026 ©</p>
+        <p style="color:#3B82F6;direction:ltr;unicode-bidi:embed">omerdvir@gmail.com</p>
+        <p style="color:#94a3b8;font-size:13px">2026 ©</p>
       </div>
     </div>
   </div>
 
   <script>
-    // ===== Data =====
     const CATEGORIES = [
-      { id: "home",     name: "חיות בית",       color: "#F59E0B", colorLight: "#FEF3C7", bg: "#FFFBEB", emoji: "🏠", gradient: "linear-gradient(135deg, #FEF3C7, #FDE68A)" },
-      { id: "wild",     name: "חיות בר",        color: "#EF4444", colorLight: "#FEE2E2", bg: "#FFF5F5", emoji: "🌳", gradient: "linear-gradient(135deg, #FEE2E2, #FECACA)" },
-      { id: "birds",    name: "עופות",           color: "#3B82F6", colorLight: "#DBEAFE", bg: "#F0F7FF", emoji: "🦅", gradient: "linear-gradient(135deg, #DBEAFE, #BFDBFE)" },
-      { id: "sea",      name: "ים ודגים",        color: "#06B6D4", colorLight: "#CFFAFE", bg: "#F0FDFA", emoji: "🌊", gradient: "linear-gradient(135deg, #CFFAFE, #A5F3FC)" },
-      { id: "reptiles", name: "זוחלים ודוחיים",   color: "#8B5CF6", colorLight: "#EDE9FE", bg: "#F8F7FF", emoji: "🦎", gradient: "linear-gradient(135deg, #EDE9FE, #DDD6FE)" },
-      { id: "special",  name: "יונקים מיוחדים",  color: "#10B981", colorLight: "#D1FAE5", bg: "#F0FDF4", emoji: "🦒", gradient: "linear-gradient(135deg, #D1FAE5, #A7F3D0)" }
+      { id:"home",     name:"חיות בית",      color:"#F59E0B",colorLight:"#FEF3C7",bg:"#FFFBEB",emoji:"🏠",gradient:"linear-gradient(135deg,#FEF3C7,#FDE68A)" },
+      { id:"wild",     name:"חיות בר",       color:"#EF4444",colorLight:"#FEE2E2",bg:"#FFF5F5",emoji:"🌳",gradient:"linear-gradient(135deg,#FEE2E2,#FECACA)" },
+      { id:"birds",    name:"עופות",          color:"#3B82F6",colorLight:"#DBEAFE",bg:"#F0F7FF",emoji:"🦅",gradient:"linear-gradient(135deg,#DBEAFE,#BFDBFE)" },
+      { id:"sea",      name:"ים ודגים",       color:"#06B6D4",colorLight:"#CFFAFE",bg:"#F0FDFA",emoji:"🌊",gradient:"linear-gradient(135deg,#CFFAFE,#A5F3FC)" },
+      { id:"reptiles", name:"זוחלים ודוחיים",  color:"#8B5CF6",colorLight:"#EDE9FE",bg:"#F8F7FF",emoji:"🦎",gradient:"linear-gradient(135deg,#EDE9FE,#DDD6FE)" },
+      { id:"special",  name:"יונקים מיוחדים",  color:"#10B981",colorLight:"#D1FAE5",bg:"#F0FDF4",emoji:"🦒",gradient:"linear-gradient(135deg,#D1FAE5,#A7F3D0)" }
     ];
+
+    // Phonetic fixes for Hebrew TTS — browser speechSynthesis sometimes mispronounces without niqqud
+    const PHONETIC_MAP = {
+      "חמור":"חֲמוֹר",
+      "ג'ירפה":"גִ'ירָפָה",
+      "אווז":"אַוָּז",
+      "פיל":"פִּיל",
+      "טיגריס":"טִיגְרִיס",
+      "אריה":"אַרְיֵה",
+      "זאב":"זְאֵב",
+      "נמר":"נָמֵר",
+      "דוב":"דֹּב",
+      "שועל":"שׁוּעָל",
+      "חזיר בר":"חֲזִיר בַּר",
+      "קרנף":"קַרְנַף",
+      "זברה":"זֶבְּרָה",
+      "חתול":"חָתוּל",
+      "כלב":"כֶּלֶב",
+      "ארנב":"אַרְנָב",
+      "תרנגול":"תַּרְנְגוֹל",
+      "פרה":"פָּרָה",
+      "כבש":"כֶּבֶשׂ",
+      "סוס":"סוּס",
+      "ברווז":"בַּרְוָז",
+      "יונה":"יוֹנָה",
+      "תוכי":"תֻּכִּי",
+      "נשר":"נֶשֶׁר",
+      "ינשוף":"יַנְשׁוּף",
+      "טווס":"טַוָּס",
+      "דולפין":"דּוֹלְפִין",
+      "לוויתן":"לִוְיָתָן",
+      "כריש":"כָּרִישׁ",
+      "דג שונית":"דַּג שׁוּנִית",
+      "סוס ים":"סוּס יָם",
+      "צב ים":"צַב יָם",
+      "מדוזה":"מֶדוּזָה",
+      "תמנון":"תְּמָנוּן",
+      "סרטן":"סַרְטַן",
+      "נחש":"נָחָשׁ",
+      "צפרדע":"צְפַרְדֵעַ",
+      "צב":"צָב",
+      "איגואנה":"אִיגְוָאנָה",
+      "לטאה":"לְטָאָה",
+      "זיקית":"זִקִּית",
+      "גמל":"גָּמָל",
+      "קנגורו":"קֶנְגּוּרוּ",
+      "קואלה":"קוֹאָלָה",
+      "פנדה":"פַּנְדָּה",
+      "קוף":"קוֹף",
+      "דביבון":"דְּבִיבוֹן",
+      "סנאי":"סְנָאִי"
+    };
 
     let ANIMAL_DATA = null;
     let currentCategory = null;
     let currentAnimalIndex = 0;
     let currentAudio = null;
+    let ttsVoice = null;
     let quizScore = 0;
     let currentQuizQuestion = null;
     let currentDifficulty = 'easy';
     let oddOneScore = 0;
     let currentOddQuestion = null;
 
-    // ===== Audio =====
-    function stopAudio() {
-      if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null; }
-      document.querySelectorAll('.btn-action.playing').forEach(b => b.classList.remove('playing'));
-    }
+    function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+    function randInt(n){return Math.floor(Math.random()*n)}
 
-    function playSound(url, btnId) {
-      stopAudio();
-      const btn = document.getElementById(btnId);
-      if (btn) btn.classList.add('playing');
-      currentAudio = new Audio(url);
-      currentAudio.play().catch(() => {});
-      currentAudio.onended = () => {
-        if (btn) btn.classList.remove('playing');
-        currentAudio = null;
-      };
-    }
-
-    // ===== Helper =====
-    function shuffle(arr) { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
-    function randInt(n) { return Math.floor(Math.random() * n); }
-
-    // ===== App Controller =====
     const App = {
-      history: [],
-      currentScreen: 'home',
+      history:[], currentScreen:'home',
 
-      init() {
-        this.loadData().then(() => this.renderHome());
-        document.addEventListener("dblclick", e => e.preventDefault());
-
-        window.addEventListener("popstate", () => {
-          if (this.history.length > 0) {
-            const prev = this.history.pop();
-            this.showScreen(prev.screen, false);
-          } else this.showScreen("home", false);
+      async init(){
+        App.initTTS();
+        await App.loadData();
+        App.renderHome();
+        document.addEventListener("dblclick",e=>e.preventDefault());
+        window.addEventListener("popstate",()=>{
+          if(App.history.length>0){const p=App.history.pop();App.showScreen(p.screen,false)}
+          else App.showScreen("home",false)
         });
-
-        document.addEventListener("error", (e) => {
-          if (e.target.tagName === "IMG" && !e.target.dataset.fallback) {
-            e.target.dataset.fallback = "1";
-            e.target.style.background = "#f1f5f9";
-            e.target.style.minHeight = "80px";
-          }
-        }, true);
+        document.addEventListener("error",e=>{if(e.target.tagName==="IMG"&&!e.target.dataset.fallback){e.target.dataset.fallback="1";e.target.style.background="#f1f5f9";e.target.style.minHeight="80px"}},true);
       },
 
-      async loadData() {
-        try {
-          const res = await fetch('data.json');
-          ANIMAL_DATA = await res.json();
-        } catch (e) {
-          console.error('Error loading data:', e);
-          ANIMAL_DATA = { categories: [] };
+      initTTS(){
+        if(!('speechSynthesis' in window)) return;
+        const setVoice = () => {
+          const voices = speechSynthesis.getVoices();
+          ttsVoice = voices.find(v=>v.lang.startsWith('he')&&v.name.includes('Microsoft')) ||
+                     voices.find(v=>v.lang.startsWith('he')&&v.name.includes('Google')) ||
+                     voices.find(v=>v.lang.startsWith('he'));
+        };
+        setVoice();
+        speechSynthesis.onvoiceschanged = setVoice;
+      },
+
+      async loadData(){
+        try{const r=await fetch('data.json');ANIMAL_DATA=await r.json()}
+        catch(e){console.error(e);ANIMAL_DATA={categories:[]}}
+      },
+
+      showScreen(id,push=true){
+        document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+        const t=document.getElementById("screen-"+id);
+        if(t){t.classList.add("active");t.scrollTop=0}
+        if(push&&App.currentScreen&&App.currentScreen!==id){
+          App.history.push({screen:App.currentScreen});
+          window.history.pushState({screen:id},"")
         }
+        App.currentScreen=id;
       },
 
-      showScreen(screenId, pushHistory = true) {
-        document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-        const target = document.getElementById(`screen-${screenId}`);
-        if (target) { target.classList.add("active"); target.scrollTop = 0; }
-        if (pushHistory && this.currentScreen && this.currentScreen !== screenId) {
-          this.history.push({ screen: this.currentScreen });
-          window.history.pushState({ screen: screenId }, "");
-        }
-        this.currentScreen = screenId;
-        stopAudio();
+      goBack(){
+        if(App.history.length>0){const p=App.history.pop();App.showScreen(p.screen,false);window.history.back()}
+        else App.goHome()
       },
 
-      goBack() {
-        if (this.history.length > 0) {
-          const prev = this.history.pop();
-          this.showScreen(prev.screen, false);
-          window.history.back();
-        } else this.goHome();
+      goHome(){App.history=[];App.showScreen("home",false);window.history.pushState({screen:"home"},"")},
+
+      stopAudio(){if(currentAudio){currentAudio.pause();currentAudio.currentTime=0;currentAudio=null}document.querySelectorAll('.btn-action.playing').forEach(b=>b.classList.remove('playing'))},
+
+      /* ===== TTS (Phonetic-aware) ===== */
+      speak(text){
+        if(!('speechSynthesis' in window)) return;
+        speechSynthesis.cancel();
+        // Try phonetic version first
+        const phonetic = PHONETIC_MAP[text] || text;
+        const u = new SpeechSynthesisUtterance(phonetic);
+        u.lang = 'he-IL';
+        u.rate = 0.82;
+        u.pitch = 1.05;
+        u.volume = 1;
+        if(ttsVoice) u.voice = ttsVoice;
+        speechSynthesis.speak(u);
       },
 
-      goHome() { this.history = []; this.showScreen("home", false); window.history.pushState({ screen: "home" }, ""); },
+      /* ===== Home ===== */
+      renderHome(){
+        const g=document.getElementById("home-categories");
+        g.innerHTML="";
+        if(!ANIMAL_DATA) return;
+        ANIMAL_DATA.categories.forEach((c,i)=>{
+          const m=CATEGORIES[i]||CATEGORIES[0];
+          const b=document.createElement("button");
+          b.className="category-btn";
+          b.style.setProperty("--cat-color",m.color);
+          b.style.setProperty("--cat-bg",m.gradient);
+          b.innerHTML=`<div class="category-icon">${m.emoji}</div><div class="category-label">${c.name}</div><div class="category-count">${c.items.length} חיות</div>`;
+          b.addEventListener("click",()=>App.openCategory(i));
+          g.appendChild(b)
+        })
+      },
 
-      // ===== Home =====
-      renderHome() {
-        const grid = document.getElementById("home-categories");
-        grid.innerHTML = "";
-        if (!ANIMAL_DATA) return;
-        ANIMAL_DATA.categories.forEach((cat, idx) => {
-          const meta = CATEGORIES[idx] || CATEGORIES[0];
-          const btn = document.createElement("button");
-          btn.className = "category-btn";
-          btn.style.setProperty("--cat-color", meta.color);
-          btn.style.setProperty("--cat-bg", meta.gradient);
-          btn.innerHTML = `
-            <div class="category-icon">${meta.emoji}</div>
-            <div class="category-label">${cat.name}</div>
-            <div class="category-count">${cat.items.length} חיות</div>
-          `;
-          btn.addEventListener("click", () => this.openCategory(idx));
-          grid.appendChild(btn);
+      openCategory(ci){
+        if(!ANIMAL_DATA) return;
+        const c=ANIMAL_DATA.categories[ci], m=CATEGORIES[ci]||CATEGORIES[0];
+        currentCategory=ci;
+        document.getElementById("category-title").textContent=m.emoji+" "+c.name;
+        const sc=document.getElementById("screen-category");
+        sc.style.setProperty("--cat-color",m.color);sc.style.setProperty("--cat-bg",m.bg);
+        const g=document.getElementById("category-animals");g.innerHTML="";
+        c.items.forEach((a,i)=>{
+          const card=document.createElement("button");
+          card.className="animal-card";card.style.setProperty("--cat-color",m.color);
+          card.innerHTML=`<div class="animal-thumb"><img src="${a.image}" alt="${a.name}" loading="lazy"></div><span class="animal-label">${a.name}</span>`;
+          card.addEventListener("click",()=>App.openAnimal(i));
+          g.appendChild(card)
         });
+        App.showScreen("category");
+        setTimeout(()=>App.speak(c.name),400);
       },
 
-      // ===== Category =====
-      openCategory(catIdx) {
-        if (!ANIMAL_DATA) return;
-        const cat = ANIMAL_DATA.categories[catIdx];
-        const meta = CATEGORIES[catIdx] || CATEGORIES[0];
-        currentCategory = catIdx;
-        document.getElementById("category-title").textContent = `${meta.emoji} ${cat.name}`;
-        const screen = document.getElementById("screen-category");
-        screen.style.setProperty("--cat-color", meta.color);
-        screen.style.setProperty("--cat-bg", meta.bg);
-        const grid = document.getElementById("category-animals");
-        grid.innerHTML = "";
-        cat.items.forEach((animal, idx) => {
-          const card = document.createElement("button");
-          card.className = "animal-card";
-          card.style.setProperty("--cat-color", meta.color);
-          card.innerHTML = `
-            <div class="animal-thumb"><img src="${animal.image}" alt="${animal.name}" loading="lazy"></div>
-            <span class="animal-label">${animal.name}</span>
-          `;
-          card.addEventListener("click", () => this.openAnimal(idx));
-          grid.appendChild(card);
-        });
-        this.showScreen("category");
+      openAnimal(idx){
+        if(!ANIMAL_DATA||currentCategory===null) return;
+        currentAnimalIndex=idx;
+        App.updateAnimalScreen();
+        App.showScreen("animal");
+        setTimeout(()=>{
+          const a=ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
+          App.speak(a.name);
+        },500);
       },
 
-      // ===== Animal Detail =====
-      openAnimal(idx) {
-        if (!ANIMAL_DATA || currentCategory === null) return;
-        currentAnimalIndex = idx;
-        this.updateAnimalScreen();
-        this.showScreen("animal");
+      updateAnimalScreen(){
+        if(!ANIMAL_DATA||currentCategory===null) return;
+        const c=ANIMAL_DATA.categories[currentCategory],a=c.items[currentAnimalIndex],m=CATEGORIES[currentCategory]||CATEGORIES[0];
+        document.getElementById("animal-title").textContent=m.emoji+" "+a.name;
+        const sc=document.getElementById("screen-animal");
+        sc.style.setProperty("--cat-color",m.color);sc.style.setProperty("--cat-color-light",m.colorLight);sc.style.setProperty("--cat-bg",m.bg);
+        document.getElementById("animal-img").src=a.image;
+        document.getElementById("animal-name-display").textContent=a.name;
       },
 
-      updateAnimalScreen() {
-        if (!ANIMAL_DATA || currentCategory === null) return;
-        const cat = ANIMAL_DATA.categories[currentCategory];
-        const animal = cat.items[currentAnimalIndex];
-        const meta = CATEGORIES[currentCategory] || CATEGORIES[0];
-        document.getElementById("animal-title").textContent = `${meta.emoji} ${animal.name}`;
-        const screen = document.getElementById("screen-animal");
-        screen.style.setProperty("--cat-color", meta.color);
-        screen.style.setProperty("--cat-color-light", meta.colorLight);
-        screen.style.setProperty("--cat-bg", meta.bg);
-        document.getElementById("animal-img").src = animal.image;
-        document.getElementById("animal-img").alt = animal.name;
-        document.getElementById("animal-name-display").textContent = animal.name;
+      nextAnimal(){
+        if(!ANIMAL_DATA||currentCategory===null) return;
+        const c=ANIMAL_DATA.categories[currentCategory];
+        currentAnimalIndex=(currentAnimalIndex+1)%c.items.length;
+        App.updateAnimalScreen();
+        App.stopAudio();
+        const a=c.items[currentAnimalIndex];
+        setTimeout(()=>App.speak(a.name),300);
       },
 
-      nextAnimal() {
-        if (!ANIMAL_DATA || currentCategory === null) return;
-        const cat = ANIMAL_DATA.categories[currentCategory];
-        currentAnimalIndex = (currentAnimalIndex + 1) % cat.items.length;
-        this.updateAnimalScreen();
-        this.playAnimalSound();
+      prevAnimal(){
+        if(!ANIMAL_DATA||currentCategory===null) return;
+        const c=ANIMAL_DATA.categories[currentCategory];
+        currentAnimalIndex=(currentAnimalIndex-1+c.items.length)%c.items.length;
+        App.updateAnimalScreen();
+        App.stopAudio();
+        const a=c.items[currentAnimalIndex];
+        setTimeout(()=>App.speak(a.name),300);
       },
 
-      prevAnimal() {
-        if (!ANIMAL_DATA || currentCategory === null) return;
-        const cat = ANIMAL_DATA.categories[currentCategory];
-        currentAnimalIndex = (currentAnimalIndex - 1 + cat.items.length) % cat.items.length;
-        this.updateAnimalScreen();
-        this.playAnimalSound();
+      playAnimalSound(){
+        if(!ANIMAL_DATA||currentCategory===null) return;
+        const a=ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
+        App.playSoundUrl(a.sound,"btn-play-sound")
       },
 
-      playAnimalSound() {
-        if (!ANIMAL_DATA || currentCategory === null) return;
-        const animal = ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
-        playSound(animal.sound, "btn-play-sound");
+      speakAnimalName(){
+        if(!ANIMAL_DATA||currentCategory===null) return;
+        const a=ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
+        App.speak(a.name)
       },
 
-      speakAnimalName() {
-        if (!ANIMAL_DATA || currentCategory === null) return;
-        const animal = ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
-        if ('speechSynthesis' in window) {
-          window.speechSynthesis.cancel();
-          const utter = new SpeechSynthesisUtterance(animal.name);
-          utter.lang = 'he-IL'; utter.rate = 0.85; utter.pitch = 1.1;
-          window.speechSynthesis.speak(utter);
-        }
+      playSoundUrl(url,btnId){
+        App.stopAudio();
+        const btn=document.getElementById(btnId);
+        if(btn) btn.classList.add("playing");
+        currentAudio=new Audio(url);
+        currentAudio.play().catch(()=>{});
+        currentAudio.onended=()=>{if(btn)btn.classList.remove("playing");currentAudio=null}
       },
 
-      // ===== Quiz Menu =====
-      openQuizMenu() { this.showScreen("quiz-menu"); },
+      openQuizMenu(){App.showScreen("quiz-menu")},
 
-      // ===== Quiz =====
-      startQuiz(difficulty) {
-        currentDifficulty = difficulty;
-        quizScore = 0;
-        this.updateQuizScore();
-        this.nextQuizQuestion();
-        this.showScreen("quiz");
+      startQuiz(difficulty){
+        currentDifficulty=difficulty;quizScore=0;App.updateQuizScore();
+        App.nextQuizQuestion();App.showScreen("quiz")
       },
 
-      nextQuizQuestion() {
-        if (!ANIMAL_DATA) return;
-        const allAnimals = [];
-        ANIMAL_DATA.categories.forEach((cat, ci) => {
-          cat.items.forEach((item, ai) => allAnimals.push({ ...item, catIdx: ci, itemIdx: ai }));
-        });
-        const target = allAnimals[randInt(allAnimals.length)];
-        let distractors = allAnimals.filter(a => a.catIdx !== target.catIdx);
-        if (distractors.length < 3) distractors = allAnimals.filter(a => a.name !== target.name);
-        distractors = shuffle(distractors).slice(0, 3);
-        const options = shuffle([target, ...distractors]);
-        currentQuizQuestion = { target, options };
-
-        const promptEl = document.getElementById("quiz-prompt");
-        if (currentDifficulty === 'hard') {
-          promptEl.textContent = `🔊 איפה ה${target.name}?`;
-          if (target.sound) {
-            setTimeout(() => playSound(target.sound, null), 300);
-          }
-        } else {
-          promptEl.textContent = `🔍 איפה ה${target.name}?`;
-        }
-
-        const grid = document.getElementById("quiz-options");
-        grid.innerHTML = "";
-        options.forEach((opt, idx) => {
-          const btn = document.createElement("button");
-          btn.className = "quiz-option";
-          btn.innerHTML = `
-            <img src="${opt.image}" alt="${opt.name}" loading="lazy">
-            ${currentDifficulty === 'easy' ? `<span>${opt.name}</span>` : ''}
-          `;
-          btn.addEventListener("click", () => this.handleQuizAnswer(idx, btn));
-          grid.appendChild(btn);
-        });
+      nextQuizQuestion(){
+        if(!ANIMAL_DATA) return;
+        const all=[];
+        ANIMAL_DATA.categories.forEach((c,ci)=>c.items.forEach((i,ai)=>all.push({...i,catIdx:ci,itemIdx:ai})));
+        const t=all[randInt(all.length)];
+        let d=all.filter(a=>a.catIdx!==t.catIdx);
+        if(d.length<3) d=all.filter(a=>a.name!==t.name);
+        d=shuffle(d).slice(0,3);
+        const opts=shuffle([t,...d]);
+        currentQuizQuestion={target:t,options:opts};
+        document.getElementById("quiz-prompt").textContent=currentDifficulty==='hard'?`🔊 איפה ה${t.name}?`:`🔍 איפה ה${t.name}?`;
+        if(currentDifficulty==='hard'&&t.sound) setTimeout(()=>App.playSoundUrl(t.sound,null),300);
+        const g=document.getElementById("quiz-options");g.innerHTML="";
+        opts.forEach((o,i)=>{
+          const b=document.createElement("button");b.className="quiz-option";
+          b.innerHTML=`<img src="${o.image}" alt="${o.name}" loading="lazy">${currentDifficulty==='easy'?`<span>${o.name}</span>`:''}`;
+          b.addEventListener("click",()=>App.handleQuizAnswer(i,b));
+          g.appendChild(b)
+        })
       },
 
-      handleQuizAnswer(idx, btnElement) {
-        if (!currentQuizQuestion) return;
-        const { target, options } = currentQuizQuestion;
-        document.querySelectorAll("#quiz-options .quiz-option").forEach(b => b.style.pointerEvents = "none");
-        if (options[idx].name === target.name) {
-          btnElement.classList.add("correct");
-          quizScore++; this.updateQuizScore();
-          this.spawnConfetti(btnElement);
-          setTimeout(() => this.nextQuizQuestion(), 1500);
-        } else {
-          btnElement.classList.add("wrong");
-          document.querySelectorAll("#quiz-options .quiz-option").forEach((b, i) => {
-            if (options[i].name === target.name) setTimeout(() => b.classList.add("hint"), 400);
+      handleQuizAnswer(idx,el){
+        if(!currentQuizQuestion) return;
+        const {target,options}=currentQuizQuestion;
+        document.querySelectorAll("#quiz-options .quiz-option").forEach(b=>b.style.pointerEvents="none");
+        if(options[idx].name===target.name){
+          el.classList.add("correct");quizScore++;App.updateQuizScore();
+          App.spawnConfetti(el);App.speak(target.name);
+          setTimeout(()=>App.nextQuizQuestion(),1500)
+        }else{
+          el.classList.add("wrong");
+          document.querySelectorAll("#quiz-options .quiz-option").forEach((b,i)=>{
+            if(options[i].name===target.name) setTimeout(()=>b.classList.add("hint"),400)
           });
-          setTimeout(() => this.nextQuizQuestion(), 2000);
+          setTimeout(()=>App.nextQuizQuestion(),2000)
         }
       },
 
-      updateQuizScore() { document.getElementById("quiz-score").textContent = `⭐ ${quizScore}`; },
+      updateQuizScore(){document.getElementById("quiz-score").textContent=`⭐ ${quizScore}`},
+      quitQuiz(){App.stopAudio();App.goBack()},
 
-      quitQuiz() { stopAudio(); this.goBack(); },
-
-      // ===== Odd One Out =====
-      startOddOne() {
-        oddOneScore = 0; this.updateOddScore();
-        this.nextOddQuestion();
-        this.showScreen("odd");
+      startOddOne(){
+        oddOneScore=0;App.updateOddScore();
+        App.nextOddQuestion();App.showScreen("odd")
       },
 
-      nextOddQuestion() {
-        if (!ANIMAL_DATA || !ANIMAL_DATA.categories) return;
-        const cats = ANIMAL_DATA.categories;
-        if (cats.length < 2) return;
-        const mainCatIdx = randInt(cats.length);
-        let oddCatIdx = randInt(cats.length);
-        while (oddCatIdx === mainCatIdx) oddCatIdx = randInt(cats.length);
-        const mainItems = shuffle(cats[mainCatIdx].items).slice(0, 3).map(i => ({ ...i, catIdx: mainCatIdx, isOdd: false }));
-        const oddItem = { ...shuffle(cats[oddCatIdx].items)[0], catIdx: oddCatIdx, isOdd: true };
-        const options = shuffle([...mainItems, oddItem]);
-        currentOddQuestion = { options, oddIdx: options.findIndex(o => o.isOdd) };
-        document.getElementById("odd-prompt").textContent = "מצא את החיה שלא שייכת! 🤔";
-        const grid = document.getElementById("odd-options");
-        grid.innerHTML = "";
-        options.forEach((opt, idx) => {
-          const btn = document.createElement("button");
-          btn.className = "quiz-option";
-          btn.innerHTML = `<img src="${opt.image}" alt="${opt.name}" loading="lazy"><span>${opt.name}</span>`;
-          btn.addEventListener("click", () => this.handleOddAnswer(idx, btn));
-          grid.appendChild(btn);
-        });
+      nextOddQuestion(){
+        if(!ANIMAL_DATA||!ANIMAL_DATA.categories) return;
+        const cats=ANIMAL_DATA.categories;if(cats.length<2) return;
+        const mci=randInt(cats.length);let oci=randInt(cats.length);
+        while(oci===mci) oci=randInt(cats.length);
+        const mi=shuffle(cats[mci].items).slice(0,3).map(i=>({...i,catIdx:mci,isOdd:false}));
+        const oi={...shuffle(cats[oci].items)[0],catIdx:oci,isOdd:true};
+        const opts=shuffle([...mi,oi]);
+        currentOddQuestion={options:opts,oddIdx:opts.findIndex(o=>o.isOdd)};
+        document.getElementById("odd-prompt").textContent="מצא את החיה שלא שייכת! 🤔";
+        const g=document.getElementById("odd-options");g.innerHTML="";
+        opts.forEach((o,i)=>{
+          const b=document.createElement("button");b.className="quiz-option";
+          b.innerHTML=`<img src="${o.image}" alt="${o.name}" loading="lazy"><span>${o.name}</span>`;
+          b.addEventListener("click",()=>App.handleOddAnswer(i,b));
+          g.appendChild(b)
+        })
       },
 
-      handleOddAnswer(idx, btnElement) {
-        if (!currentOddQuestion) return;
-        document.querySelectorAll("#odd-options .quiz-option").forEach(b => b.style.pointerEvents = "none");
-        if (idx === currentOddQuestion.oddIdx) {
-          btnElement.classList.add("correct");
-          oddOneScore++; this.updateOddScore();
-          this.spawnConfetti(btnElement);
-          setTimeout(() => this.nextOddQuestion(), 1500);
-        } else {
-          btnElement.classList.add("wrong");
-          document.querySelectorAll("#odd-options .quiz-option").forEach((b, i) => {
-            if (i === currentOddQuestion.oddIdx) setTimeout(() => b.classList.add("hint"), 400);
+      handleOddAnswer(idx,el){
+        if(!currentOddQuestion) return;
+        document.querySelectorAll("#odd-options .quiz-option").forEach(b=>b.style.pointerEvents="none");
+        if(idx===currentOddQuestion.oddIdx){
+          el.classList.add("correct");oddOneScore++;App.updateOddScore();
+          App.spawnConfetti(el);
+          setTimeout(()=>App.nextOddQuestion(),1500)
+        }else{
+          el.classList.add("wrong");
+          document.querySelectorAll("#odd-options .quiz-option").forEach((b,i)=>{
+            if(i===currentOddQuestion.oddIdx) setTimeout(()=>b.classList.add("hint"),400)
           });
-          setTimeout(() => this.nextOddQuestion(), 2000);
+          setTimeout(()=>App.nextOddQuestion(),2000)
         }
       },
 
-      updateOddScore() { document.getElementById("odd-score").textContent = `⭐ ${oddOneScore}`; },
+      updateOddScore(){document.getElementById("odd-score").textContent=`⭐ ${oddOneScore}`},
+      quitOddOne(){App.goBack()},
 
-      quitOddOne() { this.goBack(); },
-
-      spawnConfetti(element) {
-        const rect = element.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
-        const colors = ["#F59E0B","#EF4444","#3B82F6","#10B981","#8B5CF6","#06B6D4","#F97316","#EC4899"];
-        for (let i = 0; i < 24; i++) {
-          const conf = document.createElement("div");
-          conf.className = "confetti";
-          conf.style.left = cx + "px"; conf.style.top = cy + "px";
-          conf.style.background = colors[randInt(colors.length)];
-          conf.style.width = (6 + Math.random() * 8) + "px";
-          conf.style.height = (6 + Math.random() * 8) + "px";
-          const angle = Math.random() * Math.PI * 2;
-          const dist = 80 + Math.random() * 140;
-          conf.style.setProperty("--tx", Math.cos(angle) * dist + "px");
-          conf.style.setProperty("--ty", Math.sin(angle) * dist + "px");
-          document.body.appendChild(conf);
-          setTimeout(() => conf.remove(), 800);
+      spawnConfetti(el){
+        const r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
+        const colors=["#F59E0B","#EF4444","#3B82F6","#10B981","#8B5CF6","#06B6D4","#F97316","#EC4899"];
+        for(let i=0;i<22;i++){
+          const c=document.createElement("div");c.className="confetti";
+          c.style.left=cx+"px";c.style.top=cy+"px";
+          c.style.background=colors[randInt(colors.length)];
+          c.style.width=c.style.height=(5+Math.random()*7)+"px";
+          const a=Math.random()*Math.PI*2,d=70+Math.random()*120;
+          c.style.setProperty("--tx",Math.cos(a)*d+"px");
+          c.style.setProperty("--ty",Math.sin(a)*d+"px");
+          document.body.appendChild(c);setTimeout(()=>c.remove(),800)
         }
       },
 
-      // ===== About =====
-      openAbout() { this.showScreen("about"); }
+      openAbout(){App.showScreen("about")}
     };
 
     App.init();
