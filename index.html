@@ -6,30 +6,45 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>מגלים את החיות - משחק לקטנטנים</title>
-  <meta name="description" content="50 חיות מהעולם עם תמונות, צלילים ומשחק חידון">
+  <title>מגלים את החיות 🦁 — משחק לקטנטנים</title>
+  <meta name="description" content="50 חיות מהעולם עם תמונות, צלילים ומשחק חידון — לקטנטנים">
   <meta name="theme-color" content="#10B981">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦁</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== Reset & Base ===== */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* ========== Reset & Base ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --radius: 20px;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,0.10);
+      --cat-home: #F59E0B;
+      --cat-wild: #EF4444;
+      --cat-birds: #3B82F6;
+      --cat-sea: #06B6D4;
+      --cat-reptiles: #8B5CF6;
+      --cat-special: #10B981;
+      --quiz: #10B981;
+      --quiz-light: #D1FAE5;
+      --quiz-dark: #065F46;
     }
 
     html, body {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       overflow: hidden;
       font-family: "Rubik", "Assistant", "Segoe UI", Arial, sans-serif;
       direction: rtl;
-      background: #FFF8F0;
-      color: #1a1a2e;
+      background: var(--bg);
+      color: var(--text);
       user-select: none;
       -webkit-user-select: none;
       -webkit-tap-highlight-color: transparent;
@@ -37,579 +52,412 @@
       overscroll-behavior: none;
     }
 
-    /* ===== Screens ===== */
+    /* ========== Screens ========== */
     .screen {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      inset: 0;
       overflow-y: auto;
       overflow-x: hidden;
     }
-
     .screen.active {
       display: flex;
       flex-direction: column;
-      animation: fadeIn 0.3s ease;
+      animation: fadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateX(-24px); }
+      to   { opacity: 1; transform: translateX(0); }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    /* ===== Top Bar ===== */
+    /* ========== Top Bar ========== */
     .top-bar {
-      display: flex;
-      align-items: center;
-      padding: 12px 16px;
-      gap: 12px;
-      flex-shrink: 0;
+      display: flex; align-items: center;
+      padding: 12px 16px; gap: 12px; flex-shrink: 0;
+      background: var(--surface);
     }
-
-    .btn-back, .btn-home {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      border: none;
-      background: var(--cat-color, #888);
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: transform 0.1s;
+    .btn-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%; border: none;
+      font-size: 24px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform 0.15s, background 0.15s;
+      background: var(--surface);
+      color: var(--cat-color, #64748B);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     }
-
-    .btn-back:active, .btn-home:active { transform: scale(0.9); }
-
+    .btn-icon:active { transform: scale(0.9); background: #f1f5f9; }
+    .btn-icon.home-icon { background: var(--cat-color-light, #f1f5f9); color: var(--cat-color, #64748B); }
     .screen-title {
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--cat-color, #333);
-      flex: 1;
-      text-align: center;
+      flex: 1; text-align: center;
+      font-size: clamp(20px, 5vw, 26px);
+      font-weight: 800; color: var(--cat-color, var(--text));
     }
 
-    /* ===== Home Screen ===== */
+    /* ========== Home Screen ========== */
     #screen-home {
-      justify-content: flex-start;
-      align-items: center;
-      padding: max(24px, env(safe-area-inset-top)) 20px 20px;
-      gap: 20px;
-      overflow-y: auto;
+      justify-content: center; align-items: center;
+      padding: max(16px, env(safe-area-inset-top)) 20px 20px;
+      gap: 18px;
+      background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
     }
-
-    .app-title {
-      font-size: clamp(28px, 8vw, 44px);
-      font-weight: 800;
-      color: #1a1a2e;
-      text-align: center;
-      margin-top: 10px;
-      line-height: 1.2;
+    .home-title {
+      font-size: clamp(32px, 9vw, 48px);
+      font-weight: 900; color: var(--text);
+      text-align: center; line-height: 1.2;
+      margin-top: 8px;
     }
-
+    .home-title .emoji { display: inline-block; animation: wiggle 2s infinite; }
+    .home-title .emoji:nth-child(2) { animation-delay: 0.3s; }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-8deg); }
+      75% { transform: rotate(8deg); }
+    }
 
     #home-categories {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      width: 100%;
-      max-width: 600px;
+      gap: 14px; width: 100%; max-width: 600px;
     }
-
-    @media (max-width: 360px) {
-      #home-categories { gap: 8px; }
-      .category-btn { min-height: 110px; padding: 10px 4px; }
-      .category-icon { width: 60px; height: 60px; }
-      .category-label { font-size: 18px; }
-      .btn-quiz-home { padding: 12px 24px; font-size: 20px; }
-    }
-
     .category-btn {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 16px 8px;
-      border: 4px solid var(--cat-color);
-      border-radius: 24px;
-      background: var(--cat-color-light);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; padding: 18px 12px;
+      border: none;
+      border-radius: var(--radius);
+      background: var(--cat-bg, var(--surface));
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
-      min-height: 140px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      min-height: 130px;
+      box-shadow: var(--shadow);
       overflow: hidden;
     }
-
+    .category-btn::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--cat-color)15, var(--cat-color)05);
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .category-btn:hover::before { opacity: 1; }
     .category-btn:active { transform: scale(0.95); }
-    .category-btn:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
-
     .category-icon {
-      width: 80px; height: 80px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-size: 52px;
+      line-height: 1;
+      position: relative; z-index: 1;
     }
-
-    .category-icon img {
-      width: 100%; height: 100%;
-      object-fit: contain;
-    }
-
     .category-label {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 18px; font-weight: 700;
       color: var(--cat-color);
+      position: relative; z-index: 1;
+    }
+    .category-count {
+      font-size: 13px; font-weight: 600;
+      color: var(--text-muted);
+      position: relative; z-index: 1;
     }
 
     .btn-quiz-home {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 16px 40px;
-      border: 4px solid #10B981;
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; padding: 16px 36px;
+      border: none;
       border-radius: 50px;
-      background: #D1FAE5;
-      color: #065F46;
-      font-size: 24px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.15s;
-      width: 100%;
-      max-width: 600px;
+      background: linear-gradient(135deg, #10B981, #059669);
+      color: white; font-size: 22px; font-weight: 800;
+      cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%; max-width: 600px;
       font-family: inherit;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
     }
-
     .btn-quiz-home:active { transform: scale(0.95); }
-    .btn-quiz-home .quiz-icon { font-size: 32px; }
+    .btn-quiz-home .quiz-icon { font-size: 28px; }
 
     .btn-about {
-      background: none;
-      border: none;
-      color: #9ca3af;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 8px 16px;
-      font-family: inherit;
+      background: none; border: none;
+      color: var(--text-muted); font-size: 15px;
+      font-weight: 600; cursor: pointer;
+      padding: 8px 16px; font-family: inherit;
+      transition: color 0.15s;
     }
+    .btn-about:hover { color: var(--text); }
 
-    .btn-about:active { color: #6b7280; }
-
-    /* ===== Category Screen ===== */
+    /* ========== Category Screen ========== */
+    #screen-category.active { background: var(--cat-bg, var(--bg)); }
     #category-animals {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      padding: 8px 16px 24px;
-      flex: 1;
+      gap: 10px; padding: 10px 14px 20px; flex: 1;
     }
-
     .animal-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      padding: 8px;
-      border: 3px solid #e5e7eb;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 4px;
+      padding: 8px 6px;
+      border: 2px solid #e2e8f0;
       border-radius: 16px;
-      background: white;
+      background: var(--surface);
       cursor: pointer;
-      transition: transform 0.15s, border-color 0.15s;
+      transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+      box-shadow: var(--shadow);
     }
-
-    .animal-card:active {
-      transform: scale(0.93);
+    .animal-card:hover {
       border-color: var(--cat-color);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
-
+    .animal-card:active { transform: scale(0.93); border-color: var(--cat-color); }
     .animal-thumb {
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #f9fafb;
+      width: 100%; aspect-ratio: 1;
+      border-radius: 12px; overflow: hidden;
+      background: #f8fafc;
     }
-
     .animal-thumb img {
-      width: 100%; height: 100%;
-      object-fit: contain;
+      width: 100%; height: 100%; object-fit: contain;
     }
-
     .animal-label {
-      font-size: 15px;
-      font-weight: 600;
-      color: #374151;
-      text-align: center;
+      font-size: 14px; font-weight: 700;
+      color: var(--text); text-align: center;
+      line-height: 1.2;
     }
 
-    /* ===== Animal Detail Screen ===== */
+    /* ========== Animal Detail ========== */
     #screen-animal.active {
       display: grid;
       grid-template-rows: auto 1fr auto;
-      height: 100%;
-      overflow: hidden;
+      height: 100%; overflow: hidden;
+      background: var(--cat-bg, var(--bg));
     }
-
     .animal-image-container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      min-height: 0;
-      overflow: hidden;
+      flex: 1; display: flex;
+      align-items: center; justify-content: center;
+      padding: 8px 12px; min-height: 0; overflow: hidden;
     }
-
     .animal-image-container .img-wrapper {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       max-height: 60vh;
-      border-radius: 20px;
-      overflow: hidden;
-      background: white;
-      border: 3px solid #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 20px; overflow: hidden;
+      background: var(--surface);
+      box-shadow: var(--shadow-lg);
+      display: flex; align-items: center; justify-content: center;
     }
-
     .animal-image-container img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+      max-width: 100%; max-height: 100%; object-fit: contain;
     }
-
     .animal-name-display {
       text-align: center;
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--cat-color, #333);
-      padding: 8px 16px;
-      flex-shrink: 0;
+      font-size: 28px; font-weight: 900;
+      color: var(--cat-color);
+      padding: 6px 16px; flex-shrink: 0;
     }
-
     .animal-actions {
-      display: flex;
-      gap: 12px;
+      display: flex; gap: 12px;
       padding: 10px 16px;
       padding-bottom: max(10px, env(safe-area-inset-bottom));
-      justify-content: center;
-      align-items: center;
+      justify-content: center; align-items: center;
       flex-shrink: 0;
-      background: #FFF8F0;
-      border-top: 2px solid #e5e7eb;
+      background: var(--surface);
+      border-top: 1px solid #e2e8f0;
     }
-
-    .btn-nav-animal {
-      width: 64px; height: 64px;
-      border-radius: 50%;
-      border: 3px solid #d1d5db;
-      background: white;
-      font-size: 32px;
-      font-weight: 700;
-      color: #6b7280;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.15s, border-color 0.15s;
-      font-family: inherit;
+    .btn-nav {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 2px solid #e2e8f0; background: var(--surface);
+      font-size: 28px; font-weight: 700; color: var(--text-muted);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: transform 0.15s, border-color 0.15s; font-family: inherit;
     }
-
-    .btn-nav-animal:active {
-      transform: scale(0.9);
-      border-color: var(--cat-color, #888);
-      color: var(--cat-color, #888);
-    }
-
+    .btn-nav:active { transform: scale(0.9); border-color: var(--cat-color); color: var(--cat-color); }
     .btn-action {
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      border: 4px solid var(--cat-color, #888);
-      background: white;
-      font-size: 36px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.15s, background 0.15s;
-      font-family: inherit;
+      width: 72px; height: 72px; border-radius: 50%;
+      border: 3px solid var(--cat-color);
+      background: var(--surface); font-size: 32px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: transform 0.15s, background 0.15s; font-family: inherit;
     }
-
     .btn-action:active { transform: scale(0.9); }
-
     .btn-action.playing {
-      background: var(--cat-color-light, #f3f4f6);
-      animation: pulse 1s infinite;
+      background: var(--cat-color-light);
+      animation: pulse 0.8s infinite;
     }
-
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.08); }
+      50% { transform: scale(1.1); }
     }
 
-    /* ===== Quiz Menu ===== */
-    #screen-quiz-menu {
-      justify-content: center;
-      align-items: center;
-      gap: 24px;
-      padding: 20px;
-    }
-
-    .quiz-menu-title {
-      font-size: 32px;
-      font-weight: 800;
-      color: #065F46;
-    }
-
-    .difficulty-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      width: 100%;
-      max-width: 400px;
-    }
-
+    /* ========== Quiz Menu ========== */
+    #screen-quiz-menu { justify-content: center; align-items: center; gap: 20px; padding: 20px; background: linear-gradient(180deg, #D1FAE5 0%, var(--bg) 100%); }
+    .quiz-menu-title { font-size: 30px; font-weight: 900; color: var(--quiz-dark); }
+    .quiz-subtitle { font-size: 17px; color: var(--text-muted); margin-top: -8px; }
+    .difficulty-buttons { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 420px; }
     .btn-difficulty {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 20px;
-      border: 4px solid #10B981;
-      border-radius: 20px;
-      background: #D1FAE5;
-      font-size: 26px;
-      font-weight: 700;
-      color: #065F46;
-      cursor: pointer;
-      transition: transform 0.15s;
+      display: flex; align-items: center; justify-content: flex-start;
+      gap: 16px; padding: 18px 24px;
+      border: none; border-radius: 18px;
+      background: var(--surface);
+      font-size: 24px; font-weight: 700;
+      cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
       font-family: inherit;
+      box-shadow: var(--shadow);
     }
-
-    .btn-difficulty:active { transform: scale(0.95); }
-
-    .btn-difficulty.hard {
-      border-color: #F59E0B;
-      background: #FEF3C7;
-      color: #92400E;
+    .btn-difficulty:active { transform: scale(0.96); }
+    .btn-difficulty .diff-icon {
+      font-size: 36px; width: 48px; text-align: center; flex-shrink: 0;
     }
+    .btn-difficulty .diff-info { text-align: right; }
+    .btn-difficulty .diff-label { font-size: 22px; color: var(--text); }
+    .btn-difficulty .diff-desc { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    .btn-difficulty.easy { border-left: 4px solid #10B981; }
+    .btn-difficulty.hard { border-left: 4px solid #F59E0B; }
+    .btn-difficulty.odd  { border-left: 4px solid #8B5CF6; }
 
-    /* ===== Quiz Screen ===== */
-    #screen-quiz {
-      padding: 16px;
-      gap: 12px;
+    /* ========== Quiz / Odd-One-Out ========== */
+    #screen-quiz, #screen-odd { background: #F0FDF4; }
+    .quiz-header {
+      display: flex; align-items: center; padding: 10px 14px;
+      gap: 10px; flex-shrink: 0;
     }
-
-    #quiz-prompt {
-      font-size: 30px;
-      font-weight: 800;
-      text-align: center;
-      padding: 12px;
-      color: #065F46;
+    .quiz-score {
+      font-size: 20px; font-weight: 800; color: #F59E0B;
+      background: #FEF3C7; padding: 6px 14px;
+      border-radius: 50px; border: 2px solid #F59E0B;
       flex-shrink: 0;
     }
-
-    #quiz-options {
+    .quiz-prompt {
+      font-size: 26px; font-weight: 800;
+      text-align: center; padding: 8px 16px;
+      color: var(--quiz-dark); flex-shrink: 0;
+    }
+    .quiz-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 10px;
-      flex: 1;
-      padding: 0 10px 10px;
-      min-height: 0;
+      gap: 8px;
+      flex: 1; padding: 4px 10px 10px; min-height: 0;
     }
-
     .quiz-option {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      padding: 6px;
-      border: 4px solid #e5e7eb;
-      border-radius: 20px;
-      background: white;
-      cursor: pointer;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 4px; padding: 6px;
+      border: 3px solid #e2e8f0; border-radius: 18px;
+      background: var(--surface); cursor: pointer;
       transition: transform 0.15s, border-color 0.15s;
-      overflow: hidden;
-      min-height: 0;
+      overflow: hidden; min-height: 0;
+      box-shadow: var(--shadow);
     }
-
     .quiz-option img {
-      width: 100%;
-      flex: 1;
-      min-height: 0;
-      object-fit: contain;
-      border-radius: 12px;
-      padding: 4px;
+      width: 100%; flex: 1; min-height: 0;
+      object-fit: contain; border-radius: 12px; padding: 2px;
     }
-
     .quiz-option span {
-      font-size: 20px;
-      font-weight: 700;
-      color: #374151;
-      flex-shrink: 0;
-      padding-bottom: 4px;
+      font-size: 18px; font-weight: 700;
+      color: var(--text); flex-shrink: 0; padding-bottom: 2px;
     }
-
     .quiz-option:active { transform: scale(0.95); }
-
     .quiz-option.correct {
-      border-color: #10B981;
-      background: #D1FAE5;
+      border-color: #10B981; background: #D1FAE5;
       animation: correctPop 0.5s ease;
     }
-
     @keyframes correctPop {
       0% { transform: scale(1); }
-      30% { transform: scale(1.08); }
+      40% { transform: scale(1.06); }
       100% { transform: scale(1); }
     }
-
     .quiz-option.wrong {
-      border-color: #EF4444;
-      background: #FEE2E2;
+      border-color: #EF4444; background: #FEE2E2;
       animation: shake 0.4s ease;
     }
-
     .quiz-option.hint {
       border-color: #10B981;
       box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3);
-      animation: hintPulse 0.6s ease 2;
+      animation: hintPulse 0.5s ease 2;
     }
-
     @keyframes hintPulse {
-      0%, 100% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3); }
-      50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.15); }
+      0%, 100% { box-shadow: 0 0 0 4px rgba(16,185,129,0.3); }
+      50% { box-shadow: 0 0 0 10px rgba(16,185,129,0.1); }
     }
-
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-8px); }
-      40% { transform: translateX(8px); }
-      60% { transform: translateX(-6px); }
-      80% { transform: translateX(6px); }
+      20% { transform: translateX(-6px); }
+      40% { transform: translateX(6px); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
     }
 
-    /* ===== Quiz Score ===== */
-    .quiz-score {
-      font-size: 22px;
-      font-weight: 800;
-      color: #F59E0B;
-      background: #FEF3C7;
-      padding: 6px 14px;
-      border-radius: 50px;
-      border: 3px solid #F59E0B;
-      flex-shrink: 0;
-      transition: transform 0.2s;
-    }
-
-    /* ===== Confetti ===== */
+    /* ========== Confetti ========== */
     .confetti {
-      position: fixed;
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      animation: confettiFly 1s ease forwards;
+      position: fixed; width: 8px; height: 8px; border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      animation: confettiFly 0.8s ease forwards;
     }
-
     @keyframes confettiFly {
       0% { transform: translate(0, 0) scale(1); opacity: 1; }
-      100% {
-        transform: translate(var(--tx), var(--ty)) scale(0);
-        opacity: 0;
-      }
+      100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
     }
 
-    /* ===== About Screen ===== */
+    /* ========== About ========== */
     .about-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      padding: 20px 24px 40px;
-      text-align: center;
-      overflow-y: auto;
-      flex: 1;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 16px;
+      padding: 16px 20px 40px; text-align: center;
+      overflow-y: auto; flex: 1;
     }
-
-    .about-content h2 {
-      font-size: 32px;
-      font-weight: 800;
-      color: #F59E0B;
+    .about-content h2 { font-size: 30px; font-weight: 900; color: #F59E0B; }
+    .about-subtitle { font-size: 18px; color: var(--text-muted); font-weight: 600; }
+    .about-card {
+      background: var(--surface); border-radius: 16px;
+      padding: 16px 20px; width: 100%; max-width: 520px;
+      box-shadow: var(--shadow); text-align: center;
     }
+    .about-card p { font-size: 16px; line-height: 1.7; color: var(--text); }
 
-    .about-subtitle {
-      font-size: 20px;
-      color: #6b7280;
-      font-weight: 600;
+    /* ========== Responsive ========== */
+    @media (max-width: 360px) {
+      #home-categories { gap: 8px; }
+      .category-btn { min-height: 110px; padding: 12px 4px; }
+      .category-icon { font-size: 40px; }
+      .category-label { font-size: 15px; }
+      .btn-quiz-home { padding: 14px 24px; font-size: 18px; }
     }
-
-    .about-section {
-      background: white;
-      border-radius: 16px;
-      padding: 16px 20px;
-      width: 100%;
-      max-width: 500px;
-      border: 2px solid #e5e7eb;
+    @media (min-width: 600px) {
+      #home-categories { gap: 16px; }
+      .category-btn { min-height: 150px; }
+      .category-icon { font-size: 64px; }
     }
-
-    .about-section p {
-      font-size: 17px;
-      line-height: 1.7;
-      color: #374151;
-    }
-
-    /* ===== Portrait Adjustments ===== */
-    @media (orientation: portrait) {
-      #category-animals { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* ===== Landscape Adjustments ===== */
     @media (orientation: landscape) {
-      #home-categories { max-width: 700px; }
-      .category-btn { flex-direction: row; min-height: 100px; padding: 12px 16px; }
       .animal-image-container .img-wrapper { max-height: 65vh; }
-      #quiz-options { max-height: calc(100vh - 140px); }
-      .quiz-option img { max-height: 30vh; }
+      .quiz-options { max-height: calc(100vh - 120px); }
+      .quiz-option img { max-height: 25vh; }
     }
-
-    /* ===== Large tablets ===== */
     @media (min-width: 900px) {
       #category-animals { grid-template-columns: repeat(4, 1fr); }
-      .app-title { font-size: 44px; }
+      #home-categories { max-width: 720px; }
     }
+
+    /* ========== Scrollbar ========== */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 2px; }
   </style>
 </head>
 <body>
 
   <!-- ===== Home Screen ===== -->
   <div id="screen-home" class="screen active">
-    <h1 class="app-title">🦁 מגלים את החיות 🐻</h1>
+    <h1 class="home-title">
+      <span class="emoji">🦁</span> חיות <span class="emoji">🐻</span>
+    </h1>
     <div id="home-categories"></div>
     <button class="btn-quiz-home" onclick="App.openQuizMenu()">
       <span class="quiz-icon">🎮</span>
       <span>בוא נשחק!</span>
     </button>
-    <button class="btn-about" onclick="App.openAbout()">אודות</button>
+    <button class="btn-about" onclick="App.openAbout()">📖 אודות</button>
   </div>
 
   <!-- ===== Category Screen ===== -->
   <div id="screen-category" class="screen">
     <div class="top-bar">
-      <button class="btn-back" onclick="App.goBack()">→</button>
+      <button class="btn-icon" onclick="App.goBack()" style="--cat-color: var(--cat-color)">←</button>
       <h2 id="category-title" class="screen-title"></h2>
-      <button class="btn-home" onclick="App.goHome()">🏠</button>
+      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color: var(--cat-color); --cat-color-light:#f1f5f9">🏠</button>
     </div>
     <div id="category-animals"></div>
   </div>
@@ -617,9 +465,9 @@
   <!-- ===== Animal Detail Screen ===== -->
   <div id="screen-animal" class="screen">
     <div class="top-bar">
-      <button class="btn-back" onclick="App.goBack()">→</button>
+      <button class="btn-icon" onclick="App.goBack()" style="--cat-color: var(--cat-color)">←</button>
       <h2 id="animal-title" class="screen-title"></h2>
-      <button class="btn-home" onclick="App.goHome()">🏠</button>
+      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color: var(--cat-color); --cat-color-light:#f1f5f9">🏠</button>
     </div>
     <div class="animal-image-container">
       <div class="img-wrapper">
@@ -628,79 +476,90 @@
     </div>
     <div id="animal-name-display" class="animal-name-display"></div>
     <div class="animal-actions">
-      <button class="btn-nav-animal" onclick="App.prevAnimal()">›</button>
+      <button class="btn-nav" onclick="App.prevAnimal()">‹</button>
       <button id="btn-play-sound" class="btn-action" onclick="App.playAnimalSound()">🔊</button>
       <button id="btn-tts" class="btn-action" style="border-color:#3B82F6;" onclick="App.speakAnimalName()">🗣️</button>
-      <button class="btn-nav-animal" onclick="App.nextAnimal()">‹</button>
+      <button class="btn-nav" onclick="App.nextAnimal()">›</button>
     </div>
   </div>
 
   <!-- ===== Quiz Menu ===== -->
   <div id="screen-quiz-menu" class="screen">
     <h2 class="quiz-menu-title">🎮 בחר משחק</h2>
+    <p class="quiz-subtitle">בוא נראה מי מכיר את כל החיות!</p>
     <div class="difficulty-buttons">
-      <button class="btn-difficulty" onclick="App.startQuiz('easy')">
-        <span>🔍</span>
-        <span>איפה החיה? (קל)</span>
+      <button class="btn-difficulty easy" onclick="App.startQuiz('easy')">
+        <span class="diff-icon">🔍</span>
+        <span class="diff-info">
+          <span class="diff-label">איפה החיה? (קל)</span><br>
+          <span class="diff-desc">4 תמונות עם שמות</span>
+        </span>
       </button>
       <button class="btn-difficulty hard" onclick="App.startQuiz('hard')">
-        <span>🧠</span>
-        <span>איפה החיה? (מתקדם)</span>
+        <span class="diff-icon">🧠</span>
+        <span class="diff-info">
+          <span class="diff-label">איפה החיה? (מתקדם)</span><br>
+          <span class="diff-desc">תמונות בלבד, לפי צליל!</span>
+        </span>
       </button>
-      <button class="btn-difficulty" style="border-color:#8B5CF6;background:#EDE9FE;color:#5B21B6;" onclick="App.startOddOne()">
-        <span>🧐</span>
-        <span>מה לא שייך?</span>
+      <button class="btn-difficulty odd" onclick="App.startOddOne()">
+        <span class="diff-icon">🧐</span>
+        <span class="diff-info">
+          <span class="diff-label">מה לא שייך?</span><br>
+          <span class="diff-desc">מצא את החיה ממשפחה אחרת</span>
+        </span>
       </button>
     </div>
-    <button class="btn-about" onclick="App.goBack()">חזור</button>
+    <button class="btn-about" onclick="App.goBack()">◀ חזור</button>
   </div>
 
   <!-- ===== Quiz Screen ===== -->
   <div id="screen-quiz" class="screen">
-    <div class="top-bar">
-      <button class="btn-back" onclick="App.quitQuiz()">→</button>
+    <div class="quiz-header">
+      <button class="btn-icon" onclick="App.quitQuiz()">←</button>
       <div id="quiz-score" class="quiz-score">⭐ 0</div>
-      <button class="btn-home" onclick="App.goHome()">🏠</button>
+      <div style="flex:1"></div>
+      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color-light:#f1f5f9">🏠</button>
     </div>
-    <div id="quiz-prompt"></div>
-    <div id="quiz-options"></div>
+    <div id="quiz-prompt" class="quiz-prompt"></div>
+    <div id="quiz-options" class="quiz-options"></div>
   </div>
 
   <!-- ===== Odd One Out Screen ===== -->
   <div id="screen-odd" class="screen">
-    <div class="top-bar">
-      <button class="btn-back" onclick="App.quitOddOne()">→</button>
+    <div class="quiz-header">
+      <button class="btn-icon" onclick="App.quitOddOne()">←</button>
       <div id="odd-score" class="quiz-score">⭐ 0</div>
-      <button class="btn-home" onclick="App.goHome()">🏠</button>
+      <div style="flex:1"></div>
+      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color-light:#f1f5f9">🏠</button>
     </div>
-    <div id="odd-prompt" style="font-size:30px;font-weight:800;text-align:center;padding:12px;color:#065F46;flex-shrink:0;">מצא את הזר!</div>
-    <div id="odd-options" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;flex:1;padding:0 10px 10px;min-height:0;"></div>
+    <div id="odd-prompt" class="quiz-prompt">מצא את הזר! 🤔</div>
+    <div id="odd-options" class="quiz-options"></div>
   </div>
 
   <!-- ===== About Screen ===== -->
   <div id="screen-about" class="screen">
     <div class="top-bar">
-      <button class="btn-back" onclick="App.goBack()">→</button>
-      <h2 class="screen-title" style="color:#F59E0B">אודות</h2>
-      <button class="btn-home" onclick="App.goHome()">🏠</button>
+      <button class="btn-icon" onclick="App.goBack()">←</button>
+      <h2 class="screen-title" style="color:#F59E0B">📖 אודות</h2>
+      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color-light:#f1f5f9">🏠</button>
     </div>
     <div class="about-content">
       <h2>🦁 חיות 🐻</h2>
       <p class="about-subtitle">אפליקציה לגילוי חיות לקטנטנים</p>
-      <div class="about-section">
+      <div class="about-card">
         <p>💛 נבנה באהבה עבור הקטנטנים<br><br>
-        50 חיות מהעולם עם תמונות וצלילים אמיתיים!</p>
+        50 חיות מהעולם עם תמונות, צלילים ומשחקי חידון!</p>
       </div>
-      <div class="about-section">
-        <p>נוצר בעזרת:</p>
-        <p>🎨 תמונות: Wikimedia Commons<br>
-        🎵 צלילים: YouTube + מקורות שונות<br>
-        💻 קוד ופיתוח: Claude + Hermes</p>
+      <div class="about-card">
+        <p>✔️ 6 קטגוריות: חיות בית, חיות בר, עופות, ים, זוחלים, יונקים</p>
+        <p>🎮 3 משחקים: קל, מתקדם, מה לא שייך</p>
+        <p>🔊 צלילים אמיתיים 🗣️ הקראת שמות</p>
       </div>
-      <div class="about-section">
-        <p>פותח על ידי עומר דביר</p>
+      <div class="about-card">
+        <p style="font-weight:600">פותח על ידי עומר דביר</p>
         <p style="color:#3B82F6; direction:ltr; unicode-bidi:embed;">omerdvir@gmail.com</p>
-        <p style="color:#9ca3af; font-size:14px;">2026 ©</p>
+        <p style="color:#94a3b8; font-size:13px;">2026 ©</p>
       </div>
     </div>
   </div>
@@ -708,12 +567,12 @@
   <script>
     // ===== Data =====
     const CATEGORIES = [
-      { id: "home", name: "חיות בית", color: "#F59E0B", colorLight: "#FEF3C7", emoji: "🏠" },
-      { id: "wild", name: "חיות בר", color: "#EF4444", colorLight: "#FEE2E2", emoji: "🌳" },
-      { id: "birds", name: "עופות", color: "#3B82F6", colorLight: "#DBEAFE", emoji: "🦂" },
-      { id: "sea", name: "ים ודגים", color: "#06B6D4", colorLight: "#CFFAFE", emoji: "🌊" },
-      { id: "reptiles", name: "זוחלים ודוחיים", color: "#8B5CF6", colorLight: "#EDE9FE", emoji: "🦎" },
-      { id: "special", name: "יונקים מיוחדים", color: "#10B981", colorLight: "#D1FAE5", emoji: "🦁" }
+      { id: "home",     name: "חיות בית",       color: "#F59E0B", colorLight: "#FEF3C7", bg: "#FFFBEB", emoji: "🏠", gradient: "linear-gradient(135deg, #FEF3C7, #FDE68A)" },
+      { id: "wild",     name: "חיות בר",        color: "#EF4444", colorLight: "#FEE2E2", bg: "#FFF5F5", emoji: "🌳", gradient: "linear-gradient(135deg, #FEE2E2, #FECACA)" },
+      { id: "birds",    name: "עופות",           color: "#3B82F6", colorLight: "#DBEAFE", bg: "#F0F7FF", emoji: "🦅", gradient: "linear-gradient(135deg, #DBEAFE, #BFDBFE)" },
+      { id: "sea",      name: "ים ודגים",        color: "#06B6D4", colorLight: "#CFFAFE", bg: "#F0FDFA", emoji: "🌊", gradient: "linear-gradient(135deg, #CFFAFE, #A5F3FC)" },
+      { id: "reptiles", name: "זוחלים ודוחיים",   color: "#8B5CF6", colorLight: "#EDE9FE", bg: "#F8F7FF", emoji: "🦎", gradient: "linear-gradient(135deg, #EDE9FE, #DDD6FE)" },
+      { id: "special",  name: "יונקים מיוחדים",  color: "#10B981", colorLight: "#D1FAE5", bg: "#F0FDF4", emoji: "🦒", gradient: "linear-gradient(135deg, #D1FAE5, #A7F3D0)" }
     ];
 
     let ANIMAL_DATA = null;
@@ -722,17 +581,13 @@
     let currentAudio = null;
     let quizScore = 0;
     let currentQuizQuestion = null;
-    let quizHistory = [];
+    let currentDifficulty = 'easy';
     let oddOneScore = 0;
     let currentOddQuestion = null;
 
     // ===== Audio =====
     function stopAudio() {
-      if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0;
-        currentAudio = null;
-      }
+      if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null; }
       document.querySelectorAll('.btn-action.playing').forEach(b => b.classList.remove('playing'));
     }
 
@@ -748,31 +603,31 @@
       };
     }
 
+    // ===== Helper =====
+    function shuffle(arr) { const a = [...arr]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+    function randInt(n) { return Math.floor(Math.random() * n); }
+
     // ===== App Controller =====
     const App = {
       history: [],
+      currentScreen: 'home',
 
       init() {
-        this.loadData().then(() => {
-          this.renderHome();
-        });
-
+        this.loadData().then(() => this.renderHome());
         document.addEventListener("dblclick", e => e.preventDefault());
 
         window.addEventListener("popstate", () => {
           if (this.history.length > 0) {
             const prev = this.history.pop();
             this.showScreen(prev.screen, false);
-          } else {
-            this.showScreen("home", false);
-          }
+          } else this.showScreen("home", false);
         });
 
         document.addEventListener("error", (e) => {
           if (e.target.tagName === "IMG" && !e.target.dataset.fallback) {
             e.target.dataset.fallback = "1";
-            e.target.style.opacity = "0.3";
-            e.target.alt = "🐾";
+            e.target.style.background = "#f1f5f9";
+            e.target.style.minHeight = "80px";
           }
         }, true);
       },
@@ -790,10 +645,7 @@
       showScreen(screenId, pushHistory = true) {
         document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
         const target = document.getElementById(`screen-${screenId}`);
-        if (target) {
-          target.classList.add("active");
-          target.scrollTop = 0;
-        }
+        if (target) { target.classList.add("active"); target.scrollTop = 0; }
         if (pushHistory && this.currentScreen && this.currentScreen !== screenId) {
           this.history.push({ screen: this.currentScreen });
           window.history.pushState({ screen: screenId }, "");
@@ -807,45 +659,28 @@
           const prev = this.history.pop();
           this.showScreen(prev.screen, false);
           window.history.back();
-        } else {
-          this.goHome();
-        }
+        } else this.goHome();
       },
 
-      goHome() {
-        this.history = [];
-        this.showScreen("home", false);
-        window.history.pushState({ screen: "home" }, "");
-      },
+      goHome() { this.history = []; this.showScreen("home", false); window.history.pushState({ screen: "home" }, ""); },
 
       // ===== Home =====
       renderHome() {
         const grid = document.getElementById("home-categories");
         grid.innerHTML = "";
-
         if (!ANIMAL_DATA) return;
-
         ANIMAL_DATA.categories.forEach((cat, idx) => {
-          const catMeta = CATEGORIES[idx] || CATEGORIES[0];
+          const meta = CATEGORIES[idx] || CATEGORIES[0];
           const btn = document.createElement("button");
           btn.className = "category-btn";
-          btn.style.setProperty("--cat-color", catMeta.color);
-          btn.style.setProperty("--cat-color-light", catMeta.colorLight);
-
-          // Use first animal image as category thumbnail
-          const firstImg = cat.items[0]?.image || "";
-
+          btn.style.setProperty("--cat-color", meta.color);
+          btn.style.setProperty("--cat-bg", meta.gradient);
           btn.innerHTML = `
-            <div class="category-icon">
-              <img src="${firstImg}" alt="${cat.name}" loading="lazy" onerror="this.parentElement.innerHTML='<span style=font-size:48px>${catMeta.emoji}</span>'">
-            </div>
-            <span class="category-label">${cat.name}</span>
+            <div class="category-icon">${meta.emoji}</div>
+            <div class="category-label">${cat.name}</div>
+            <div class="category-count">${cat.items.length} חיות</div>
           `;
-
-          btn.addEventListener("click", () => {
-            this.openCategory(idx);
-          });
-
+          btn.addEventListener("click", () => this.openCategory(idx));
           grid.appendChild(btn);
         });
       },
@@ -854,30 +689,25 @@
       openCategory(catIdx) {
         if (!ANIMAL_DATA) return;
         const cat = ANIMAL_DATA.categories[catIdx];
-        const catMeta = CATEGORIES[catIdx] || CATEGORIES[0];
+        const meta = CATEGORIES[catIdx] || CATEGORIES[0];
         currentCategory = catIdx;
-
-        document.getElementById("category-title").textContent = cat.name;
-        document.getElementById("screen-category").style.setProperty("--cat-color", catMeta.color);
-
+        document.getElementById("category-title").textContent = `${meta.emoji} ${cat.name}`;
+        const screen = document.getElementById("screen-category");
+        screen.style.setProperty("--cat-color", meta.color);
+        screen.style.setProperty("--cat-bg", meta.bg);
         const grid = document.getElementById("category-animals");
         grid.innerHTML = "";
-
         cat.items.forEach((animal, idx) => {
           const card = document.createElement("button");
           card.className = "animal-card";
+          card.style.setProperty("--cat-color", meta.color);
           card.innerHTML = `
-            <div class="animal-thumb">
-              <img src="${animal.image}" alt="${animal.name}" loading="lazy">
-            </div>
+            <div class="animal-thumb"><img src="${animal.image}" alt="${animal.name}" loading="lazy"></div>
             <span class="animal-label">${animal.name}</span>
           `;
-          card.addEventListener("click", () => {
-            this.openAnimal(idx);
-          });
+          card.addEventListener("click", () => this.openAnimal(idx));
           grid.appendChild(card);
         });
-
         this.showScreen("category");
       },
 
@@ -893,11 +723,12 @@
         if (!ANIMAL_DATA || currentCategory === null) return;
         const cat = ANIMAL_DATA.categories[currentCategory];
         const animal = cat.items[currentAnimalIndex];
-        const catMeta = CATEGORIES[currentCategory] || CATEGORIES[0];
-
-        document.getElementById("animal-title").textContent = animal.name;
-        document.getElementById("screen-animal").style.setProperty("--cat-color", catMeta.color);
-        document.getElementById("screen-animal").style.setProperty("--cat-color-light", catMeta.colorLight);
+        const meta = CATEGORIES[currentCategory] || CATEGORIES[0];
+        document.getElementById("animal-title").textContent = `${meta.emoji} ${animal.name}`;
+        const screen = document.getElementById("screen-animal");
+        screen.style.setProperty("--cat-color", meta.color);
+        screen.style.setProperty("--cat-color-light", meta.colorLight);
+        screen.style.setProperty("--cat-bg", meta.bg);
         document.getElementById("animal-img").src = animal.image;
         document.getElementById("animal-img").alt = animal.name;
         document.getElementById("animal-name-display").textContent = animal.name;
@@ -931,64 +762,54 @@
         if ('speechSynthesis' in window) {
           window.speechSynthesis.cancel();
           const utter = new SpeechSynthesisUtterance(animal.name);
-          utter.lang = 'he-IL';
-          utter.rate = 0.9;
-          utter.pitch = 1.1;
+          utter.lang = 'he-IL'; utter.rate = 0.85; utter.pitch = 1.1;
           window.speechSynthesis.speak(utter);
         }
       },
 
       // ===== Quiz Menu =====
-      openQuizMenu() {
-        this.showScreen("quiz-menu");
-      },
+      openQuizMenu() { this.showScreen("quiz-menu"); },
 
       // ===== Quiz =====
       startQuiz(difficulty) {
+        currentDifficulty = difficulty;
         quizScore = 0;
         this.updateQuizScore();
-        this.nextQuizQuestion(difficulty);
+        this.nextQuizQuestion();
         this.showScreen("quiz");
       },
 
-      nextQuizQuestion(difficulty) {
+      nextQuizQuestion() {
         if (!ANIMAL_DATA) return;
-
-        // Pick random animal
         const allAnimals = [];
         ANIMAL_DATA.categories.forEach((cat, ci) => {
-          cat.items.forEach((item, ai) => {
-            allAnimals.push({ ...item, catIdx: ci, itemIdx: ai });
-          });
+          cat.items.forEach((item, ai) => allAnimals.push({ ...item, catIdx: ci, itemIdx: ai }));
         });
-
-        const target = allAnimals[Math.floor(Math.random() * allAnimals.length)];
-
-        // Pick 3 distractors from different category if possible
+        const target = allAnimals[randInt(allAnimals.length)];
         let distractors = allAnimals.filter(a => a.catIdx !== target.catIdx);
-        if (distractors.length < 3) {
-          distractors = allAnimals.filter(a => a.name !== target.name);
+        if (distractors.length < 3) distractors = allAnimals.filter(a => a.name !== target.name);
+        distractors = shuffle(distractors).slice(0, 3);
+        const options = shuffle([target, ...distractors]);
+        currentQuizQuestion = { target, options };
+
+        const promptEl = document.getElementById("quiz-prompt");
+        if (currentDifficulty === 'hard') {
+          promptEl.textContent = `🔊 איפה ה${target.name}?`;
+          if (target.sound) {
+            setTimeout(() => playSound(target.sound, null), 300);
+          }
+        } else {
+          promptEl.textContent = `🔍 איפה ה${target.name}?`;
         }
-
-        // Shuffle and pick 3
-        distractors = distractors.sort(() => Math.random() - 0.5).slice(0, 3);
-
-        // Combine and shuffle
-        const options = [target, ...distractors].sort(() => Math.random() - 0.5);
-
-        currentQuizQuestion = { target, options, difficulty };
-
-        document.getElementById("quiz-prompt").textContent = `איפה ה${target.name}?`;
 
         const grid = document.getElementById("quiz-options");
         grid.innerHTML = "";
-
         options.forEach((opt, idx) => {
           const btn = document.createElement("button");
           btn.className = "quiz-option";
           btn.innerHTML = `
             <img src="${opt.image}" alt="${opt.name}" loading="lazy">
-            <span>${opt.name}</span>
+            ${currentDifficulty === 'easy' ? `<span>${opt.name}</span>` : ''}
           `;
           btn.addEventListener("click", () => this.handleQuizAnswer(idx, btn));
           grid.appendChild(btn);
@@ -997,72 +818,29 @@
 
       handleQuizAnswer(idx, btnElement) {
         if (!currentQuizQuestion) return;
-        const { target, options, difficulty } = currentQuizQuestion;
-        const chosen = options[idx];
-
-        // Disable all options
-        document.querySelectorAll(".quiz-option").forEach(b => b.style.pointerEvents = "none");
-
-        if (chosen.name === target.name) {
-          // Correct!
+        const { target, options } = currentQuizQuestion;
+        document.querySelectorAll("#quiz-options .quiz-option").forEach(b => b.style.pointerEvents = "none");
+        if (options[idx].name === target.name) {
           btnElement.classList.add("correct");
-          quizScore++;
-          this.updateQuizScore();
+          quizScore++; this.updateQuizScore();
           this.spawnConfetti(btnElement);
-
-          setTimeout(() => {
-            this.nextQuizQuestion(difficulty);
-          }, 1500);
+          setTimeout(() => this.nextQuizQuestion(), 1500);
         } else {
-          // Wrong
           btnElement.classList.add("wrong");
-
-          // Highlight correct answer
-          document.querySelectorAll(".quiz-option").forEach((b, i) => {
-            if (options[i].name === target.name) {
-              setTimeout(() => b.classList.add("hint"), 400);
-            }
+          document.querySelectorAll("#quiz-options .quiz-option").forEach((b, i) => {
+            if (options[i].name === target.name) setTimeout(() => b.classList.add("hint"), 400);
           });
-
-          setTimeout(() => {
-            this.nextQuizQuestion(difficulty);
-          }, 2000);
+          setTimeout(() => this.nextQuizQuestion(), 2000);
         }
       },
 
-      updateQuizScore() {
-        document.getElementById("quiz-score").textContent = `⭐ ${quizScore}`;
-      },
+      updateQuizScore() { document.getElementById("quiz-score").textContent = `⭐ ${quizScore}`; },
 
-      spawnConfetti(element) {
-        const rect = element.getBoundingClientRect();
-        const cx = rect.left + rect.width / 2;
-        const cy = rect.top + rect.height / 2;
-        const colors = ["#F59E0B", "#EF4444", "#3B82F6", "#10B981", "#8B5CF6", "#06B6D4"];
-
-        for (let i = 0; i < 20; i++) {
-          const conf = document.createElement("div");
-          conf.className = "confetti";
-          conf.style.left = cx + "px";
-          conf.style.top = cy + "px";
-          conf.style.background = colors[Math.floor(Math.random() * colors.length)];
-          const angle = Math.random() * Math.PI * 2;
-          const dist = 80 + Math.random() * 120;
-          conf.style.setProperty("--tx", Math.cos(angle) * dist + "px");
-          conf.style.setProperty("--ty", Math.sin(angle) * dist + "px");
-          document.body.appendChild(conf);
-          setTimeout(() => conf.remove(), 1000);
-        }
-      },
-
-      quitQuiz() {
-        this.goBack();
-      },
+      quitQuiz() { stopAudio(); this.goBack(); },
 
       // ===== Odd One Out =====
       startOddOne() {
-        oddOneScore = 0;
-        this.updateOddScore();
+        oddOneScore = 0; this.updateOddScore();
         this.nextOddQuestion();
         this.showScreen("odd");
       },
@@ -1071,37 +849,20 @@
         if (!ANIMAL_DATA || !ANIMAL_DATA.categories) return;
         const cats = ANIMAL_DATA.categories;
         if (cats.length < 2) return;
-
-        // Pick main category and odd category
-        const mainCatIdx = Math.floor(Math.random() * cats.length);
-        let oddCatIdx = Math.floor(Math.random() * cats.length);
-        while (oddCatIdx === mainCatIdx) {
-          oddCatIdx = Math.floor(Math.random() * cats.length);
-        }
-
-        const mainCat = cats[mainCatIdx];
-        const oddCat = cats[oddCatIdx];
-
-        // Pick 3 from main, 1 from odd
-        const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
-        const mainItems = shuffle(mainCat.items).slice(0, 3).map(i => ({ ...i, catIdx: mainCatIdx, isOdd: false }));
-        const oddItem = { ...shuffle(oddCat.items)[0], catIdx: oddCatIdx, isOdd: true };
-
+        const mainCatIdx = randInt(cats.length);
+        let oddCatIdx = randInt(cats.length);
+        while (oddCatIdx === mainCatIdx) oddCatIdx = randInt(cats.length);
+        const mainItems = shuffle(cats[mainCatIdx].items).slice(0, 3).map(i => ({ ...i, catIdx: mainCatIdx, isOdd: false }));
+        const oddItem = { ...shuffle(cats[oddCatIdx].items)[0], catIdx: oddCatIdx, isOdd: true };
         const options = shuffle([...mainItems, oddItem]);
         currentOddQuestion = { options, oddIdx: options.findIndex(o => o.isOdd) };
-
-        document.getElementById("odd-prompt").textContent = "מה לא שייך? 🤔";
-
+        document.getElementById("odd-prompt").textContent = "מצא את החיה שלא שייכת! 🤔";
         const grid = document.getElementById("odd-options");
         grid.innerHTML = "";
-
         options.forEach((opt, idx) => {
           const btn = document.createElement("button");
           btn.className = "quiz-option";
-          btn.innerHTML = `
-            <img src="${opt.image}" alt="${opt.name}" loading="lazy">
-            <span>${opt.name}</span>
-          `;
+          btn.innerHTML = `<img src="${opt.image}" alt="${opt.name}" loading="lazy"><span>${opt.name}</span>`;
           btn.addEventListener("click", () => this.handleOddAnswer(idx, btn));
           grid.appendChild(btn);
         });
@@ -1109,40 +870,49 @@
 
       handleOddAnswer(idx, btnElement) {
         if (!currentOddQuestion) return;
-        const { options, oddIdx } = currentOddQuestion;
-
         document.querySelectorAll("#odd-options .quiz-option").forEach(b => b.style.pointerEvents = "none");
-
-        if (idx === oddIdx) {
+        if (idx === currentOddQuestion.oddIdx) {
           btnElement.classList.add("correct");
-          oddOneScore++;
-          this.updateOddScore();
+          oddOneScore++; this.updateOddScore();
           this.spawnConfetti(btnElement);
           setTimeout(() => this.nextOddQuestion(), 1500);
         } else {
           btnElement.classList.add("wrong");
           document.querySelectorAll("#odd-options .quiz-option").forEach((b, i) => {
-            if (i === oddIdx) setTimeout(() => b.classList.add("hint"), 400);
+            if (i === currentOddQuestion.oddIdx) setTimeout(() => b.classList.add("hint"), 400);
           });
           setTimeout(() => this.nextOddQuestion(), 2000);
         }
       },
 
-      updateOddScore() {
-        document.getElementById("odd-score").textContent = `⭐ ${oddOneScore}`;
-      },
+      updateOddScore() { document.getElementById("odd-score").textContent = `⭐ ${oddOneScore}`; },
 
-      quitOddOne() {
-        this.goBack();
+      quitOddOne() { this.goBack(); },
+
+      spawnConfetti(element) {
+        const rect = element.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2, cy = rect.top + rect.height / 2;
+        const colors = ["#F59E0B","#EF4444","#3B82F6","#10B981","#8B5CF6","#06B6D4","#F97316","#EC4899"];
+        for (let i = 0; i < 24; i++) {
+          const conf = document.createElement("div");
+          conf.className = "confetti";
+          conf.style.left = cx + "px"; conf.style.top = cy + "px";
+          conf.style.background = colors[randInt(colors.length)];
+          conf.style.width = (6 + Math.random() * 8) + "px";
+          conf.style.height = (6 + Math.random() * 8) + "px";
+          const angle = Math.random() * Math.PI * 2;
+          const dist = 80 + Math.random() * 140;
+          conf.style.setProperty("--tx", Math.cos(angle) * dist + "px");
+          conf.style.setProperty("--ty", Math.sin(angle) * dist + "px");
+          document.body.appendChild(conf);
+          setTimeout(() => conf.remove(), 800);
+        }
       },
 
       // ===== About =====
-      openAbout() {
-        this.showScreen("about");
-      }
+      openAbout() { this.showScreen("about"); }
     };
 
-    // Init
     App.init();
   </script>
 </body>

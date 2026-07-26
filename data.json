@@ -40,9 +40,9 @@
           "sound": "sounds/ברווז.mp3"
         },
         {
-          "name": "אוז",
-          "image": "images/אוז.jpg",
-          "sound": "sounds/אוז.mp3"
+          "name": "אווז",
+          "image": "images/אווז.jpg",
+          "sound": "sounds/אווז.mp3"
         },
         {
           "name": "עז",
@@ -95,9 +95,9 @@
           "sound": "sounds/חזיר_בר.mp3"
         },
         {
-          "name": "קרניף",
-          "image": "images/קרניף.jpg",
-          "sound": "sounds/קרניף.mp3"
+          "name": "קרנף",
+          "image": "images/קרנף.jpg",
+          "sound": "sounds/קרנף.mp3"
         },
         {
           "name": "פיל",
@@ -195,9 +195,9 @@
           "sound": "sounds/תמנון.mp3"
         },
         {
-          "name": "תלולית",
-          "image": "images/תלולית.jpg",
-          "sound": "sounds/תלולית.mp3"
+          "name": "סרטן",
+          "image": "images/סרטן.jpg",
+          "sound": "sounds/סרטן.mp3"
         }
       ]
     },
@@ -240,7 +240,7 @@
       "name": "יונקים מיוחדים",
       "items": [
         {
-          "name": "ג'ירפה",
+          "name": "גירפה",
           "image": "images/גירפה.jpg",
           "sound": "sounds/גירפה.mp3"
         },
