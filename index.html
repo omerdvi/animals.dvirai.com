@@ -449,19 +449,19 @@
       stopAudio(){if(currentAudio){currentAudio.pause();currentAudio.currentTime=0;currentAudio=null}document.querySelectorAll('.btn-action.playing').forEach(b=>b.classList.remove('playing'))},
 
       /* ===== TTS (Phonetic-aware) ===== */
-      speak(text){
-        if(!('speechSynthesis' in window)) return;
-        speechSynthesis.cancel();
-        // Try phonetic version first
-        const phonetic = PHONETIC_MAP[text] || text;
-        const u = new SpeechSynthesisUtterance(phonetic);
-        u.lang = 'he-IL';
-        u.rate = 0.82;
-        u.pitch = 1.05;
-        u.volume = 1;
-        if(ttsVoice) u.voice = ttsVoice;
-        speechSynthesis.speak(u);
-      },
+      speak(text, onEnd){
+              if(!('speechSynthesis' in window)){ if(onEnd) onEnd(); return; }
+              speechSynthesis.cancel();
+              const phonetic = PHONETIC_MAP[text] || text;
+              const u = new SpeechSynthesisUtterance(phonetic);
+              u.lang = 'he-IL';
+              u.rate = 0.82;
+              u.pitch = 1.05;
+              u.volume = 1;
+              if(ttsVoice) u.voice = ttsVoice;
+              if(onEnd) u.onend = onEnd;
+              speechSynthesis.speak(u);
+            },
 
       /* ===== Home ===== */
       renderHome(){
@@ -504,10 +504,10 @@
         currentAnimalIndex=idx;
         App.updateAnimalScreen();
         App.showScreen("animal");
-        setTimeout(()=>{
-          const a=ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
-          App.speak(a.name);
-        },500);
+                setTimeout(()=>{
+                  const a=ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
+                  App.speak(a.name, ()=>{ App.playSoundUrl(a.sound, "btn-play-sound"); });
+                },500);
       },
 
       updateAnimalScreen(){
@@ -526,18 +526,18 @@
         currentAnimalIndex=(currentAnimalIndex+1)%c.items.length;
         App.updateAnimalScreen();
         App.stopAudio();
-        const a=c.items[currentAnimalIndex];
-        setTimeout(()=>App.speak(a.name),300);
-      },
+                const a=c.items[currentAnimalIndex];
+                setTimeout(()=>App.speak(a.name, ()=>{ App.playSoundUrl(a.sound, "btn-play-sound"); }),300);
+              },
 
-      prevAnimal(){
-        if(!ANIMAL_DATA||currentCategory===null) return;
-        const c=ANIMAL_DATA.categories[currentCategory];
-        currentAnimalIndex=(currentAnimalIndex-1+c.items.length)%c.items.length;
-        App.updateAnimalScreen();
-        App.stopAudio();
-        const a=c.items[currentAnimalIndex];
-        setTimeout(()=>App.speak(a.name),300);
+              prevAnimal(){
+                if(!ANIMAL_DATA||currentCategory===null) return;
+                const c=ANIMAL_DATA.categories[currentCategory];
+                currentAnimalIndex=(currentAnimalIndex-1+c.items.length)%c.items.length;
+                App.updateAnimalScreen();
+                App.stopAudio();
+                const a=c.items[currentAnimalIndex];
+                setTimeout(()=>App.speak(a.name, ()=>{ App.playSoundUrl(a.sound, "btn-play-sound"); }),300);
       },
 
       playAnimalSound(){
