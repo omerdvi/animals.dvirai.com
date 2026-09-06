@@ -86,7 +86,7 @@
         },
         {
           "name": "שועל",
-          "image": "images/שועל.jpg",
+          "image": "images/fox-reviewed.jpg",
           "sound": "sounds/שועל.mp3"
         },
         {
@@ -96,7 +96,7 @@
         },
         {
           "name": "קרנף",
-          "image": "images/קרנף.jpg",
+          "image": "images/rhino-reviewed.jpg",
           "sound": "sounds/קרנף.mp3"
         },
         {
@@ -116,7 +116,7 @@
       "items": [
         {
           "name": "נשר",
-          "image": "images/נשר.jpg",
+          "image": "images/vulture-reviewed.jpg",
           "sound": "sounds/נשר.mp3"
         },
         {
@@ -216,7 +216,7 @@
         },
         {
           "name": "צב",
-          "image": "images/צב.jpg",
+          "image": "images/tortoise-reviewed.jpg",
           "sound": "sounds/צב.mp3"
         },
         {
@@ -276,7 +276,7 @@
         },
         {
           "name": "צבי",
-          "image": "images/צבי.jpg",
+          "image": "images/gazelle-reviewed.jpg",
           "sound": "sounds/צבי.mp3"
         }
       ]

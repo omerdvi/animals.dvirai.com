@@ -2,7 +2,7 @@
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
@@ -206,7 +206,112 @@
     ::-webkit-scrollbar{width:4px}
     ::-webkit-scrollbar-track{background:transparent}
     ::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
-  </style>
+
+/* UX review: readable controls, complete pictures and layouts that can scroll. */
+button, a { font-family: inherit; touch-action: manipulation; }
+button:focus-visible, a:focus-visible { outline: 4px solid #1D4ED8; outline-offset: 3px; }
+.screen { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+.screen > * { flex-shrink: 0; }
+.top-bar { width: 100%; min-width: 0; gap: 8px; padding: 10px max(12px, env(safe-area-inset-right)) 10px max(12px, env(safe-area-inset-left)); }
+.screen-title, #quiz-prompt { min-width: 0; white-space: normal; overflow: visible; overflow-wrap: anywhere; text-overflow: clip; font-size: clamp(19px, 4vw, 27px); line-height: 1.3; padding: 0; }
+.btn-back, .btn-home, .btn-icon { width: 48px; height: 48px; flex-shrink: 0; }
+.btn-about, .portal-link, .btn-help, .btn-audio-toggle { min-height: 48px; padding: 10px 14px; display: inline-flex; align-items: center; justify-content: center; border-radius: 16px; font-size: 15px; color: #334155; }
+.home-tools { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.btn-help, .btn-audio-toggle { border: 1px solid #CBD5E1; background: #FFF; cursor: pointer; font-weight: 700; }
+.portal-link { text-decoration: none; background: #E0F2FE; color: #075985; font-weight: 700; }
+#screen-home { justify-content: safe center; gap: 12px; padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom)); }
+.app-title, .home-title { font-size: clamp(26px, 5vw, 40px); }
+#home-categories, .home-wrapper { width: 100%; max-width: 760px; }
+#home-categories { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.category-btn { min-height: 118px; padding: 12px 8px; flex-direction: column; }
+.category-icon { width: 88px; height: 64px; }
+.category-icon img { object-fit: contain; background: #FFF; }
+.category-label, .vehicle-label, .dino-label, .item-label { color: #1E293B; font-size: 17px; }
+.btn-quiz-home, .btn-difficulty { background: #047857; color: #FFF; font-size: 21px; }
+.btn-difficulty.hard { background: #92400E; color: #FFF; }
+.btn-difficulty.odd { background: #6D28D9; color: #FFF; }
+.btn-difficulty .diff-label, .btn-difficulty .diff-desc { color: #FFF; }
+.btn-difficulty .diff-desc { font-size: 14px; }
+#screen-quiz-menu { justify-content: safe center; padding: 80px 16px 24px; gap: 16px; }
+.quiz-menu-title { margin: 0 0 8px; text-align: center; font-size: 27px; }
+.difficulty-buttons { padding: 0; }
+.btn-difficulty { padding: 18px 12px; }
+#category-vehicles, #category-dinos, #category-items, #category-instruments, #category-animals { width: 100%; max-width: 1000px; margin: 0 auto; flex: none; align-content: start; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 12px; gap: 12px; }
+.vehicle-thumb img, .dino-thumb img, .item-thumb img, .img-container img, .quiz-option img { object-fit: contain; }
+.vehicle-thumb, .dino-thumb, .item-thumb, .instrument-thumb { background: #FFF; aspect-ratio: 4/3; }
+.vehicle-image, .dino-image, .item-image { flex: 1 0 auto; padding: 12px; }
+.img-container { max-width: 760px; background: #FFF; }
+.vehicle-actions, .dino-actions, .item-actions, .instrument-actions, .animal-actions { gap: 10px; padding: 12px max(10px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left)); width: 100%; }
+.btn-action { width: 64px; height: 64px; flex-shrink: 0; font-size: 28px; }
+.btn-nav-vehicle, .btn-nav-dino, .btn-nav-item, .btn-nav-instrument, .btn-nav { width: 48px; height: 48px; flex-shrink: 0; }
+#screen-quiz, #screen-odd-quiz { padding: 0 0 max(12px, env(safe-area-inset-bottom)); gap: 0; }
+.quiz-score { color: #92400E; font-size: 18px; padding: 6px 10px; }
+.btn-repeat { margin: 4px auto 0; min-height: 48px; border: 2px solid #A7F3D0; background: #FFF; border-radius: 24px; padding: 8px 20px; font-size: 18px; font-weight: 700; color: #065F46; cursor: pointer; }
+#quiz-options, #odd-quiz-options { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; flex: none; width: 100%; max-width: min(760px, calc(100dvh - 150px)); padding: 12px; gap: 12px; margin: 0 auto; max-height: none; }
+#odd-quiz-options { max-width: min(760px, calc(100dvh - 220px)); }
+.quiz-option { position: relative; display: block; aspect-ratio: 1; min-height: 110px; padding: 4px; }
+.quiz-option img { width: 100%; height: 100%; max-height: none; padding: 0; }
+.quiz-option.correct::after { content: '✓'; position: absolute; bottom: 6px; right: 6px; border-radius: 50%; background: #047857; color: white; font-size: 28px; width: 36px; height: 36px; }
+.quiz-option.wrong { opacity: .65; }
+.odd-category-header { flex-shrink: 0; }
+.feedback { text-align: center; color: #065F46; font-weight: 700; min-height: 28px; }
+#audio-status:empty { display: none; }
+#audio-status { position: fixed; bottom: 12px; left: 12px; right: 12px; z-index: 100; background: #FFF; color: #7C2D12; border: 2px solid #FDBA74; border-radius: 12px; padding: 10px; text-align: center; pointer-events: none; }
+@media (min-width: 700px) {
+  #home-categories { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #home-categories:has(.category-btn:nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #category-vehicles, #category-dinos, #category-items, #category-instruments, #category-animals { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .category-btn { min-height: 140px; }
+}
+@media (orientation: landscape) and (max-height: 500px) {
+  #screen-home { justify-content: flex-start; }
+  #home-categories { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #quiz-options, #odd-quiz-options { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 760px; }
+  #quiz-options:has(.quiz-option:nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 390px; }
+  .vehicle-image, .dino-image, .item-image { flex: none; }
+  .img-container { max-width: 420px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .confetti { display: none; } }
+
+.home-wrapper { max-width: 760px; }
+.home-title { font-size: clamp(26px, 6vw, 40px); }
+.category-icon { width: auto; height: auto; }
+.animal-card { font-family: inherit; }
+.animal-label { font-size: 17px; }
+.animal-thumb { aspect-ratio: 4/3; }
+#screen-animal.active { grid-template-rows: auto minmax(160px,1fr) auto; overflow-y: auto; }
+.animal-name-display { display: none; }
+.animal-image-container { width: 100%; max-width: 900px; margin: 0 auto; }
+.animal-image-container .img-wrapper { max-height: none; }
+.quiz-options { grid-template-rows: none; }
+#odd-options { flex: none; width: 100%; max-width: min(760px, calc(100dvh - 240px)); margin: 0 auto; padding: 12px; gap: 12px; }
+.quiz-option { display: flex; flex-direction: column; }
+.quiz-option img { flex: 1; height: 0; min-height: 0; }
+#screen-quiz, #screen-odd { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+.quiz-prompt { font-size: clamp(20px, 4vw, 27px); }
+@media (orientation: landscape) and (max-height: 500px) {
+  #odd-options { grid-template-columns: repeat(4,minmax(0,1fr)); max-width: 760px; }
+}
+
+  h1[tabindex="-1"], h2[tabindex="-1"] { outline: none; }
+.screen-title { color: #1E293B; }
+
+/* Short rounds, quiet assistance and a separate parent area. */
+#screen-complete.active { display:flex; align-items:safe center; justify-content:safe center; padding:24px 16px; overflow:auto; }
+.round-card { width:100%; max-width:540px; text-align:center; padding:28px 18px; border-radius:28px; background:#fff; box-shadow:0 8px 32px #173f5015; }
+.round-card h2 { font-size:clamp(24px,4vw,34px); color:#075e4b; margin:18px 0; }
+.round-card p { color:#42556b; font-size:18px; }.round-stars { font-size:clamp(24px,5vw,40px); }
+.round-card button { display:block; width:100%; min-height:64px; margin:14px 0 0; border-radius:20px; border:2px solid #047857; font:700 23px inherit; font-family:inherit; font-size:23px; cursor:pointer; }
+.round-again { background:#047857; color:#fff; }.round-home { background:#fff; color:#065f46; }
+.btn-more-games { min-height:48px; padding:8px 22px; margin-top:8px; border:2px solid #94a3b8; border-radius:20px; background:#fff; color:#334155; font:700 17px inherit; font-family:inherit; cursor:pointer; }
+.quiz-option.idle-hint { outline:4px solid #0e7490; outline-offset:3px; }
+.sound-note { text-align:center; font-size:15px; color:#475569; margin:5px 12px; }
+dialog { margin:auto; max-height:90dvh; overflow:auto; border:2px solid #64748b; border-radius:22px; max-width:min(92vw,440px); padding:24px; color:#1e293b; }
+dialog::backdrop { background:#0f172a88; }dialog h2 {margin-top:0;}dialog input { width:100%; min-height:48px; font:inherit; font-size:22px; border:2px solid #64748b; border-radius:10px; }
+dialog button { min-height:48px; padding:10px 16px; border:2px solid #64748b; border-radius:12px; margin:6px; background:white; color:#1e293b; font:inherit; cursor:pointer; }
+#parents-error { color:#9a3412; } .quiz-score { white-space:nowrap; }
+
+</style>
 </head>
 <body>
 
@@ -215,9 +320,15 @@
     <div class="home-wrapper">
       <h1 class="home-title"><span class="emoji">🦁</span> חיות <span class="emoji">🐻</span></h1>
       <div id="home-categories"></div>
-      <button class="btn-quiz-home" onclick="App.openQuizMenu()">
-        <span class="quiz-icon">🎮</span><span>בוא נשחק!</span>
+      <button class="btn-quiz-home" onclick="App.startQuiz('easy')">
+        <span class="quiz-icon">🎮</span><span>בואו נשחק!</span>
       </button>
+      <button class="btn-more-games" onclick="App.openQuizMenu()">🎮 עוד משחקים</button>
+    <div class="home-tools">
+        <button class="btn-help" onclick="AudioManager.playUI('home')">🔊 איך משחקים?</button>
+        <button class="btn-audio-toggle" data-audio-toggle onclick="AudioManager.toggleMute()">🔊 השתקה</button>
+        <a class="portal-link" href="https://games.dvirai.com/">🌈 כל המשחקים</a>
+      </div>
       <button class="btn-about" onclick="App.openAbout()">📖 אודות</button>
     </div>
   </div>
@@ -225,9 +336,9 @@
   <!-- ===== Category ===== -->
   <div id="screen-category" class="screen">
     <div class="top-bar">
-      <button class="btn-icon" onclick="App.goBack()" style="--cat-color:var(--cat-color)">←</button>
+      <button class="btn-icon" aria-label="חזרה" onclick="App.goBack()" style="--cat-color:var(--cat-color)">→</button>
       <h2 id="category-title" class="screen-title"></h2>
-      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color:var(--cat-color);--cat-color-light:#f1f5f9">🏠</button>
+      <button class="btn-icon home-icon" aria-label="לבית המשחק" onclick="App.goHome()" style="--cat-color:var(--cat-color);--cat-color-light:#f1f5f9">🏠</button>
     </div>
     <div id="category-animals"></div>
   </div>
@@ -235,30 +346,30 @@
   <!-- ===== Animal Detail ===== -->
   <div id="screen-animal" class="screen">
     <div class="top-bar">
-      <button class="btn-icon" onclick="App.goBack()" style="--cat-color:var(--cat-color)">←</button>
+      <button class="btn-icon" aria-label="חזרה" onclick="App.goBack()" style="--cat-color:var(--cat-color)">→</button>
       <h2 id="animal-title" class="screen-title"></h2>
-      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color:var(--cat-color);--cat-color-light:#f1f5f9">🏠</button>
+      <button class="btn-icon home-icon" aria-label="לבית המשחק" onclick="App.goHome()" style="--cat-color:var(--cat-color);--cat-color-light:#f1f5f9">🏠</button>
     </div>
     <div class="animal-image-container">
       <div class="img-wrapper"><img id="animal-img" src="" alt=""></div>
     </div>
     <div id="animal-name-display" class="animal-name-display"></div>
     <div class="animal-actions">
-      <button class="btn-nav" onclick="App.prevAnimal()">‹</button>
-      <button id="btn-play-sound" class="btn-action" onclick="App.playAnimalSound()">🔊</button>
-      <button id="btn-tts" class="btn-action" style="border-color:#3B82F6" onclick="App.speakAnimalName()">🗣️</button>
-      <button class="btn-nav" onclick="App.nextAnimal()">›</button>
+      <button class="btn-nav" aria-label="החיה הקודמת" onclick="App.prevAnimal()">›</button>
+      <button id="btn-play-sound" class="btn-action" aria-label="השמעת צליל או עצירה" onclick="App.playAnimalSound()">🔊</button>
+      <button id="btn-tts" class="btn-action" style="border-color:#3B82F6" aria-label="השמעת שם החיה" onclick="App.speakAnimalName()">🗣️</button>
+      <button class="btn-nav" aria-label="החיה הבאה" onclick="App.nextAnimal()">‹</button>
     </div>
   </div>
 
   <!-- ===== Quiz Menu ===== -->
   <div id="screen-quiz-menu" class="screen">
-    <h2 class="quiz-menu-title">🎮 בחר משחק</h2>
-    <p class="quiz-subtitle">בוא נראה מי מכיר את כל החיות!</p>
+    <h2 class="quiz-menu-title">🎮 בוחרים משחק</h2>
+    <p class="quiz-subtitle">מקשיבים ובוחרים תמונה</p>
     <div class="difficulty-buttons">
       <button class="btn-difficulty easy" onclick="App.startQuiz('easy')">
         <span class="diff-icon">🔍</span>
-        <span class="diff-info"><span class="diff-label">איפה החיה? (קל)</span><br><span class="diff-desc">4 תמונות עם שמות</span></span>
+        <span class="diff-info"><span class="diff-label">איפה החיה? (קל)</span><br><span class="diff-desc">2 תמונות עם שמות</span></span>
       </button>
       <button class="btn-difficulty hard" onclick="App.startQuiz('hard')">
         <span class="diff-icon">🧠</span>
@@ -266,60 +377,68 @@
       </button>
       <button class="btn-difficulty odd" onclick="App.startOddOne()">
         <span class="diff-icon">🧐</span>
-        <span class="diff-info"><span class="diff-label">מה לא שייך?</span><br><span class="diff-desc">מצא את החיה ממשפחה אחרת</span></span>
+        <span class="diff-info"><span class="diff-label">מה לא שייך?</span><br><span class="diff-desc">עופות, דגים וזוחלים</span></span>
       </button>
     </div>
-    <button class="btn-about" onclick="App.goBack()">◀ חזור</button>
+    <button class="btn-about" aria-label="חזרה" onclick="App.goBack()">→ חזרה</button>
   </div>
 
   <!-- ===== Quiz ===== -->
   <div id="screen-quiz" class="screen">
     <div class="quiz-header">
-      <button class="btn-icon" onclick="App.quitQuiz()">←</button>
+      <button class="btn-icon" aria-label="חזרה" onclick="App.quitQuiz()">→</button>
       <div id="quiz-score" class="quiz-score">⭐ 0</div>
       <div style="flex:1"></div>
-      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color-light:#f1f5f9">🏠</button>
+      <button class="btn-icon home-icon" aria-label="לבית המשחק" onclick="App.goHome()" style="--cat-color-light:#f1f5f9">🏠</button>
     </div>
     <div id="quiz-prompt" class="quiz-prompt"></div>
+    <button class="btn-repeat" onclick="App.replayQuestion()">🔊 לשמוע שוב</button>
     <div id="quiz-options" class="quiz-options"></div>
+    <p class="feedback" role="status"></p>
   </div>
 
   <!-- ===== Odd One Out ===== -->
   <div id="screen-odd" class="screen">
     <div class="quiz-header">
-      <button class="btn-icon" onclick="App.quitOddOne()">←</button>
+      <button class="btn-icon" aria-label="חזרה" onclick="App.quitOddOne()">→</button>
       <div id="odd-score" class="quiz-score">⭐ 0</div>
       <div style="flex:1"></div>
-      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color-light:#f1f5f9">🏠</button>
+      <button class="btn-icon home-icon" aria-label="לבית המשחק" onclick="App.goHome()" style="--cat-color-light:#f1f5f9">🏠</button>
     </div>
-    <div id="odd-prompt" class="quiz-prompt">מצא את הזר! 🤔</div>
+    <div id="odd-prompt" class="quiz-prompt">מה לא שייך? 🤔</div>
+    <button class="btn-repeat" onclick="App.replayQuestion()">🔊 לשמוע שוב</button>
     <div id="odd-options" class="quiz-options"></div>
+    <p class="feedback" role="status"></p>
   </div>
 
   <!-- ===== About ===== -->
   <div id="screen-about" class="screen">
     <div class="top-bar">
-      <button class="btn-icon" onclick="App.goBack()">←</button>
+      <button class="btn-icon" aria-label="חזרה" onclick="App.goBack()">→</button>
       <h2 class="screen-title" style="color:#F59E0B">📖 אודות</h2>
-      <button class="btn-icon home-icon" onclick="App.goHome()" style="--cat-color-light:#f1f5f9">🏠</button>
+      <button class="btn-icon home-icon" aria-label="לבית המשחק" onclick="App.goHome()" style="--cat-color-light:#f1f5f9">🏠</button>
     </div>
     <div class="about-content">
       <h2>🦁 חיות 🐻</h2>
       <p class="about-subtitle">אפליקציה לגילוי חיות לקטנטנים</p>
+<div class="about-card"><p>תמונות שהוחלפו בביקורת:</p><p><a href="https://commons.wikimedia.org/wiki/File:Vulpes_vulpes_standing.jpg" target="_blank" rel="noopener">שועל: Jim Thiele / USFWS</a> — Public domain</p><p><a href="https://commons.wikimedia.org/wiki/File:Gyps_fulvus_02.jpg" target="_blank" rel="noopener">נשר: H. Zell</a> — CC BY-SA 3.0</p><p><a href="https://commons.wikimedia.org/wiki/File:Mountain_gazelle.jpg" target="_blank" rel="noopener">צבי: Bassem 18</a> — CC BY-SA 3.0</p><p><a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">רישיון CC BY-SA 3.0</a>. תמונת הנשר מוצגת בגרסה מוקטנת של Wikimedia; יתר התמונות ללא שינוי.</p></div>
       <div class="about-card"><p>💛 נבנה באהבה למשפחת דביר<br>50 חיות עם תמונות, צלילים ומשחקי חידון!</p></div>
       <div class="about-card">
         <p>✔️ 6 קטגוריות: בית, בר, עופות, ים, זוחלים, יונקים</p>
         <p>🎮 3 משחקים: קל, מתקדם, מה לא שייך</p>
-        <p>🔊 צלילים אמיתיים 🗣️ הקראת שמות אוטומטית</p>
+        <p>🔊 קולות וצלילי משחק 🗣️ הקראת שמות מוקלטת</p>
       </div>
       <div class="about-card">
         <p style="font-weight:600">פותח על ידי עומר דביר</p>
         <p style="color:#3B82F6;direction:ltr;unicode-bidi:embed">omerdvir@gmail.com</p>
-        <p style="color:#94a3b8;font-size:13px">2026 ©</p>
+        <p style="color:#94a3b8;font-size:13px">2026 ©</p><p>תמונה מעודכנת: <a href="https://commons.wikimedia.org/wiki/File:Hermann%27s_Tortoise_side_view.jpg" target="_blank" rel="noopener">Richard Mayer</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>; ללא שינוי נוסף.</p><p>תמונה מעודכנת: <a href="https://commons.wikimedia.org/wiki/File:Rhinoceros_full_body.jpg" target="_blank" rel="noopener">Agamemnus</a>, <a href="https://creativecommons.org/publicdomain/mark/1.0/" target="_blank" rel="noopener">Public domain</a>; ללא שינוי נוסף.</p>
       </div>
     </div>
   </div>
 
+  <p id="audio-status" role="status"></p>
+  <script src="audio.js"></script>
+  <script src="play-session.js"></script>
   <script>
     const CATEGORIES = [
       { id:"home",     name:"חיות בית",      color:"#F59E0B",colorLight:"#FEF3C7",bg:"#FFFBEB",emoji:"🏠",gradient:"linear-gradient(135deg,#FEF3C7,#FDE68A)" },
@@ -330,355 +449,160 @@
       { id:"special",  name:"יונקים מיוחדים",  color:"#10B981",colorLight:"#D1FAE5",bg:"#F0FDF4",emoji:"🦒",gradient:"linear-gradient(135deg,#D1FAE5,#A7F3D0)" }
     ];
 
-    // Phonetic fixes for Hebrew TTS — browser speechSynthesis sometimes mispronounces without niqqud
-    const PHONETIC_MAP = {
-      "חמור":"חֲמוֹר",
-            "ג'ירפה":"גִ'ירָפָה",
-            "אווז":"אַוָּז",
-            "פיל":"פִּיל",
-            "היפופוטם":"הִיפּוֹפּוֹטָם",
-            "חסידה":"חֲסִידָה",
-            "כבשה":"כִּבְשָׂה",
-            "עז":"עֵז",
-            "טיגריס":"טִיגְרִיס",
-            "אריה":"אַרְיֵה",
-            "זאב":"זְאֵב",
-            "נמר":"נָמֵר",
-            "דוב":"דֹּב",
-            "שועל":"שׁוּעָל",
-            "חזיר בר":"חֲזִיר בַּר",
-            "קרנף":"קַרְנַף",
-            "זברה":"זֶבְּרָה",
-            "חתול":"חָתוּל",
-            "כלב":"כֶּלֶב",
-            "ארנב":"אַרְנָב",
-            "תרנגול":"תַּרְנְגוֹל",
-            "פרה":"פָּרָה",
-            "כבש":"כֶּבֶשׂ",
-            "סוס":"סוּס",
-            "ברווז":"בַּרְוָז",
-            "יונה":"יוֹנָה",
-            "תוכי":"תֻּכִּי",
-            "נשר":"נֶשֶׁר",
-            "ינשוף":"יַנְשׁוּף",
-            "פינגווין":"פִּינְגְּוִין",
-            "פלמינגו":"פְלָמִינְגּוֹ",
-            "טווס":"טַוָּס",
-            "דולפין":"דּוֹלְפִין",
-            "לוויתן":"לִוְיָתָן",
-            "כריש":"כָּרִישׁ",
-            "דג שונית":"דַּג שׁוּנִית",
-            "סוס ים":"סוּס יָם",
-            "צב ים":"צַב יָם",
-            "מדוזה":"מֶדוּזָה",
-            "תמנון":"תְּמָנוּן",
-            "סרטן":"סַרְטַן",
-            "נחש":"נָחָשׁ",
-            "צפרדע":"צְפַרְדֵעַ",
-            "צב":"צָב",
-            "תנין":"תַּנִּין",
-            "איגואנה":"אִיגְוָאנָה",
-            "לטאה":"לְטָאָה",
-            "קיפוד":"קִיפּוֹד",
-            "זיקית":"זִקִּית",
-            "צבי":"צְבִי",
-            "גמל":"גָּמָל",
-            "קנגורו":"קֶנְגּוּרוּ",
-            "קואלה":"קוֹאָלָה",
-            "פנדה":"פַּנְדָּה",
-            "קוף":"קוֹף",
-            "דביבון":"דְּבִיבוֹן",
-            "סנאי":"סְנָאִי"
-    };
 
-    let ANIMAL_DATA = null;
-    let currentCategory = null;
-    let currentAnimalIndex = 0;
-    let currentAudio = null;
-    let ttsVoice = null;
-    let quizScore = 0;
-    let currentQuizQuestion = null;
-    let currentDifficulty = 'easy';
-    let oddOneScore = 0;
-    let currentOddQuestion = null;
-
-    function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
-    function randInt(n){return Math.floor(Math.random()*n)}
+    const ANIMAL_ODD_GROUPS = [{"name": "עופות", "names": ["תרנגול", "ברווז", "אווז", "נשר", "ינשוף", "חסידה", "יונה", "תוכי", "פלמינגו", "פינגווין"], "outs": ["כלב", "חתול", "פרה", "פיל", "נחש", "צב"]}, {"name": "דגים", "names": ["כריש", "דג שונית", "סוס ים"], "outs": ["כלב", "חתול", "פרה", "יונה", "נשר", "צב"]}, {"name": "זוחלים", "names": ["תנין", "נחש", "צב", "לטאה", "איגואנה", "צב ים"], "outs": ["כלב", "חתול", "פרה", "יונה", "נשר", "דג שונית"]}];
 
     const App = {
-      history:[], currentScreen:'home',
-
-      async init(){
-        App.initTTS();
-        await App.loadData();
-        App.renderHome();
-        document.addEventListener("dblclick",e=>e.preventDefault());
-        window.addEventListener("popstate",()=>{
-          if(App.history.length>0){const p=App.history.pop();App.showScreen(p.screen,false)}
-          else App.showScreen("home",false)
+      data: null, history: [], currentScreen: 'home', category: 0, itemIndex: 0,
+      timers: new Set(), recent: [], score: 0, difficulty: 'easy', question: null,
+      delay(callback, ms) { const id=setTimeout(()=>{this.timers.delete(id);callback()},ms);this.timers.add(id); },
+      clearTimers() { this.timers.forEach(clearTimeout);this.timers.clear(); },
+      async init() {
+        AudioManager.init();
+        PlaySession.init(this);
+        try {
+          const response=await fetch('data.json');
+          if(!response.ok) throw new Error('data unavailable');
+          this.data=await response.json();
+          this.renderHome();
+        } catch {
+          document.getElementById('home-categories').innerHTML='<button class="btn-help" onclick="location.reload()">לא הצלחנו לטעון. לחצו לנסות שוב</button>';
+        }
+        window.addEventListener('popstate',()=>{
+          const previous=this.history.pop();this.showScreen(previous||'home',false);
         });
-        document.addEventListener("error",e=>{if(e.target.tagName==="IMG"&&!e.target.dataset.fallback){e.target.dataset.fallback="1";e.target.style.background="#f1f5f9";e.target.style.minHeight="80px"}},true);
-      },
-
-      initTTS(){
-        if(!('speechSynthesis' in window)) return;
-        const setVoice = () => {
-          const voices = speechSynthesis.getVoices();
-          ttsVoice = voices.find(v=>v.lang.startsWith('he')&&v.name.includes('Microsoft')) ||
-                     voices.find(v=>v.lang.startsWith('he')&&v.name.includes('Google')) ||
-                     voices.find(v=>v.lang.startsWith('he'));
-        };
-        setVoice();
-        speechSynthesis.onvoiceschanged = setVoice;
-      },
-
-      async loadData(){
-        try{const r=await fetch('data.json');ANIMAL_DATA=await r.json()}
-        catch(e){console.error(e);ANIMAL_DATA={categories:[]}}
-      },
-
-      showScreen(id,push=true){
-        document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-        const t=document.getElementById("screen-"+id);
-        if(t){t.classList.add("active");t.scrollTop=0}
-        if(push&&App.currentScreen&&App.currentScreen!==id){
-          App.history.push({screen:App.currentScreen});
-          window.history.pushState({screen:id},"")
-        }
-        App.currentScreen=id;
-      },
-
-      goBack(){
-              if(App.history.length>0){const p=App.history.pop();App.showScreen(p.screen,false)}
-              else App.goHome()
-            },
-
-      goHome(){App.history=[];App.showScreen("home",false);window.history.pushState({screen:"home"},"")},
-
-      stopAudio(){if(currentAudio){currentAudio.pause();currentAudio.currentTime=0;currentAudio=null}document.querySelectorAll('.btn-action.playing').forEach(b=>b.classList.remove('playing'))},
-
-      /* ===== TTS (Phonetic-aware) ===== */
-      speak(text, onEnd){
-              if(!('speechSynthesis' in window)){ if(onEnd) onEnd(); return; }
-              speechSynthesis.cancel();
-              const phonetic = PHONETIC_MAP[text] || text;
-              const u = new SpeechSynthesisUtterance(phonetic);
-              u.lang = 'he-IL';
-              u.rate = 0.82;
-              u.pitch = 1.05;
-              u.volume = 1;
-              if(ttsVoice) u.voice = ttsVoice;
-              if(onEnd) u.onend = onEnd;
-              speechSynthesis.speak(u);
-            },
-
-      /* ===== Home ===== */
-      renderHome(){
-        const g=document.getElementById("home-categories");
-        g.innerHTML="";
-        if(!ANIMAL_DATA) return;
-        ANIMAL_DATA.categories.forEach((c,i)=>{
-          const m=CATEGORIES[i]||CATEGORIES[0];
-          const b=document.createElement("button");
-          b.className="category-btn";
-          b.style.setProperty("--cat-color",m.color);
-          b.style.setProperty("--cat-bg",m.gradient);
-          b.innerHTML=`<div class="category-icon">${m.emoji}</div><div class="category-label">${c.name}</div><div class="category-count">${c.items.length} חיות</div>`;
-          b.addEventListener("click",()=>App.openCategory(i));
-          g.appendChild(b)
-        })
-      },
-
-      openCategory(ci){
-        if(!ANIMAL_DATA) return;
-        const c=ANIMAL_DATA.categories[ci], m=CATEGORIES[ci]||CATEGORIES[0];
-        currentCategory=ci;
-        document.getElementById("category-title").textContent=m.emoji+" "+c.name;
-        const sc=document.getElementById("screen-category");
-        sc.style.setProperty("--cat-color",m.color);sc.style.setProperty("--cat-bg",m.bg);
-        const g=document.getElementById("category-animals");g.innerHTML="";
-        c.items.forEach((a,i)=>{
-          const card=document.createElement("button");
-          card.className="animal-card";card.style.setProperty("--cat-color",m.color);
-          card.innerHTML=`<div class="animal-thumb"><img src="${a.image}" alt="${a.name}" loading="lazy"></div><span class="animal-label">${a.name}</span>`;
-          card.addEventListener("click",()=>App.openAnimal(i));
-          g.appendChild(card)
+        document.addEventListener('visibilitychange',()=>{
+          if(document.hidden)this.clearTimers();
+          else if(this.question?.answered&&this.currentScreen==='quiz')this.nextQuizQuestion();
+          else if(this.question?.answered&&this.currentScreen==='odd')this.nextOddQuestion();
         });
-        App.showScreen("category");
-        setTimeout(()=>App.speak(c.name),400);
       },
-
-      openAnimal(idx){
-        if(!ANIMAL_DATA||currentCategory===null) return;
-        currentAnimalIndex=idx;
-        App.updateAnimalScreen();
-        App.showScreen("animal");
-                setTimeout(()=>{
-                  const a=ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
-                  App.speak(a.name, ()=>{ App.playSoundUrl(a.sound, "btn-play-sound"); });
-                },500);
+      showScreen(id,push=true) {
+        this.clearTimers();AudioManager.stop();
+        document.getElementById('audio-status').textContent='';
+        document.querySelectorAll('.feedback').forEach(e=>e.textContent='');
+        if(push&&this.currentScreen!==id) {this.history.push(this.currentScreen);window.history.pushState({screen:id},'');}
+        this.currentScreen=id;
+        PlaySession.onScreen();
+        document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id==='screen-'+id));
+        const screen=document.getElementById('screen-'+id);screen.scrollTop=0;
+        const heading=screen.querySelector('h1,h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true})}
       },
-
-      updateAnimalScreen(){
-        if(!ANIMAL_DATA||currentCategory===null) return;
-        const c=ANIMAL_DATA.categories[currentCategory],a=c.items[currentAnimalIndex],m=CATEGORIES[currentCategory]||CATEGORIES[0];
-        document.getElementById("animal-title").textContent=m.emoji+" "+a.name;
-        const sc=document.getElementById("screen-animal");
-        sc.style.setProperty("--cat-color",m.color);sc.style.setProperty("--cat-color-light",m.colorLight);sc.style.setProperty("--cat-bg",m.bg);
-        document.getElementById("animal-img").src=a.image;
-        document.getElementById("animal-name-display").textContent=a.name;
+      goBack() { if(this.history.length) window.history.back();else this.goHome(); },
+      goHome() { this.history=[];this.showScreen('home',false); },
+      stopAudio() { AudioManager.stop(); },
+      shuffled(items) { const a=[...items];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a; },
+      allAnimals() { return this.data.categories.flatMap((c,ci)=>c.items.map((a,index)=>({...a,ci,index}))); },
+      voice(name,kind='names') { return `voice/${kind}/${encodeURIComponent(name)}.mp3`; },
+      renderHome() {
+        const grid=document.getElementById('home-categories');grid.innerHTML='';
+        this.data.categories.forEach((c,index)=>{
+          const meta=CATEGORIES[index];const button=document.createElement('button');button.className='category-btn';
+          button.style.setProperty('--cat-color',meta.color);button.style.setProperty('--cat-bg',meta.gradient);
+          button.innerHTML=`<div class="category-icon" aria-hidden="true">${meta.emoji}</div><div class="category-label">${c.name}</div><div class="category-count">${c.items.length} חיות</div>`;
+          button.onclick=()=>this.openCategory(index);grid.appendChild(button);
+        });
       },
-
-      nextAnimal(){
-        if(!ANIMAL_DATA||currentCategory===null) return;
-        const c=ANIMAL_DATA.categories[currentCategory];
-        currentAnimalIndex=(currentAnimalIndex+1)%c.items.length;
-        App.updateAnimalScreen();
-        App.stopAudio();
-                const a=c.items[currentAnimalIndex];
-                setTimeout(()=>App.speak(a.name, ()=>{ App.playSoundUrl(a.sound, "btn-play-sound"); }),300);
-              },
-
-              prevAnimal(){
-                if(!ANIMAL_DATA||currentCategory===null) return;
-                const c=ANIMAL_DATA.categories[currentCategory];
-                currentAnimalIndex=(currentAnimalIndex-1+c.items.length)%c.items.length;
-                App.updateAnimalScreen();
-                App.stopAudio();
-                const a=c.items[currentAnimalIndex];
-                setTimeout(()=>App.speak(a.name, ()=>{ App.playSoundUrl(a.sound, "btn-play-sound"); }),300);
+      openCategory(index) {
+        if(!this.data)return;
+        this.category=index;
+        const cat=this.data.categories[index],meta=CATEGORIES[index],screen=document.getElementById('screen-category');
+        screen.style.setProperty('--cat-color',meta.color);screen.style.setProperty('--cat-bg',meta.bg);
+        document.getElementById('category-title').textContent=meta.emoji+' '+cat.name;
+        const grid=document.getElementById('category-animals');grid.innerHTML='';
+        cat.items.forEach((animal,idx)=>{
+          const button=document.createElement('button');button.className='animal-card';
+          button.innerHTML=`<div class="animal-thumb"><img src="${animal.image}" alt="" loading="lazy"></div><span class="animal-label">${animal.name}</span>`;
+          button.onclick=()=>this.openAnimal(idx);grid.appendChild(button);
+        });
+        this.showScreen('category');AudioManager.play(this.voice(cat.name,'categories'));
       },
-
-      playAnimalSound(){
-        if(!ANIMAL_DATA||currentCategory===null) return;
-        const a=ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
-        App.playSoundUrl(a.sound,"btn-play-sound")
+      animal() { return this.data?.categories[this.category].items[this.itemIndex]; },
+      openAnimal(index) {
+        this.itemIndex=index;this.updateAnimalScreen();this.showScreen('animal');
+        const animal=this.animal();
+        AudioManager.playSequence([this.voice(animal.name),animal.sound],null,()=>document.getElementById('btn-play-sound').classList.add('playing'));
       },
-
-      speakAnimalName(){
-        if(!ANIMAL_DATA||currentCategory===null) return;
-        const a=ANIMAL_DATA.categories[currentCategory].items[currentAnimalIndex];
-        App.speak(a.name)
+      updateAnimalScreen() {
+        const a=this.animal(),meta=CATEGORIES[this.category];
+        document.getElementById('animal-title').textContent=a.name;
+        const img=document.getElementById('animal-img');img.src=a.image;img.alt=a.name;
+        const screen=document.getElementById('screen-animal');
+        screen.style.setProperty('--cat-color',meta.color);screen.style.setProperty('--cat-color-light',meta.colorLight);screen.style.setProperty('--cat-bg',meta.bg);
       },
-
-      playSoundUrl(url,btnId){
-        App.stopAudio();
-        const btn=document.getElementById(btnId);
-        if(btn) btn.classList.add("playing");
-        currentAudio=new Audio(url);
-        currentAudio.play().catch(()=>{});
-        currentAudio.onended=()=>{if(btn)btn.classList.remove("playing");currentAudio=null}
+      nextAnimal() { this.openAnimal((this.itemIndex+1)%this.data.categories[this.category].items.length); },
+      prevAnimal() { this.openAnimal((this.itemIndex-1+this.data.categories[this.category].items.length)%this.data.categories[this.category].items.length); },
+      playAnimalSound() {
+        if(AudioManager.isPlaying){AudioManager.stop();return;}
+        AudioManager.play(this.animal().sound);
+        if(AudioManager.isPlaying)document.getElementById('btn-play-sound').classList.add('playing');
       },
-
-      openQuizMenu(){App.showScreen("quiz-menu")},
-
-      startQuiz(difficulty){
-        currentDifficulty=difficulty;quizScore=0;App.updateQuizScore();
-        App.nextQuizQuestion();App.showScreen("quiz")
+      speakAnimalName() { AudioManager.play(this.voice(this.animal().name)); },
+      openQuizMenu() { this.showScreen('quiz-menu');AudioManager.playUI('menu'); },
+      startQuiz(difficulty) { if(!this.data)return;PlaySession.begin(difficulty);this.difficulty=difficulty;this.score=0;this.recent=[];this.nextQuizQuestion(); },
+      nextQuizQuestion() {
+        if(!PlaySession.beforeNext(this.score))return;
+        let all=this.allAnimals();
+        if(this.difficulty==='easy')all=all.filter(a=>['כלב','חתול','פרה','כבשה','סוס','תרנגול','ברווז','פיל'].includes(a.name));
+        // Sound questions use familiar, distinctive calls, excluding ambient sea effects.
+        if(this.difficulty==='hard')all=all.filter(a=>['כלב','חתול','פרה','כבשה','סוס','תרנגול','ברווז','עז','חמור','אריה','זאב','צפרדע','דולפין','פיל'].includes(a.name));
+        const pool=all.filter(a=>!this.recent.includes(a.name));
+        const target=this.shuffled(pool.length?pool:all)[0];this.recent.push(target.name);this.recent=this.recent.slice(-8);
+        const others=this.shuffled(all.filter(a=>a.name!==target.name&&a.ci!==target.ci));
+        const needed=this.difficulty==='easy'?1:3;
+        const distractors=others.length>=needed?others:this.shuffled(all.filter(a=>a.name!==target.name));
+        this.question={target,options:this.shuffled([target,...distractors.slice(0,needed)]),answered:false};
+        this.showScreen('quiz');
+        document.getElementById('quiz-score').textContent='⭐ '+this.score+' / 5';
+        document.getElementById('quiz-prompt').textContent=this.difficulty==='hard'?'איזו חיה משמיעה את הקול?':'איפה '+target.name+'?';
+        this.renderOptions('quiz-options',this.question.options,this.difficulty==='easy');this.replayQuestion();
       },
-
-      nextQuizQuestion(){
-        if(!ANIMAL_DATA) return;
-        const all=[];
-        ANIMAL_DATA.categories.forEach((c,ci)=>c.items.forEach((i,ai)=>all.push({...i,catIdx:ci,itemIdx:ai})));
-        const t=all[randInt(all.length)];
-        let d=all.filter(a=>a.catIdx!==t.catIdx);
-        if(d.length<3) d=all.filter(a=>a.name!==t.name);
-        d=shuffle(d).slice(0,3);
-        const opts=shuffle([t,...d]);
-        currentQuizQuestion={target:t,options:opts};
-        document.getElementById("quiz-prompt").textContent=currentDifficulty==='hard'?'🔊 איזו חיה זאת?':'🔍 איפה ה'+t.name+'?';
-        if(currentDifficulty==='hard'&&t.sound) setTimeout(()=>App.playSoundUrl(t.sound,null),300);
-        const g=document.getElementById("quiz-options");g.innerHTML="";
-        opts.forEach((o,i)=>{
-          const b=document.createElement("button");b.className="quiz-option";
-          b.innerHTML=`<img src="${o.image}" alt="${o.name}" loading="lazy">${currentDifficulty==='easy'?`<span>${o.name}</span>`:''}`;
-          b.addEventListener("click",()=>App.handleQuizAnswer(i,b));
-          g.appendChild(b)
-        })
+      startOddOne() { if(!this.data)return;PlaySession.begin('odd');this.score=0;this.nextOddQuestion(); },
+      nextOddQuestion() {
+        if(!PlaySession.beforeNext(this.score))return;
+        const groups=ANIMAL_ODD_GROUPS,cat=groups[Math.floor(Math.random()*groups.length)],all=this.allAnimals();
+        const inside=all.filter(a=>cat.names.includes(a.name)),outside=all.filter(a=>cat.outs.includes(a.name));
+        const odd=this.shuffled(outside)[0];
+        this.question={category:cat.name,target:odd,options:this.shuffled([...this.shuffled(inside).slice(0,3),odd]),answered:false};
+        this.showScreen('odd');
+        document.getElementById('odd-score').textContent='⭐ '+this.score+' / 5';
+        document.getElementById('odd-prompt').textContent='מה לא בקבוצה: '+cat.name+'?';
+        this.renderOptions('odd-options',this.question.options,true);this.replayQuestion();
       },
-
-      handleQuizAnswer(idx,el){
-        if(!currentQuizQuestion) return;
-        const {target,options}=currentQuizQuestion;
-        document.querySelectorAll("#quiz-options .quiz-option").forEach(b=>b.style.pointerEvents="none");
-        if(options[idx].name===target.name){
-          el.classList.add("correct");quizScore++;App.updateQuizScore();
-          App.spawnConfetti(el);App.speak(target.name);
-          setTimeout(()=>App.nextQuizQuestion(),1500)
-        }else{
-          el.classList.add("wrong");
-          document.querySelectorAll("#quiz-options .quiz-option").forEach((b,i)=>{
-            if(options[i].name===target.name) setTimeout(()=>b.classList.add("hint"),400)
-          });
-          setTimeout(()=>App.nextQuizQuestion(),2000)
+      renderOptions(id,options,labels) {
+        const grid=document.getElementById(id);grid.innerHTML='';
+        options.forEach(animal=>{
+          const button=document.createElement('button');button.className='quiz-option';button.setAttribute('aria-label',animal.name);
+          button.innerHTML=`<img src="${animal.image}" alt="">${labels?`<span>${animal.name}</span>`:''}`;
+          button.onclick=()=>this.answer(animal,button);grid.appendChild(button);
+        });
+      },
+      replayQuestion() {
+        if(!this.question)return;
+        if(this.currentScreen==='odd')AudioManager.play(this.voice(this.question.category,'odd'));
+        else if(this.currentScreen==='quiz') {
+          if(this.difficulty==='hard')AudioManager.playSequence(['voice/ui/listen.mp3',this.question.target.sound]);
+          else AudioManager.play(this.voice(this.question.target.name,'questions'));
         }
       },
-
-      updateQuizScore(){document.getElementById("quiz-score").textContent=`⭐ ${quizScore}`},
-      quitQuiz(){App.stopAudio();App.goBack()},
-
-      startOddOne(){
-        oddOneScore=0;App.updateOddScore();
-        App.nextOddQuestion();App.showScreen("odd")
-      },
-
-      nextOddQuestion(){
-        if(!ANIMAL_DATA||!ANIMAL_DATA.categories) return;
-        const cats=ANIMAL_DATA.categories;if(cats.length<2) return;
-        const mci=randInt(cats.length);let oci=randInt(cats.length);
-        while(oci===mci) oci=randInt(cats.length);
-        const mi=shuffle(cats[mci].items).slice(0,3).map(i=>({...i,catIdx:mci,isOdd:false}));
-        const oi={...shuffle(cats[oci].items)[0],catIdx:oci,isOdd:true};
-        const opts=shuffle([...mi,oi]);
-        currentOddQuestion={options:opts,oddIdx:opts.findIndex(o=>o.isOdd)};
-        document.getElementById("odd-prompt").textContent="מצא את החיה שלא שייכת! 🤔";
-        const g=document.getElementById("odd-options");g.innerHTML="";
-        opts.forEach((o,i)=>{
-          const b=document.createElement("button");b.className="quiz-option";
-          b.innerHTML=`<img src="${o.image}" alt="${o.name}" loading="lazy"><span>${o.name}</span>`;
-          b.addEventListener("click",()=>App.handleOddAnswer(i,b));
-          g.appendChild(b)
-        })
-      },
-
-      handleOddAnswer(idx,el){
-        if(!currentOddQuestion) return;
-        document.querySelectorAll("#odd-options .quiz-option").forEach(b=>b.style.pointerEvents="none");
-        if(idx===currentOddQuestion.oddIdx){
-          el.classList.add("correct");oddOneScore++;App.updateOddScore();
-          App.spawnConfetti(el);
-          setTimeout(()=>App.nextOddQuestion(),1500)
-        }else{
-          el.classList.add("wrong");
-          document.querySelectorAll("#odd-options .quiz-option").forEach((b,i)=>{
-            if(i===currentOddQuestion.oddIdx) setTimeout(()=>b.classList.add("hint"),400)
-          });
-          setTimeout(()=>App.nextOddQuestion(),2000)
+      answer(animal,button) {
+        if(this.question.answered||button.disabled)return;
+        const grid=button.parentElement;
+        const feedback=document.querySelector('.screen.active .feedback');
+        if(animal.name===this.question.target.name) {
+          this.question.answered=true;this.score++;button.classList.add('correct');
+          grid.querySelectorAll('button').forEach(b=>b.disabled=true);
+          document.getElementById(this.currentScreen==='odd'?'odd-score':'quiz-score').textContent='⭐ '+this.score+' / 5';
+          feedback.textContent='כל הכבוד! ✓';AudioManager.playUI('correct');
+          const odd=this.currentScreen==='odd';this.delay(()=>odd?this.nextOddQuestion():this.nextQuizQuestion(),1800);
+        } else {
+          button.classList.add('wrong');button.disabled=true;feedback.textContent='ננסה שוב';AudioManager.playUI('retry');
+          this.delay(()=>{const correct=[...grid.children].find(b=>b.getAttribute('aria-label')===this.question.target.name);if(correct)correct.classList.add('hint')},700);
         }
       },
-
-      updateOddScore(){document.getElementById("odd-score").textContent=`⭐ ${oddOneScore}`},
-      quitOddOne(){App.goBack()},
-
-      spawnConfetti(el){
-        const r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
-        const colors=["#F59E0B","#EF4444","#3B82F6","#10B981","#8B5CF6","#06B6D4","#F97316","#EC4899"];
-        for(let i=0;i<22;i++){
-          const c=document.createElement("div");c.className="confetti";
-          c.style.left=cx+"px";c.style.top=cy+"px";
-          c.style.background=colors[randInt(colors.length)];
-          c.style.width=c.style.height=(5+Math.random()*7)+"px";
-          const a=Math.random()*Math.PI*2,d=70+Math.random()*120;
-          c.style.setProperty("--tx",Math.cos(a)*d+"px");
-          c.style.setProperty("--ty",Math.sin(a)*d+"px");
-          document.body.appendChild(c);setTimeout(()=>c.remove(),800)
-        }
-      },
-
-      openAbout(){App.showScreen("about")}
+      quitQuiz() { this.goBack(); }, quitOddOne() { this.goBack(); },
+      openAbout() { this.showScreen('about'); }
     };
-
     App.init();
   </script>
 </body>

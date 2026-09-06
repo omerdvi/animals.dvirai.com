@@ -1,0 +1,87 @@
+{
+  "עז": {
+    "requested": "EZ",
+    "spoken": "עֵז"
+  },
+  "חמור": {
+    "requested": "Khamor; Eifo Khamor",
+    "spoken": "חֲמוֹר"
+  },
+  "זברה": {
+    "requested": "ZEBRA",
+    "spoken": "זֶבְּרָה"
+  },
+  "נשר": {
+    "requested": "NESHER",
+    "spoken": "נֶשֶׁר"
+  },
+  "ינשוף": {
+    "requested": "YANSHOOF",
+    "spoken": "יַנְשׁוּף"
+  },
+  "חסידה": {
+    "requested": "Kha-Sida",
+    "spoken": "חֲסִידָה"
+  },
+  "פלמינגו": {
+    "requested": "Flamingo",
+    "spoken": "פְלָמִינְגוֹ"
+  },
+  "לוויתן": {
+    "requested": "Liviatan",
+    "spoken": "לִוְיָתָן"
+  },
+  "כריש": {
+    "requested": "KARISH",
+    "spoken": "כָּרִישׁ"
+  },
+  "מדוזה": {
+    "requested": "MEDOOZA",
+    "spoken": "מֶדוּזָה"
+  },
+  "תמנון": {
+    "requested": "TAMNOON",
+    "spoken": "טַמְנוּן",
+    "reason": "Explicit pronunciation after lexical ambiguity and ASR review"
+  },
+  "ג'ירפה": {
+    "requested": "JIRAFA",
+    "spoken": "גִ׳ירָפָה"
+  },
+  "קנגורו": {
+    "requested": "KENGOOROO",
+    "spoken": "קֶנְגּוּרוּ"
+  },
+  "סנאי": {
+    "requested": "SNA-I",
+    "spoken": "סְנָאִי"
+  },
+  "זאב": {
+    "spoken": "זְאֵב",
+    "reason": "Explicit pronunciation after lexical ambiguity and ASR review"
+  },
+  "נמר": {
+    "spoken": "נָמֵר",
+    "reason": "Explicit pronunciation after lexical ambiguity and ASR review"
+  },
+  "דוב": {
+    "spoken": "Dov",
+    "reason": "Explicit pronunciation after lexical ambiguity and ASR review"
+  },
+  "שועל": {
+    "spoken": "שׁוּעָל",
+    "reason": "Explicit pronunciation after lexical ambiguity and ASR review"
+  },
+  "צב": {
+    "spoken": "צָב",
+    "reason": "Explicit pronunciation after lexical ambiguity and ASR review"
+  },
+  "צבי": {
+    "spoken": "צְבִי",
+    "reason": "Explicit pronunciation after lexical ambiguity and ASR review"
+  },
+  "אריה": {
+    "spoken": "אַרְיֵה",
+    "reason": "Explicit pronunciation after lexical ambiguity and ASR review"
+  }
+}
